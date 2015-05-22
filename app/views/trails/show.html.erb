@@ -1,0 +1,49 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>Name:</strong>
+  <%= @trail.name %>
+</p>
+
+<p>
+  <strong>Location:</strong>
+  <%= @trail.location %>
+</p>
+
+<p>
+  <strong>Difficulty:</strong>
+  <%= @trail.difficulty %>
+</p>
+
+<p>
+  <strong>Durationinsec:</strong>
+  <%= @trail.durationinsec %>
+</p>
+
+<p>
+  <strong>Season:</strong>
+  <%= @trail.season %>
+</p>
+
+<p>
+  <strong>Type:</strong>
+  <%= @trail.type %>
+</p>
+
+<p>
+  <strong>Latitude:</strong>
+  <%= @trail.latitude %>
+</p>
+
+<p>
+  <strong>Longitude:</strong>
+  <%= @trail.longitude %>
+</p>
+
+<p>
+  <strong>Traildirections:</strong>
+  <%= @trail.traildirections %>
+</p>
+
+<%= link_to 'Edit', edit_trail_path(@trail) %> |
+<%= link_to 'Back', trails_path %>
