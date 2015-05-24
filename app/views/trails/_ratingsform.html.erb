@@ -1,0 +1,24 @@
+<p>raiting partial</p>
+<%= f.fields_for :ratings, Rating.new do |rate| %>
+  <div class="form-group" >
+    <%= rate.label :difficulty %>
+    <div class="input-group">
+      <span cladd="input-group-addon">
+        <%= rate.radio_button :difficulty, 1 %>
+        <%= rate.label :difficulty, '1', :value => 1 %>
+        <%= rate.radio_button :difficulty, 2 %>
+        <%= rate.label :difficulty, '2', :value => 2 %>
+        <%= rate.radio_button :difficulty, 3 %>
+        <%= rate.label :difficulty, '3', :value => 3 %>
+        <%= rate.radio_button :difficulty, 4 %>
+        <%= rate.label :difficulty, '4', :value => 4 %>
+        <%= rate.radio_button :difficulty, 1 %>
+        <%= rate.label :difficulty, '5', :value => 5 %>
+      </span>
+    </div>
+  </div>
+  <div class="form-group" >
+    <%= rate.label :durationinsec %>
+    <%= rate.number_field :durationinsec, html: {class: "form-control"} %>
+  </div>
+<% end %>

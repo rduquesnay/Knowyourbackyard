@@ -11,41 +11,39 @@
     </div>
   <% end %>
 
-  <div class="field">
+  <div class="form-group">
     <%= f.label :name %><br>
-    <%= f.text_field :name %>
+    <%= f.text_field :name, html: {class: "form-control"}%>
   </div>
-  <div class="field">
+  <div class="form-group">
     <%= f.label :location %><br>
-    <%= f.text_field :location %>
+    <%= f.text_field :location, html: {class: "form-control"} %>
   </div>
-  <div class="field">
-    <%= f.label :difficulty %><br>
-    <%= f.number_field :difficulty %>
+  <div class="form-group">
+    <%= f.label :length %><br>
+    <%= f.text_field :length, html: {class: "form-control"} %>
   </div>
-  <div class="field">
-    <%= f.label :durationinsec %><br>
-    <%= f.number_field :durationinsec %>
+
+  <div id="rating">  
+    <%= render :partial => "ratingsform", :locals => {f: f} %>
   </div>
-  <div class="field">
+  <div class="form-group">
     <%= f.label :season %><br>
-    <%= f.text_field :season %>
+    <%= f.select :season,["Winter","Spring","Summer","Fall"], html: {class: "form-control"} %>
   </div>
-  <div class="field">
-    <%= f.label :type %><br>
-    <%= f.text_field :type %>
+  <div class="form-group">
+    <%= f.label :trailtype %><br>
+    <%= f.select :trailtype,["Hiking","Kayaking/Canoeing","Adventure Kayaking"], html: {class: "form-control"} %>
   </div>
-  <div class="field">
+  <div class="form-group">
     <%= f.label :latitude %><br>
-    <%= f.text_field :latitude %>
-  </div>
-  <div class="field">
+    <%= f.text_field :latitude, html: {class: "form-control"} %>
     <%= f.label :longitude %><br>
-    <%= f.text_field :longitude %>
+    <%= f.text_field :longitude, html: {class: "form-control"} %>
   </div>
-  <div class="field">
+  <div class="form-group">
     <%= f.label :traildirections %><br>
-    <%= f.text_area :traildirections %>
+    <%= f.text_area :traildirections, html: {class: "form-control"} %>
   </div>
   <div class="actions">
     <%= f.submit %>

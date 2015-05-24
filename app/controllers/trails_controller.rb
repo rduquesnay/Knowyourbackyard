@@ -22,7 +22,13 @@ class TrailsController < ApplicationController
 
   def create
     @trail = Trail.new(trail_params)
+    @trail.user_id=current_user
     @trail.save
+    binding.pry
+    @rating = Rating.new(rate_params)
+    @rating.user_id= current_user
+    @rating.trail_id= @trail.id
+    @rating.save
     respond_with(@trail)
   end
 
@@ -42,6 +48,9 @@ class TrailsController < ApplicationController
     end
 
     def trail_params
-      params.require(:trail).permit(:name, :location, :difficulty, :durationinsec, :season, :type, :latitude, :longitude, :traildirections)
+      params.require(:trail).permit(:name, :location, :length, :season, :type, :latitude, :longitude, :traildirections)
+    end
+    def rate_params
+      params.require(:trail).require(:ratings_attributes).require(:"0").permit(:difficulty, :durationinsec, :favourite)
     end
 end
