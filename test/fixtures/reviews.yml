@@ -1,0 +1,27 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  name_review: MyText
+  location_review: MyText
+  rating_difficulty_review: MyText
+  rating_duration_review: MyText
+  season_review: MyText
+  trailtype_review: MyText
+  gps_review: MyText
+  traildirections_review: MyText
+  finalcomments: MyText
+  trail_id: 
+  posted_by: 1
+
+two:
+  name_review: MyText
+  location_review: MyText
+  rating_difficulty_review: MyText
+  rating_duration_review: MyText
+  season_review: MyText
+  trailtype_review: MyText
+  gps_review: MyText
+  traildirections_review: MyText
+  finalcomments: MyText
+  trail_id: 
+  posted_by: 1

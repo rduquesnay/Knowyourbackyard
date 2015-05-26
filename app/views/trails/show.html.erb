@@ -34,6 +34,5 @@
   <strong>Traildirections:</strong>
   <%= @trail.traildirections %>
 </p>
-
-<%= link_to 'Edit', edit_trail_path(@trail) %> |
+<%= render partial: "map", locals: {lat: @trail.latitude, long: @trail.longitude} %>
 <%= link_to 'Back', trails_path %>

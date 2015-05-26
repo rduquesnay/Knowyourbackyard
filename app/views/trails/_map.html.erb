@@ -1,0 +1,11 @@
+<% if APP_CONFIG['google_map_api_key'] != "place key here" && !lat.nil? && !long.nil? %>
+  <iframe
+  width="600"
+  height="450"
+  frameborder="0" style="border:0"
+  src="https://www.google.com/maps/embed/v1/place
+  ?key=<%= APP_CONFIG['google_map_api_key'] %>
+  ¢er=<%= lat %>,<%=long%>
+  >
+  </iframe>
+<% end %>

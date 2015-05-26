@@ -1,0 +1,49 @@
+<%= form_for(@revision) do |f| %>
+  <% if @revision.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(@revision.errors.count, "error") %> prohibited this revision from being saved:</h2>
+
+      <ul>
+      <% @revision.errors.full_messages.each do |msg| %>
+        <li><%= msg %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="field">
+    <%= f.label :name_review %><br>
+    <%= f.text_area :name_review %>
+  </div>
+  <div class="field">
+    <%= f.label :location_review %><br>
+    <%= f.text_area :location_review %>
+  </div>
+  <div class="field">
+    <%= f.label :season_review %><br>
+    <%= f.text_area :season_review %>
+  </div>
+  <div class="field">
+    <%= f.label :trailtype_review %><br>
+    <%= f.text_area :trailtype_review %>
+  </div>
+  <div class="field">
+    <%= f.label :gps_review %><br>
+    <%= f.text_area :gps_review %>
+  </div>
+  <div class="field">
+    <%= f.label :traildirections_review %><br>
+    <%= f.text_area :traildirections_review %>
+  </div>
+  <div class="field">
+    <%= f.label :trail_id %><br>
+    <%= f.text_field :trail_id %>
+  </div>
+  <div class="field">
+    <%= f.label :posted_by %><br>
+    <%= f.number_field :posted_by %>
+  </div>
+  <div class="actions">
+    <%= f.submit %>
+  </div>
+<% end %>

@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20150524024845) do
+ActiveRecord::Schema.define(version: 20150525212751) do
 
   create_table "comments", force: true do |t|
     t.text     "message"
@@ -35,6 +35,39 @@ ActiveRecord::Schema.define(version: 20150524024845) do
 
   add_index "ratings", ["trail_id"], name: "index_ratings_on_trail_id"
   add_index "ratings", ["user_id"], name: "index_ratings_on_user_id"
+
+  create_table "reviews", force: true do |t|
+    t.text     "name_review"
+    t.text     "location_review"
+    t.text     "rating_difficulty_review"
+    t.text     "rating_duration_review"
+    t.text     "season_review"
+    t.text     "trailtype_review"
+    t.text     "gps_review"
+    t.text     "traildirections_review"
+    t.text     "finalcomments"
+    t.integer  "trail_id"
+    t.integer  "posted_by"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  add_index "reviews", ["trail_id"], name: "index_reviews_on_trail_id"
+
+  create_table "revisions", force: true do |t|
+    t.text     "name_review"
+    t.text     "location_review"
+    t.text     "season_review"
+    t.text     "trailtype_review"
+    t.text     "gps_review"
+    t.text     "traildirections_review"
+    t.integer  "trail_id"
+    t.integer  "posted_by"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  add_index "revisions", ["trail_id"], name: "index_revisions_on_trail_id"
 
   create_table "trails", force: true do |t|
     t.string   "name"
@@ -90,5 +123,6 @@ ActiveRecord::Schema.define(version: 20150524024845) do
 
   add_index "users", ["email"], name: "index_users_on_email", unique: true
   add_index "users", ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
+  add_index "users", ["username"], name: "index_users_on_username", unique: true
 
 end

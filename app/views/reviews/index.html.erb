@@ -1,0 +1,47 @@
+<h1>Listing reviews</h1>
+
+<table>
+  <thead>
+    <tr>
+      <th>Name review</th>
+      <th>Location review</th>
+      <th>Rating difficulty review</th>
+      <th>Rating duration review</th>
+      <th>Season review</th>
+      <th>Trailtype review</th>
+      <th>Gps review</th>
+      <th>Traildirections review</th>
+      <th>Finalcomments</th>
+      <th>Trail</th>
+      <th>Posted by</th>
+      <th></th>
+      <th></th>
+      <th></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @reviews.each do |review| %>
+      <tr>
+        <td><%= review.name_review %></td>
+        <td><%= review.location_review %></td>
+        <td><%= review.rating_difficulty_review %></td>
+        <td><%= review.rating_duration_review %></td>
+        <td><%= review.season_review %></td>
+        <td><%= review.trailtype_review %></td>
+        <td><%= review.gps_review %></td>
+        <td><%= review.traildirections_review %></td>
+        <td><%= review.finalcomments %></td>
+        <td><%= review.trail %></td>
+        <td><%= review.posted_by %></td>
+        <td><%= link_to 'Show', review %></td>
+        <td><%= link_to 'Edit', edit_review_path(review) %></td>
+        <td><%= link_to 'Destroy', review, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<br>
+
+<%= link_to 'New Review', new_review_path %>

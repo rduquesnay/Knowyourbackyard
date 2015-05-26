@@ -1,4 +1,3 @@
-<p>raiting partial</p>
 <%= f.fields_for :ratings, Rating.new do |rate| %>
   <div class="form-group" >
     <%= rate.label :difficulty %>
@@ -19,6 +18,6 @@
   </div>
   <div class="form-group" >
     <%= rate.label :durationinsec %>
-    <%= rate.number_field :durationinsec, html: {class: "form-control"} %>
+    <%= rate.number_field :durationinsec, class: "form-control" %>
   </div>
 <% end %>

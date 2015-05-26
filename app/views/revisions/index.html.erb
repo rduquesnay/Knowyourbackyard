@@ -1,0 +1,41 @@
+<h1>Listing revisions</h1>
+
+<table>
+  <thead>
+    <tr>
+      <th>Name review</th>
+      <th>Location review</th>
+      <th>Season review</th>
+      <th>Trailtype review</th>
+      <th>Gps review</th>
+      <th>Traildirections review</th>
+      <th>Trail</th>
+      <th>Posted by</th>
+      <th></th>
+      <th></th>
+      <th></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @revisions.each do |revision| %>
+      <tr>
+        <td><%= revision.name_review %></td>
+        <td><%= revision.location_review %></td>
+        <td><%= revision.season_review %></td>
+        <td><%= revision.trailtype_review %></td>
+        <td><%= revision.gps_review %></td>
+        <td><%= revision.traildirections_review %></td>
+        <td><%= revision.trail %></td>
+        <td><%= revision.posted_by %></td>
+        <td><%= link_to 'Show', revision %></td>
+        <td><%= link_to 'Edit', edit_revision_path(revision) %></td>
+        <td><%= link_to 'Destroy', revision, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<br>
+
+<%= link_to 'New Revision', new_revision_path %>

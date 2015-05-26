@@ -13,15 +13,15 @@
 
   <div class="form-group">
     <%= f.label :name %><br>
-    <%= f.text_field :name, html: {class: "form-control"}%>
+    <%= f.text_field :name, class: "form-control "%>
   </div>
   <div class="form-group">
     <%= f.label :location %><br>
-    <%= f.text_field :location, html: {class: "form-control"} %>
+    <%= f.text_field :location, class: "form-control" %>
   </div>
   <div class="form-group">
     <%= f.label :length %><br>
-    <%= f.text_field :length, html: {class: "form-control"} %>
+    <%= f.text_field :length, class: "form-control" %>
   </div>
 
   <div id="rating">  
@@ -29,21 +29,21 @@
   </div>
   <div class="form-group">
     <%= f.label :season %><br>
-    <%= f.select :season,["Winter","Spring","Summer","Fall"], html: {class: "form-control"} %>
+    <%= f.select :season, ["Winter","Spring","Summer","Fall"], class: "form-control" %>
   </div>
   <div class="form-group">
     <%= f.label :trailtype %><br>
-    <%= f.select :trailtype,["Hiking","Kayaking/Canoeing","Adventure Kayaking"], html: {class: "form-control"} %>
+    <%= f.select :trailtype, ["Hiking","Kayaking/Canoeing","Adventure Kayaking"], class: "form-control" %>
   </div>
   <div class="form-group">
     <%= f.label :latitude %><br>
-    <%= f.text_field :latitude, html: {class: "form-control"} %>
+    <%= f.text_field :latitude, class: "form-control" %>
     <%= f.label :longitude %><br>
-    <%= f.text_field :longitude, html: {class: "form-control"} %>
+    <%= f.text_field :longitude, class: "form-control" %>
   </div>
   <div class="form-group">
     <%= f.label :traildirections %><br>
-    <%= f.text_area :traildirections, html: {class: "form-control"} %>
+    <%= f.text_area :traildirections, class: "form-control" %>
   </div>
   <div class="actions">
     <%= f.submit %>

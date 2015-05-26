@@ -1,0 +1,59 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>Name review:</strong>
+  <%= @review.name_review %>
+</p>
+
+<p>
+  <strong>Location review:</strong>
+  <%= @review.location_review %>
+</p>
+
+<p>
+  <strong>Rating difficulty review:</strong>
+  <%= @review.rating_difficulty_review %>
+</p>
+
+<p>
+  <strong>Rating duration review:</strong>
+  <%= @review.rating_duration_review %>
+</p>
+
+<p>
+  <strong>Season review:</strong>
+  <%= @review.season_review %>
+</p>
+
+<p>
+  <strong>Trailtype review:</strong>
+  <%= @review.trailtype_review %>
+</p>
+
+<p>
+  <strong>Gps review:</strong>
+  <%= @review.gps_review %>
+</p>
+
+<p>
+  <strong>Traildirections review:</strong>
+  <%= @review.traildirections_review %>
+</p>
+
+<p>
+  <strong>Finalcomments:</strong>
+  <%= @review.finalcomments %>
+</p>
+
+<p>
+  <strong>Trail:</strong>
+  <%= @review.trail %>
+</p>
+
+<p>
+  <strong>Posted by:</strong>
+  <%= @review.posted_by %>
+</p>
+
+<%= link_to 'Edit', edit_review_path(@review) %> |
+<%= link_to 'Back', reviews_path %>
