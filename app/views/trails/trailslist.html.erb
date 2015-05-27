@@ -1,0 +1,9 @@
+<% if @trails.count==0 %>
+  <p> No Trails found </p>
+<%else%>
+  <%@trails.each do |trail| %>
+    <%= link_to trail do %>
+      <%= render partial: "shared/listtrails", locals: {t: trail} %>
+    <%end%>
+  <%end%>
+<%end%>

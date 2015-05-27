@@ -1,4 +1,7 @@
 class TrailsController < ApplicationController
+  before_action :ensure_admin!, only: :index
+  before_action :ensure_trailblazer!, only: :trailsreview
+  before_action :authenticate_user!, only: :trailslist
   before_action :set_trail, only: [:show, :edit, :update, :destroy]
   before_action :set_trail_rate, only: :show
   before_action :set_user_rate, only: :show
@@ -11,7 +14,15 @@ class TrailsController < ApplicationController
     @trails = Trail.all
     respond_with(@trails)
   end
-
+  def trailsreview
+    @review = Trail.unreviewed
+    @revision = Trail.revision
+    @disputed = Trail.disputed
+  end
+  def trailslist
+    @trails = Trail.accepted
+    respond_with(@trails)
+  end
   def show
     respond_with(@trail)
   end

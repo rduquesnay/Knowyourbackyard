@@ -11,6 +11,9 @@ class User < ActiveRecord::Base
   validates :email, uniqueness: true
   validates :username, :email, :password, :firstname, :lastname, :country, presence: true
 
+  scope :trailblazer, -> {where(trailblazer: true)}
+  scope :admin, -> {where(admin: true)}
+  scope :trekker, -> {where(trailblazer:false)}
 
   def self.find_for_database_authentication(warden_conditions)
   conditions = warden_conditions.dup

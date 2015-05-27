@@ -2,7 +2,8 @@ Knowyourbackyard::Application.routes.draw do
   resources :trailupdates, only: [:new, :create, :destroy]
   resources :comments, only: [:new, :create, :destroy]
   resources :trails
-
+  get "Trailreview", to: 'trails#trailsreview', as: 'trailreviewindex'
+  get "Trailslist", to: 'trails#trailslist', as: 'trailsindex'
   devise_for :users
   root to: 'pages#home'
   

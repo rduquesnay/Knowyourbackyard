@@ -4,7 +4,7 @@
 <p id="notice"><%= notice %></p>
 <div class="row">
   <div class="col-md-6">
-    <div id="trail-info">
+    <div id="trail-info" class="well">
       <p>
       <strong>Trail Name: </strong>
       <%= @trail.name %>
@@ -34,13 +34,13 @@
       lat: <%= @trail.latitude %>, long: <%= @trail.longitude %>
       </p>
     </div>
-    <div id="trail-description">
+    <div id="trail-description" class="well">
       <strong>Trail Descriptoins:</strong><br>
       <p>
         <%= @trail.traildirections %>
       </p>
     </div>
-    <div id="trail-comments">
+    <div id="trail-comments" class="well">
       <strong>Comments</strong><br>
       <% if @comments.count==0 %>
         <p>No comments submitted</p>
@@ -65,13 +65,13 @@
       <strong>Trail submitted by:</strong>
       <%= @trail.user.username %>
     </p>
-    <div id="trail-video">
+    <div id="trail-video" class="well">
       <%= render partial: "video", locals: {t: @trail} %>
     </div>
-    <div id="trail-photos">
+    <div id="trail-photos" class= "well">
       <%= render partial: "photo", locals: {t: @trail} %>
     </div>
-    <div id="trail-updates">
+    <div id="trail-updates" class="well">
       <strong>Trail Conditions</strong><br>
       <%if @updates.count==0 %>
         <p>No posts about the condition of the trail</p>
@@ -90,7 +90,7 @@
       <% end %>
       <%= link_to "Make a Update on the trail conditions", controller: "trailupdates", action: "new", id: @trail.id %>
     </div>
-    <div id="trail-map">
+    <div id="trail-map" class="well">
       <%= render partial: "map", locals: {lat: @trail.latitude, long: @trail.longitude} %>
     </div>
   </div>

@@ -11,5 +11,20 @@ class ApplicationController < ActionController::Base
     devise_parameter_sanitizer.for(:sign_in) { |u| u.permit(:login,:username,:email,:password,:remember_me)}
     devise_parameter_sanitizer.for(:account_update) { |u| u.permit(:username, :email, :password, :password_confirmation, :current_password,:firstname,:lastname,:country,:city,:province,:about) }
   end
-
+  def ensure_admin!
+    authenticate_user!
+    unless current_user.admin?
+      sign_out current_user
+      redirect_to new_session_path
+      return false
+    end
+  end
+  def ensure_trailblazer!
+    authenticate_user!
+    unless current_user.trailblzaer?
+      sign_out current_user
+      redirect_to new_session_path
+      return false
+    end
+  end
 end

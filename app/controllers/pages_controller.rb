@@ -5,5 +5,14 @@ class PagesController < ApplicationController
 
   def about
   end
+
+  def viewtrail
+
+  end
+
+  def guestviewtrail
+
+  end
+
 end
 
