@@ -1,12 +1,20 @@
 Knowyourbackyard::Application.routes.draw do
+  resources :trailupdates, only: [:new, :create, :destroy]
+  resources :comments, only: [:new, :create, :destroy]
   resources :trails
 
   devise_for :users
+  root to: 'pages#home'
+  
+  get 'AboutUs', to: 'pages#about', as: 'about'
+
+  
+  
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
 
   # You can have the root of your site routed with "root"
-  root to: 'pages#home'
+
   # Example of regular route:
   #   get 'products/:id' => 'catalog#view'
 

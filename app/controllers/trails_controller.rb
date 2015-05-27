@@ -1,5 +1,9 @@
 class TrailsController < ApplicationController
   before_action :set_trail, only: [:show, :edit, :update, :destroy]
+  before_action :set_trail_rate, only: :show
+  before_action :set_user_rate, only: :show
+  before_action :set_trail_updates, only: :show
+  before_action :set_trail_comments, only: :show
 
   respond_to :html
 
@@ -22,13 +26,12 @@ class TrailsController < ApplicationController
 
   def create
     @trail = Trail.new(trail_params)
-    @trail.user_id=current_user.id unless current_user.nil?
     if(current_user.trailblazer? unless current_user.nil?)
       @trail.status="Accepted"
     end
     @trail.save
     @rating = Rating.new(rate_params)
-    @rating.user_id= current_user.id unless current_user.nil?
+    @rating.user_id=@trail.user_id 
     @rating.trail_id= @trail.id
     @rating.save
     respond_with(@trail)
@@ -39,6 +42,7 @@ class TrailsController < ApplicationController
     respond_with(@trail)
   end
 
+
   def destroy
     @trail.destroy
     respond_with(@trail)
@@ -46,11 +50,33 @@ class TrailsController < ApplicationController
 
   private
     def set_trail
-      @trail = Trail.find(params[:id])
+      @trail = Trail.includes(:user).find(params[:id])
+    end
+    def set_trail_rate
+      ratings = Rating.where(trail_id: @trail.id)
+      diff_sum = 0
+      dura_sum = 0
+      ratings.each do |rating|
+       diff_sum = diff_sum + rating.difficulty
+       dura_sum = dura_sum + rating.durationinsec
+      end
+      @rate = {avg_duration: diff_sum/ratings.count, avg_difficulty: dura_sum/ratings.count}
+    end
+    def set_user_rate
+      @rating = []
+      @rating = Rating.where(trail_id: @trail.id, user_id: current_user.id)
+    end
+    def set_trail_comments
+      @comments = []
+      @comments = Comment.where(trail_id: @trail.id).order(created_at: :asc).joins(:user)
+    end
+    def set_trail_updates
+      @updates = []
+      @updates = Trailupdate.where(trail_id: @trail.id).order(created_at: :desc).joins(:user)
     end
 
     def trail_params
-      params.require(:trail).permit(:name, :location, :length, :season, :trailtype, :latitude, :longitude, :traildirections)
+      params.require(:trail).permit(:name, :location, :length, :season, :trailtype, :latitude, :longitude, :traildirections, :user_id)
     end
     def rate_params
       params.require(:trail).require(:ratings_attributes).require(:"0").permit(:difficulty, :durationinsec, :favourite)

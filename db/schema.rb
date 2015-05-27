@@ -11,17 +11,18 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20150525212751) do
+ActiveRecord::Schema.define(version: 20150527023943) do
 
   create_table "comments", force: true do |t|
     t.text     "message"
     t.datetime "created_at"
     t.datetime "updated_at"
-    t.integer  "postedby"
     t.integer  "trail_id"
+    t.integer  "user_id"
   end
 
   add_index "comments", ["trail_id"], name: "index_comments_on_trail_id"
+  add_index "comments", ["user_id"], name: "index_comments_on_user_id"
 
   create_table "ratings", force: true do |t|
     t.datetime "created_at"
@@ -47,12 +48,13 @@ ActiveRecord::Schema.define(version: 20150525212751) do
     t.text     "traildirections_review"
     t.text     "finalcomments"
     t.integer  "trail_id"
-    t.integer  "posted_by"
     t.datetime "created_at"
     t.datetime "updated_at"
+    t.integer  "user_id"
   end
 
   add_index "reviews", ["trail_id"], name: "index_reviews_on_trail_id"
+  add_index "reviews", ["user_id"], name: "index_reviews_on_user_id"
 
   create_table "revisions", force: true do |t|
     t.text     "name_review"
@@ -62,12 +64,13 @@ ActiveRecord::Schema.define(version: 20150525212751) do
     t.text     "gps_review"
     t.text     "traildirections_review"
     t.integer  "trail_id"
-    t.integer  "posted_by"
     t.datetime "created_at"
     t.datetime "updated_at"
+    t.integer  "user_id"
   end
 
   add_index "revisions", ["trail_id"], name: "index_revisions_on_trail_id"
+  add_index "revisions", ["user_id"], name: "index_revisions_on_user_id"
 
   create_table "trails", force: true do |t|
     t.string   "name"
@@ -90,11 +93,12 @@ ActiveRecord::Schema.define(version: 20150525212751) do
     t.text     "message"
     t.datetime "created_at"
     t.datetime "updated_at"
-    t.integer  "postedby"
     t.integer  "trail_id"
+    t.integer  "user_id"
   end
 
   add_index "trailupdates", ["trail_id"], name: "index_trailupdates_on_trail_id"
+  add_index "trailupdates", ["user_id"], name: "index_trailupdates_on_user_id"
 
   create_table "users", force: true do |t|
     t.string   "email",                  default: "",    null: false

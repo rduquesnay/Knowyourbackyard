@@ -1,0 +1,30 @@
+<nav class="navbar navbar-inverse navbar-fixed-top">
+  <div class="container">
+    <div class="navbar-header">
+      <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar" aria-expanded="false" aria-controls="navbar">
+        <span class="sr-only">Toggle navigation</span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+      </button>
+      <% link_to root_path, class: "navbar-brand" do %>
+        <%= image_tag("logo.png", class: "logo") %> 
+        <span>Know Your Backyard</span>
+      <% end %>  
+    </div>
+    <div id="navbar" class="collapse navbar-collapse">
+      <ul class="nav navbar-nav navbar-right">
+        <li><%= link_to "Home",root_path %></li>
+        <li class="dropdown">
+        <%= link_to "Trails", trails_path, data: {toggle: "dropdown"}, class: "dropdown-toggle", 'role': "button", 'aria-expanded': "false" %>
+        <ul class="dropdown-menu" role="menu">
+          <li><a href="#">Hiking</a></li>
+          <li><a href="#">Aquatic</a></li>
+        </ul> 
+        </li>
+        <li><%= link_to "About Us", about_path %></li>
+        <li><%= render "layouts/menu" %></li>
+      </ul>   
+    </div>
+  </div>
+</nav>

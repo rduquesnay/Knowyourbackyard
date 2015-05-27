@@ -42,6 +42,6 @@ class RevisionsController < ApplicationController
     end
 
     def revision_params
-      params.require(:revision).permit(:name_review, :location_review, :season_review, :trailtype_review, :gps_review, :traildirections_review, :trail_id, :posted_by)
+      params.require(:revision).permit(:name_review, :location_review, :season_review, :trailtype_review, :gps_review, :traildirections_review, :trail_id, :user_id)
     end
 end

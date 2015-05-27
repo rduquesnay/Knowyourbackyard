@@ -1,38 +1,99 @@
+<% content_for :title do %>
+  Trail Page
+<% end %>
 <p id="notice"><%= notice %></p>
+<div class="row">
+  <div class="col-md-6">
+    <div id="trail-info">
+      <p>
+      <strong>Trail Name: </strong>
+      <%= @trail.name %>
+      </p>
+      <p>
+      <strong>Location: </strong>
+      <%= @trail.location %>
+      </p>
+      <p>
+      <strong>Difficulty: </strong>
+      <%= @rate[:avg_difficulty] %>
+      </p>
+      <p>
+      <strong>Duration: </strong>
+      <%= @rate[:avg_duration] %>
+      </p>
+      <p>
+      <strong>Season: </strong>
+      <%= @trail.season %>
+      </p>
+      <p>
+      <strong>Type: </strong>
+      <%= @trail.trailtype %>
+      </p>
+      <p>
+      <strong>GPS: </strong>
+      lat: <%= @trail.latitude %>, long: <%= @trail.longitude %>
+      </p>
+    </div>
+    <div id="trail-description">
+      <strong>Trail Descriptoins:</strong><br>
+      <p>
+        <%= @trail.traildirections %>
+      </p>
+    </div>
+    <div id="trail-comments">
+      <strong>Comments</strong><br>
+      <% if @comments.count==0 %>
+        <p>No comments submitted</p>
+      <% else %>
+        <%@comments.each do |comment|%>
+          <p>
+          <%= comment.message %>
+          <br>
+          <strong>posted by: </strong>
+          <%= comment.user_id%>
+          <strong> posted at: </strong>
+          <%= comment.created_at%>
+          </p>
+          <br>
+        <%end%>
+      <% end %>
+      <%= link_to "Make a Comment", controller: "comments", action: "new", id: @trail.id %>
+    </div>
+  </div>
+  <div class="col-md-6">
+    <p>
+      <strong>Trail submitted by:</strong>
+      <%= @trail.user.username %>
+    </p>
+    <div id="trail-video">
+      <%= render partial: "video", locals: {t: @trail} %>
+    </div>
+    <div id="trail-photos">
+      <%= render partial: "photo", locals: {t: @trail} %>
+    </div>
+    <div id="trail-updates">
+      <strong>Trail Conditions</strong><br>
+      <%if @updates.count==0 %>
+        <p>No posts about the condition of the trail</p>
+      <% else %>
+        <%@updates.each do |update|%>
+          <p>
+          <%= update.message %>
+          <br>
+          <strong>posted by: </strong>
+          <%= update.user_id%>
+          <strong> posted at: </strong>
+          <%= update.created_at %>
+          </p>
+          <br>
+        <%end%>
+      <% end %>
+      <%= link_to "Make a Update on the trail conditions", controller: "trailupdates", action: "new", id: @trail.id %>
+    </div>
+    <div id="trail-map">
+      <%= render partial: "map", locals: {lat: @trail.latitude, long: @trail.longitude} %>
+    </div>
+  </div>
+</div>
 
-<p>
-  <strong>Name:</strong>
-  <%= @trail.name %>
-</p>
-
-<p>
-  <strong>Location:</strong>
-  <%= @trail.location %>
-</p>
-
-<p>
-  <strong>Season:</strong>
-  <%= @trail.season %>
-</p>
-
-<p>
-  <strong>Type:</strong>
-  <%= @trail.trailtype %>
-</p>
-
-<p>
-  <strong>Latitude:</strong>
-  <%= @trail.latitude %>
-</p>
-
-<p>
-  <strong>Longitude:</strong>
-  <%= @trail.longitude %>
-</p>
-
-<p>
-  <strong>Traildirections:</strong>
-  <%= @trail.traildirections %>
-</p>
-<%= render partial: "map", locals: {lat: @trail.latitude, long: @trail.longitude} %>
 <%= link_to 'Back', trails_path %>
