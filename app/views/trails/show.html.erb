@@ -34,6 +34,27 @@
       lat: <%= @trail.latitude %>, long: <%= @trail.longitude %>
       </p>
     </div>
+    <div id="trail-ratng" class="well">
+      <% if @rating.nil? %>
+        <%= link_to "Make a Rating", controller: "ratings", action: "new", id: @trail.id %>
+      <%else%>
+        <strong>Your Rating:</strong><br>
+        <p>
+        <strong>Difficulty: </strong>
+        <%= @rating.difficulty %>
+        </p>
+        <p>
+        <strong>Duration: </strong>
+        <%= @rating.Duration %>
+        </p>
+        <% if @rating.favourite %>
+          <p>
+          <strong>Favourite: </strong>
+          <span class="glyphicon glyphicon-thumbs-up"></span>
+          </p>
+        <%end%>
+      <%end%>
+    </div>
     <div id="trail-description" class="well">
       <strong>Trail Descriptoins:</strong><br>
       <p>
@@ -95,5 +116,3 @@
     </div>
   </div>
 </div>
-
-<%= link_to 'Back', trails_path %>

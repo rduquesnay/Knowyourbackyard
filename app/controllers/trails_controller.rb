@@ -61,7 +61,7 @@ class TrailsController < ApplicationController
 
   private
     def set_trail
-      @trail = Trail.includes(:user).find(params[:id])
+      @trail = Trail.find(params[:id])
     end
     def set_trail_rate
       ratings = Rating.where(trail_id: @trail.id)
@@ -74,7 +74,6 @@ class TrailsController < ApplicationController
       @rate = {avg_duration: diff_sum/ratings.count, avg_difficulty: dura_sum/ratings.count}
     end
     def set_user_rate
-      @rating = []
       @rating = Rating.where(trail_id: @trail.id, user_id: current_user.id)
     end
     def set_trail_comments

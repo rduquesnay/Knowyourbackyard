@@ -1,0 +1,43 @@
+<%= form_for(@rating) do |f| %>
+  <% if @rating.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(@comment.errors.count, "error") %> prohibited this comment from being saved:</h2>
+
+      <ul>
+      <% @rating.errors.full_messages.each do |msg| %>
+        <li><%= msg %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+  <%= f.hidden_field :trail_id, value: params[:id] %>
+  <%= f.hidden_field :user_id, value: current_user.id %>
+  <div class="form-group" >
+    <%= f.label :difficulty %>
+    <div class="input-group">
+      <span cladd="input-group-addon">
+        <%= f.radio_button :difficulty, 1 %>
+        <%= f.label :difficulty, '1', :value => 1 %>
+        <%= f.radio_button :difficulty, 2 %>
+        <%= f.label :difficulty, '2', :value => 2 %>
+        <%= f.radio_button :difficulty, 3 %>
+        <%= f.label :difficulty, '3', :value => 3 %>
+        <%= f.radio_button :difficulty, 4 %>
+        <%= f.label :difficulty, '4', :value => 4 %>
+        <%= f.radio_button :difficulty, 1 %>
+        <%= f.label :difficulty, '5', :value => 5 %>
+      </span>
+    </div>
+  </div>
+  <div class="form-group" >
+    <%= f.label :durationinsec %>
+    <%= f.number_field :durationinsec, class: "form-control" %>
+  </div>
+  <div class="form-group" >
+    <%= f.label :favoutite %>
+    <%= f.check_box :favoutrite, class: "form-control" %>
+  </div>
+  <div class="actions">
+    <%= f.submit %>
+  </div>
+<% end %>

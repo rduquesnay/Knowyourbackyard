@@ -15,15 +15,15 @@ class ApplicationController < ActionController::Base
     authenticate_user!
     unless current_user.admin?
       sign_out current_user
-      redirect_to new_session_path
+      redirect_to new_user_session_path
       return false
     end
   end
   def ensure_trailblazer!
     authenticate_user!
-    unless current_user.trailblzaer?
+    unless current_user.trailblazer?
       sign_out current_user
-      redirect_to new_session_path
+      redirect_to new_user_session_path
       return false
     end
   end

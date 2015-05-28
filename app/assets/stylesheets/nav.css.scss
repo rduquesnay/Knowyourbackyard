@@ -1,0 +1,112 @@
+.nav-btn-group>a{
+  line-height: 75px;
+}
+
+.navbar {
+  font-size: 18px;
+  font: 'Open Sans', Verdana, Arial, sans-serif;
+  font-weight: 600;
+}
+
+.navbar .navbar-brand {
+  height: auto;
+  padding: 7px 0; 
+}
+
+.navbar-brand img,
+.navbar-brand span {
+  float: left;
+  font: 'Roboto', Verdana, Arial, sans-serif;
+  font-weight: 700;
+  font-style: bold;
+  font-size: 19pt;
+}
+
+.navbar-brand span {
+  padding-left: 10px;
+  color: #3B3A35;
+  line-height: 60px;
+}
+
+.navbar-brand .logo {
+  max-width: 61px;
+  height: auto;
+}
+
+.navbar .navbar-nav > li > a {
+  padding: 0 20px;
+  line-height: 75px;
+} 
+
+.navbar-inverse .navbar-nav>li>a {
+  color: #3B3A35;
+}
+
+.navbar-inverse {
+  border-bottom: none;
+  background-color: #FF7148;
+  border-bottom: 2px solid #3B3A35;
+}
+
+.navbar-inverse .navbar-nav>a:focus, 
+.navbar-inverse .navbar-nav>a:hover,
+.navbar-inverse .navbar-nav>a:active,
+.navbar-inverse .navbar-nav>.active>a, 
+.navbar-inverse .navbar-nav>.active>a:focus, 
+.navbar-inverse .navbar-nav>.active>a:hover,
+.navbar-inverse .navbar-nav>.open>a, 
+.navbar-inverse .navbar-nav>.open>a:focus, 
+.navbar-inverse .navbar-nav>.open>a:hover {
+  background-color: #FF7148;
+  color: #fff;
+}
+
+.navbar-inverse .nav ul.dropdown-menu {
+  min-width: 110px;
+}
+
+.nav .dropdown-menu {
+  background: #FF7148;
+}
+
+.nav .dropdown li a {
+  padding: 8px 20px;
+  color: #3B3A35;
+  font-size: 16px;
+  font: 'Open Sans', Verdana, Arial, sans-serif;
+  font-weight: 600;
+} 
+
+.nav .dropdown li a:hover,
+.nav .dropdown li a:focus,
+.nav .dropdown li a:active {
+  background-color: #FF7148;
+  color: #fff;
+}
+
+.navbar-inverse .navbar-toggle {
+  border: 2px solid #3B3A35;
+  margin-top: 20px;
+  margin-right: 20px;
+}
+
+.navbar-inverse .navbar-toggle .icon-bar {
+  background-color: #3B3A35;
+}
+
+.navbar-inverse .navbar-toggle:focus, 
+.navbar-inverse .navbar-toggle:hover {
+  border-color: #fff;
+  background: transparent;
+}
+
+.navbar-inverse .navbar-toggle:focus span,
+.navbar-inverse .navbar-toggle:hover span {
+  background-color: #fff;
+}
+
+.navbar-inverse .navbar-collapse, 
+.navbar-inverse .navbar-form {
+  border-color: #e35329;
+}
+

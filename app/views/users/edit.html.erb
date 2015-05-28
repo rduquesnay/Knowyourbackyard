@@ -1,0 +1,45 @@
+<% content_for :title do %>
+  Edit User Profile
+<% end %>
+<div class="col-md-4 col-md-offset-4">
+  <%= form_for (@user) do |f| %>
+    <% if @user.errors.any? %>
+      <div id="error_explanation">
+        <h2><%= pluralize(@trail.errors.count, "error") %> prohibited this trail from being saved:</h2>
+
+        <ul>
+          <% @user.errors.full_messages.each do |msg| %>
+            <li><%= msg %></li>
+          <% end %>
+        </ul>
+      </div>
+    <% end %>
+    <div class="form-group">
+      <%= f.label :firstname %><br />
+      <%= f.text_field :firstname , class: "form-control" %>
+    </div>
+    <div class="form-group">
+      <%= f.label :lastname %><br />
+      <%= f.text_field :lastname, class: "form-control" %>
+    </div>
+    <div class="form-group">
+      <%= f.label :country %><br />
+      <%= f.text_field :country, class: "form-control" %>
+    </div>
+    <div class="form-group">
+      <%= f.label :city %><br />
+      <%= f.text_field :city, class: "form-control" %>
+    </div>
+    <div class="form-group">
+      <%= f.label :province %><br />
+      <%= f.text_field :province, class: "form-control" %>
+    </div>
+    <div class="form-group">
+      <%= f.label :about %><br />
+      <%= f.text_area :about, class: "form-control" %>
+    </div>
+    <div class="actions">
+      <%= f.submit "Submit" %>
+    </div>
+  <% end %>
+</div>

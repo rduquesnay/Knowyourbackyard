@@ -1,0 +1,60 @@
+.page-title {
+  padding-top: 40px;
+  background: url(img/slide1.jpg);
+  background-size: cover;
+  background-position: center;
+}
+
+.page-title .title-bg {
+  width: 100%;
+  background: rgba(0,0,0,0.4);
+}
+
+.page-title h1 {
+  margin: 0;
+  padding: 15px 0;
+  font: 'Roboto', Verdana, Arial, sans-serif;
+  font-weight: 500;
+  font-size: 35pt;
+}
+
+#title{
+  color: #fff;
+  font-weight: 700;
+  font-size: 48px;
+  text-shadow: 1px 1.5px #000;
+}
+
+.centered {
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  /* bring your own prefixes */
+  transform: translate(-50%, -50%);
+}
+
+.content {
+  padding: 50px 0;
+}
+
+.scrollToTop {
+  display: none;
+  position: fixed;
+  bottom: 30px;
+  left: 30px;
+  padding: 10px;
+  border-radius: 3px;
+  background: #FF7148;
+  border: 1px solid #3B3A35;
+}
+
+.scrollToTop i {
+  color: #3B3A35;
+  opacity: 1;
+  font-size: 18px;
+}
+
+.scrollToTop:hover i {
+  opacity: 1;
+  color: #fff;
+}

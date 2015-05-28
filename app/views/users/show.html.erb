@@ -1,0 +1,66 @@
+<% content_for :title do %>
+  User Profile
+<% end %>
+<div class="row">
+  <div class="col-md-4">
+    <!-- Photo here -->
+  </div>
+  <div class="col-md-4">
+    <p>
+    <strong>Username: </strong>
+    <%= @user.username %>
+    </p>
+    <p>
+    <strong>Name: </strong>
+    <%= @user.firstname+" "+@user.lastname %>
+    </p>
+    <p>
+    <strong>Country: </strong>
+    <%= @user.country %>
+    </p>
+  </div>
+  <div class="col-md-4">
+    <p>
+    <% if @user.trailblazer %>
+      Trailblazer
+    <%else%>
+      Trekker
+    <%end%>
+    </p>
+    <p>
+    <strong>City: </strong>
+    <%= @user.city %>
+    </p>
+    <p>
+    <strong>Province/State: </strong>
+    <%= @user.province %>
+    </p>
+  </div>
+</div>
+<div class="row">
+  <div class="col-md-6">
+    <div class="well">
+      <strong>About</strong><br>
+      <p>
+      <%= @user.about %>
+      </p>
+    </div>
+  </div>
+  <div class="col-md-6">
+    <div class="well">
+      <!-- Soical connects here -->
+    </div>
+    <div class="well">
+      <strong>Trails Posted</strong><br>
+      <% if @trails %>
+        <% @trails.each do |trail| %>
+          <% link_to trail do %>
+            <%=trail.name%>
+          <%end%>
+        <%end%>
+      <%end%>
+    </div>
+  </div>
+</div>
+<%=link_to "Edit Profile", edit_user_path(@user) %>
+<%=link_to "Edit Login", edit_user_registration_path %>

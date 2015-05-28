@@ -13,7 +13,8 @@ class User < ActiveRecord::Base
 
   scope :trailblazer, -> {where(trailblazer: true)}
   scope :admin, -> {where(admin: true)}
-  scope :trekker, -> {where(trailblazer:false)}
+  scope :trekker, -> {where(trailblazer: false)}
+  scope :topusers, -> {order(points: :desc).limit(10)}
 
   def self.find_for_database_authentication(warden_conditions)
   conditions = warden_conditions.dup

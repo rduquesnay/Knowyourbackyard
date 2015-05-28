@@ -1,4 +1,7 @@
 Knowyourbackyard::Application.routes.draw do
+  resources :users, only: [:show,:edit,:update], path: 'user/profile'
+  get '/users', to: 'users#index', as: 'index'
+  resources :ratings, only: [:new,:create,:destory]
   resources :trailupdates, only: [:new, :create, :destroy]
   resources :comments, only: [:new, :create, :destroy]
   resources :trails

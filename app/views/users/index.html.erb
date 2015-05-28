@@ -1,0 +1,67 @@
+<% content_for :title do %>
+  Users List
+<% end %>
+
+<div>
+  <h1>Original Trailblazers</h1>
+  <div class="well">
+    <% count = 1 %>
+    <% @trailblazer.each do |user| %>
+      <% if count == 1 %>
+        <div class="row">
+      <%end%>
+        <div class="col-md-4">
+          <%= link_to user do %>
+            <%= render partial: "user", locals: {user: user} %>
+          <%end%>
+          <%count+=1%>
+        </div>
+      <%if count == 3 %>
+        </div>
+        <%count=1%>
+      <%end%>
+    <%end%>
+  </div>
+</div>
+<div>
+  <h1>Top Trailblazers</h1>
+  <div class="well">
+    <% count = 1 %>
+    <% @top.each do |user| %>
+      <% if count == 1 %>
+        <div class="row">
+      <%end%>
+        <div class="col-md-4">
+          <%= link_to user do %>
+            <%= render partial: "user", locals: {user: user} %>
+          <%end%>
+          <%count+=1%>
+        </div>
+      <%if count == 3 %>
+        </div>
+        <%count=1%>
+      <%end%>
+    <%end%>
+  </div>
+</div>
+<div>
+  <h1>Trekkers</h1>
+  <div class="well">
+    <% count = 1 %>
+    <% @trekker.each do |user| %>
+      <% if count == 1 %>
+        <div class="row">
+      <%end%>
+        <div class="col-md-4">
+          <%= link_to user do %>
+            <%= render partial: "user", locals: {user: user} %>
+          <%end%>
+          <%count+=1%>
+        </div>
+      <%if count == 3 %>
+        </div>
+        <%count=1%>
+      <%end%>
+    <%end%>
+  </div>
+</div>
