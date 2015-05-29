@@ -28,11 +28,13 @@ class RevisionsController < ApplicationController
       @trail = Trail.find(@review.trail_id)
       @trail.update_attribute(:status, "Under revision")
       @revision.save
+      @note = Notification.new(message: "Your Trail: id: #{@trail.id} Name: #{@trail.name}, a revision has been submitted for it", link: "<a href=\"\/revisions\/#{@revision.id}\">Go to Revision<\/a>", user_id: @trail.user_id)
+      @note.save
       respond_with(@trail)
     else
       @trail = Trail.find(review_params[:trail_id])
-      @user = User.find(@trail.user_id)
-      @trail.update_attribute(:status, "Accepted")
+      #@user = User.find(@trail.user_id)
+      #@trail.update_attribute(:status, "Accepted")
       respond_with(@trail)
     end
   end

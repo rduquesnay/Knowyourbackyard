@@ -25,6 +25,18 @@
         <%end%>
         <li><%= link_to "About Us", about_path %></li>
         <li><%= render "layouts/menu" %></li>
+        <li class="dropdown">
+        <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">Notifications<span class="caret"></span></a>
+        <ul class="dropdown-menu" role="menu">
+          <% @notes.each do |note| %>
+            <li>
+            <p><%= note.message %></p>
+            <%= note.link.html_safe %><br>
+            <%= link_to "Delete", note, method: :delete, data: {confirm: 'Delete This Notification?'} %>
+            </li>
+          <%end%>
+        </ul>
+        </li>
       </ul>   
     </div>
   </div>

@@ -7,6 +7,7 @@ Knowyourbackyard::Application.routes.draw do
   resources :trails
   resources :reviews
   resources :revisions
+  resources :notifications, only: :destroy
   get "Trailreview", to: 'trails#trailsreview', as: 'trailreviewindex'
   get "Trailslist", to: 'trails#trailslist', as: 'trailsindex'
   devise_for :users
