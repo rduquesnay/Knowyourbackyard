@@ -10,50 +10,171 @@
       </ul>
     </div>
   <% end %>
-
-  <div class="field">
-    <%= f.label :name_review %><br>
-    <%= f.text_area :name_review %>
+  <%= f.hidden_field :user_id, value: current_user.id %>
+  <%= f.hidden_field :trail_id, value: @trail.id %>
+  <div class="row">
+    <div class="col-md-4">
+      <h3>Trail Details</h3>
+    </div>
+    <div class="col-md-3 text-center">
+      <h3>Mark for Incorrect</h3>
+    </div>
+    <div class="col-md-5">
+      <h3>Reason</h3>
+    </div>
   </div>
-  <div class="field">
-    <%= f.label :location_review %><br>
-    <%= f.text_area :location_review %>
+  <div class="row">
+    <div class="col-md-4">
+      <p>
+      <strong>Trail Name: </strong>
+      <%= @trail.name %>
+      </p>
+    </div>
+    <div class="col-md-3">
+      <div class="field text-center">
+        <%= check_box_tag :check_name %>
+      </div>
+    </div>
+    <div class="col-md-5">
+      <div class="field">
+        <%= f.text_area :name_review %>
+      </div>
+    </div>
   </div>
-  <div class="field">
-    <%= f.label :rating_difficulty_review %><br>
-    <%= f.text_area :rating_difficulty_review %>
+  <div class="row">
+    <div class="col-md-4">
+      <p>
+      <strong>Location: </strong>
+      <%= @trail.location %>
+      </p>
+    </div>
+    <div class="col-md-3">
+      <div class="field text-center">
+        <%= check_box_tag :check_location %>
+      </div>
+    </div>
+    <div class="col-md-5">
+      <div class="field">
+        <%= f.text_area :location_review %>
+      </div>
+    </div>
   </div>
-  <div class="field">
-    <%= f.label :rating_duration_review %><br>
-    <%= f.text_area :rating_duration_review %>
+  <div class="row">
+    <div class="col-md-4">
+      <p>
+      <strong>Difficulty: </strong>
+      <%for i in 0..5 %>
+        <%if i==@rate.difficulty%>
+          <%break%>
+        <%end%>
+        <span class="glyphicon glyphicon-star"> </span> 
+      <%end%>
+      </p>
+    </div>
+    <div class="col-md-3">
+      <div class="field text-center">
+        <%= check_box_tag :check_difficulty %>
+      </div>
+    </div>
+    <div class="col-md-5">
+      <div class="field">
+        <%= f.text_area :rating_difficulty_review %>
+      </div>
+    </div>
   </div>
-  <div class="field">
-    <%= f.label :season_review %><br>
-    <%= f.text_area :season_review %>
+  <div class="row">
+    <div class="col-md-4">
+      <p>
+      <strong>Duration: </strong>
+      <%= @rate.durationinsec %>
+      </p>
+    </div>
+    <div class="col-md-3">
+      <div class="field text-center">
+        <%= check_box_tag :check_duration %>
+      </div>
+    </div>
+    <div class="col-md-5">
+      <div class="field">
+        <%= f.text_area :rating_duration_review %>
+      </div>
+    </div>
   </div>
-  <div class="field">
-    <%= f.label :trailtype_review %><br>
-    <%= f.text_area :trailtype_review %>
+  <div class="row">
+    <div class="col-md-4">
+      <p>
+      <strong>Season: </strong>
+      <%= @trail.season %>
+      </p>
+    </div>
+    <div class="col-md-3">
+      <div class="field text-center">
+        <%= check_box_tag :check_season %>
+      </div>
+    </div>
+    <div class="col-md-5">
+      <div class="field">
+        <%= f.text_area :season_review %>
+      </div>
+    </div>
   </div>
-  <div class="field">
-    <%= f.label :gps_review %><br>
-    <%= f.text_area :gps_review %>
+  <div class="row">
+    <div class="col-md-4">
+      <p>
+      <strong>Type: </strong>
+      <%= @trail.trailtype %>
+      </p>
+    </div>
+    <div class="col-md-3">
+      <div class="field text-center">
+        <%= check_box_tag :check_type %>
+      </div>
+    </div>
+    <div class="col-md-5">
+      <div class="field">
+        <%= f.text_area :trailtype_review %>
+      </div>
+    </div>
   </div>
-  <div class="field">
-    <%= f.label :traildirections_review %><br>
-    <%= f.text_area :traildirections_review %>
+  <div class="row">
+    <div class="col-md-4">
+      <p>
+      <strong>GPS: </strong>
+      lat: <%= @trail.latitude %>, long: <%= @trail.longitude %>
+      </p>
+    </div>
+    <div class="col-md-3">
+      <div class="field text-center">
+        <%= check_box_tag :check_gps %>
+      </div>
+    </div>
+    <div class="col-md-5">
+      <div class="field">
+        <%= f.text_area :gps_review %>
+      </div>
+    </div>
   </div>
+  <div class="row">
+    <div class="col-md-4">
+      <p>
+      <strong>Trail Directions/Description</strong>
+      </p>
+    </div>
+    <div class="col-md-3">
+      <div class="field text-center">
+        <%= check_box_tag :check_directions %>
+      </div>
+    </div>
+    <div class="col-md-5">
+      <div class="field">
+        <%= f.text_area :traildirections_review %>
+      </div>
+    </div>
+  </div>
+  <%= @trail.traildirections %>  
   <div class="field">
     <%= f.label :finalcomments %><br>
     <%= f.text_area :finalcomments %>
-  </div>
-  <div class="field">
-    <%= f.label :trail_id %><br>
-    <%= f.text_field :trail_id %>
-  </div>
-  <div class="field">
-    <%= f.label :user_id %><br>
-    <%= f.number_field :user_id %>
   </div>
   <div class="actions">
     <%= f.submit %>

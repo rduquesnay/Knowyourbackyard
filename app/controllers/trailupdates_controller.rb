@@ -7,7 +7,9 @@ class TrailupdatesController < ApplicationController
 
   def create
     @update = Trailupdate.new(trailupdate_params)
+    @user = User.find(current_user.id)
     @update.save
+    @user.update_attribute(:points, @user.points+25)
     redirect_to trail_url(@update.trail_id)
   end
   def destroy

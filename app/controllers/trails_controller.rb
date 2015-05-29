@@ -50,6 +50,9 @@ class TrailsController < ApplicationController
 
   def update
     @trail.update(trail_params)
+    if @trail.status == "Under review" 
+      @trail.update_attribute(:status, "To be reviewed")
+    end
     respond_with(@trail)
   end
 
@@ -74,7 +77,7 @@ class TrailsController < ApplicationController
       @rate = {avg_duration: diff_sum/ratings.count, avg_difficulty: dura_sum/ratings.count}
     end
     def set_user_rate
-      @rating = Rating.where(trail_id: @trail.id, user_id: current_user.id)
+      @rating = Rating.where(trail_id: @trail.id, user_id: current_user.id).first
     end
     def set_trail_comments
       @comments = []

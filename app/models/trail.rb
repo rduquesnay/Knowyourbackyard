@@ -13,10 +13,6 @@ class Trail < ActiveRecord::Base
   scope :revision, -> {where(status: "Under revsion")}
   scope :disputed, -> {where(status: "Under dispute")}
 
-
-
-
-
   protected
   def self.accept_trail
    self.status = "Accepted" 

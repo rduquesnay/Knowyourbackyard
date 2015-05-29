@@ -15,7 +15,12 @@ class UsersController < ApplicationController
   end
 
   def update
-    @user.update(user_params)
+    @user.update_attribute(:firstname, user_params[:firstname])
+    @user.update_attribute(:lastname, user_params[:lastname])
+    @user.update_attribute(:country, user_params[:country])
+    @user.update_attribute(:city, user_params[:city])
+    @user.update_attribute(:province, user_params[:province])
+    @user.update_attribute(:about, user_params[:about])
     respond_with(@user)
   end
 
@@ -24,6 +29,6 @@ class UsersController < ApplicationController
       @user = User.find(params[:id])
     end
     def user_params
-      params.require(:user).permit(:firstname,:lastname,:country,:city,:provice,:about)
+      params.require(:user).permit(:firstname,:lastname,:country,:city,:province,:about)
     end
 end

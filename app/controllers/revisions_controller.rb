@@ -14,6 +14,8 @@ class RevisionsController < ApplicationController
 
   def new
     @revision = Revision.new
+    @trail = Trail.find(params[:trail_id])
+    @rate = Rating.where(trail_id: @trail.id,user_id: @trail.user_id).first
     respond_with(@revision)
   end
 
@@ -21,9 +23,18 @@ class RevisionsController < ApplicationController
   end
 
   def create
-    @revision = Revision.new(revision_params)
-    @revision.save
-    respond_with(@revision)
+    if check_params[:check_name] || check_params[:check_location] || check_params[:check_season] || check_params[:check_type] || check_params[:check_gps] || check_params[:check_directions]
+      @revision = Revision.new(revision_params)
+      @trail = Trail.find(@review.trail_id)
+      @trail.update_attribute(:status, "Under revision")
+      @revision.save
+      respond_with(@trail)
+    else
+      @trail = Trail.find(review_params[:trail_id])
+      @user = User.find(@trail.user_id)
+      @trail.update_attribute(:status, "Accepted")
+      respond_with(@trail)
+    end
   end
 
   def update
@@ -43,5 +54,8 @@ class RevisionsController < ApplicationController
 
     def revision_params
       params.require(:revision).permit(:name_review, :location_review, :season_review, :trailtype_review, :gps_review, :traildirections_review, :trail_id, :user_id)
+    end
+    def check_params
+      params.permit(:check_name, :check_location, :check_season, :check_type, :check_gps, :check_directions)
     end
 end
