@@ -18,7 +18,7 @@
         <li>
         <%= link_to "Trails", trailsindex_path %>
         </li>
-        <%if current_user && current_user.trailblazer? %>
+        <%if user_signed_in? && current_user.trailblazer? %>
           <li>
           <%= link_to "Review Trails", trailreviewindex_path %>
           </li>

@@ -23,28 +23,32 @@ class ReviewsController < ApplicationController
   end
 
   def create
+    @trail = Trail.find(review_params[:trail_id])
+    @reviewuser = User.find(current_user.id)
     if check_params[:check_name] || check_params[:check_location] || check_params[:check_difficulty] || check_params[:check_duration] || check_params[:check_season] || check_params[:check_type] || check_params[:check_gps] || check_params[:check_directions]
       @review = Review.new(review_params)
-      @trail = Trail.find(@review.trail_id)
       @trail.update_attribute(:status, "Under review")
       @review.save
       @note = Notification.new(message: "Your Trail: id: #{@trail.id} Name: #{@trail.name}, has been reviewed and changes are requested.", link: "<a href=\"\/trails\/#{@trail.id}\">Go to Trail<\/a>", user_id: @trail.user_id)
-      @note.save
-      respond_with(@trail)
+      @reviewreward = Reward.new(points: 150, review_id: @review.id, user_id: @review.user_id)
     else
-      @trail = Trail.find(review_params[:trail_id])
-      @user = User.find(@trail.user_id)
+      @trailuser = User.find(@trail.user_id)
       @trail.update_attribute(:status, "Accepted")
+      @reviewreward = Reward.new(points: 150, user_id: @reviewuser.id)
+      @trailreward = Reward.new(points: 200, trail_id: @trail.id, user_id: @trailuser.id)
+      @trailuser.update_attribute(:points, @trailuser.points+@trailreward.points)
+      @trailreward.save
       @note = Notification.new(message: "Your Trail: id: #{@trail.id} Name: #{@trail.name}, has been reviewed and accepted.", link: "<a href=\"\/trails\/#{@trail.id}\">Go to Trail<\/a>", user_id: @trail.user_id)
-      @note.save
-      if Trail.where(user_id: @user.id, status: "Accepted").count >= 7
-        @user.update_attribute(:trailblazer, true)
-        @note = Notification.new(message: "You Have been upgraded to a Trailblazer.", link: "<a href=\"\\/user\/profile\/#{@trail.user_id}\">Go to Profile<\/a>", user_id: @trail.user_id)
-        @note.save
+      if Trail.where(user_id: @trailuser.id, status: "Accepted").count >= 7
+        @trailuser.update_attribute(:trailblazer, true)
+        @promte = Notification.new(message: "You Have been upgraded to a Trailblazer.", link: "<a href=\"\\/user\/profile\/#{@trail.user_id}\">Go to Profile<\/a>", user_id: @trail.user_id)
+        @promte.save
       end
-
-      respond_with(@trail)
     end
+    @reviewuser.update_attribute(:points, @reviewuser.points+@reviewreward.points)
+    @reviewreward.save
+    @note.save
+    respond_with(@trail)
   end
 
   def update

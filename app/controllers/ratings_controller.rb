@@ -20,4 +20,5 @@ class RatingsController < ApplicationController
   private
     def rating_params
       params.require(:rating).permit(:difficulty,:durationinsec,:favourite,:user_id,:trail_id)
+    end
 end

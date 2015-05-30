@@ -39,6 +39,8 @@ class TrailsController < ApplicationController
     @trail = Trail.new(trail_params)
     if(current_user.trailblazer? unless current_user.nil?)
       @trail.status="Accepted"
+      @reward = Reward.new(points: 200,trail_id: @trail.id,user_id: current_user.id)
+      @reward.save
     end
     @trail.save
     @rating = Rating.new(rate_params)
@@ -58,7 +60,32 @@ class TrailsController < ApplicationController
 
 
   def destroy
+    @updates = []
+    @ratings = []
+    @comments = []
+    @reviews = []
+    @revisions = []
+    @updates = Trailupdate.where(trail_id: @trail.id)
+    @ratings = Rating.where(trail_id: @trail.id)
+    @comments = Comment.where(trail_id: @trail.id)
+    @reviews = Review.where(trail_id: @trail.id)
+    @revisions = Revision.where(trail_id: @trail.id)
     @trail.destroy
+    @updates.each do |trailupdate|
+      trailupdate.destroy
+    end
+    @ratings.each do |rate|
+      rate.destroy
+    end
+    @comments.each do |comment|
+      comment.destroy
+    end
+    @reviews.each do |review|
+      review.destroy
+    end
+    @revisions.each do |revision|
+      revision.destroy
+    end
     respond_with(@trail)
   end
 

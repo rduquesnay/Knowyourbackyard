@@ -9,6 +9,7 @@ class RevisionsController < ApplicationController
   end
 
   def show
+    @trail = Trial.find(@revision.trail_id)
     respond_with(@revision)
   end
 
@@ -23,20 +24,22 @@ class RevisionsController < ApplicationController
   end
 
   def create
+    @trail = Trail.find(revision_params[:trail_id])
     if check_params[:check_name] || check_params[:check_location] || check_params[:check_season] || check_params[:check_type] || check_params[:check_gps] || check_params[:check_directions]
       @revision = Revision.new(revision_params)
-      @trail = Trail.find(@review.trail_id)
       @trail.update_attribute(:status, "Under revision")
       @revision.save
+      @reward = Reward.new(points: 150, revision_id: @revision.id,user_id: @revision.user_id)
+      @user = User.find(@revision.user_id)
+      @user.update_attribute(:points, @user.points+@reward.points)
+      @reward.save
       @note = Notification.new(message: "Your Trail: id: #{@trail.id} Name: #{@trail.name}, a revision has been submitted for it", link: "<a href=\"\/revisions\/#{@revision.id}\">Go to Revision<\/a>", user_id: @trail.user_id)
       @note.save
-      respond_with(@trail)
     else
-      @trail = Trail.find(review_params[:trail_id])
       #@user = User.find(@trail.user_id)
       #@trail.update_attribute(:status, "Accepted")
-      respond_with(@trail)
     end
+    respond_with(@trail)
   end
 
   def update

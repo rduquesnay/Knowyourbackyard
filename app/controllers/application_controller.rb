@@ -30,6 +30,7 @@ class ApplicationController < ActionController::Base
 
   private
    def set_notifications
-     @notes = Notification.where(user_id: current_user.id)
+     @notes = []
+     @notes = Notification.where(user_id: current_user.id) unless current_user.nil?
    end
 end

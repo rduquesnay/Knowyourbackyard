@@ -1,16 +1,16 @@
 class Trail < ActiveRecord::Base
   belongs_to :user
-  has_many :trailupdates, dependent: :destroy
-  has_many :ratings, dependent: :destroy
-  has_many :comments, dependent: :destroy
-  has_many :reviews, dependent: :destroy
-  has_many :revisions, dependent: :destroy
+  has_many :trailupdates
+  has_many :ratings
+  has_many :comments
+  has_many :reviews
+  has_many :revisions
   accepts_nested_attributes_for :ratings, allow_destroy: true
 
   scope :accepted, -> { where(status: "Accepted" )}
   scope :unreviewed, -> {where(status: "To be reviewed")}
   scope :reviewing, -> {where(status: "Under review")}
-  scope :revision, -> {where(status: "Under revsion")}
+  scope :revision, -> {where(status: "Under revision")}
   scope :disputed, -> {where(status: "Under dispute")}
 
   protected

@@ -1,44 +1,117 @@
+<% content_for :title do %>
+  Trail Revision Page
+<% end %>
 <p id="notice"><%= notice %></p>
+<div class="well">
+  <p>Please go through the revision. You may edit the trail then re-submit for review once finished.</p>
+</div>
+<div class="row">
+  <div class="col-md-4">
+    <h3>Trail Details</h3>
+  </div>
+  <div class="col-md-5 col-md-offset-3">
+    <h3>Reason for Revision</h3>
+  </div>
+</div>
+<div class="row">
+  <div class="col-md-4">
+    <p>
+    <strong>Trail Name: </strong>
+    <%= @trail.name %>
+    </p>
+  </div>
+  <div class="col-md-5 col-md-offset-3">
+    <div class="field">
+      <%= @revision.name_review %>
+    </div>
+  </div>
+</div>
+<div class="row">
+  <div class="col-md-4">
+    <p>
+    <strong>Location: </strong>
+    <%= @trail.location %>
+    </p>
+  </div>
+  <div class="col-md-5 col-md-offset-3">
+    <div class="field">
+      <%= @revision.location_review %>
+    </div>
+  </div>
+</div>
+<div class="row">
+  <div class="col-md-4">
+    <p>
+    <strong>Difficulty: </strong>
+    <%for i in 0..5 %>
+      <%if i==@rate.difficulty%>
+        <%break%>
+      <%end%>
+      <span class="glyphicon glyphicon-star"> </span> 
+    <%end%>
+    </p>
+  </div>
+</div>
+<div class="row">
+  <div class="col-md-4">
+    <p>
+    <strong>Duration: </strong>
+    <%= @rate.durationinsec %>
+    </p>
+  </div>
+</div>
+<div class="row">
+  <div class="col-md-4">
+    <p>
+    <strong>Season: </strong>
+    <%= @trail.season %>
+    </p>
+  </div>
+  <div class="col-md-5 col-md-offset-3">
+    <div class="field">
+      <%= @revision.season_review %>
+    </div>
+  </div>
+</div>
+<div class="row">
+  <div class="col-md-4">
+    <p>
+    <strong>Type: </strong>
+    <%= @trail.trailtype %>
+    </p>
+  </div>
+  <div class="col-md-5 col-md-offset-3">
+    <div class="field">
+      <%= @revision.trailtype_review %>
+    </div>
+  </div>
+</div>
+<div class="row">
+  <div class="col-md-4">
+    <p>
+    <strong>GPS: </strong>
+    lat: <%= @trail.latitude %>, long: <%= @trail.longitude %>
+    </p>
+  </div>
+  <div class="col-md-5 col-md-offset-3">
+    <div class="field">
+      <%= @revision.gps_review %>
+    </div>
+  </div>
+</div>
+<div class="row">
+  <div class="col-md-4">
+    <p>
+    <strong>Trail Directions/Description</strong>
+    </p>
+  </div>
+  <div class="col-md-5 col-md-offset-3">
+    <div class="field">
+      <%= @revision.traildirections_review %>
+    </div>
+  </div>
+</div>
+<%= @trail.traildirections %>  
 
-<p>
-  <strong>Name review:</strong>
-  <%= @revision.name_review %>
-</p>
-
-<p>
-  <strong>Location review:</strong>
-  <%= @revision.location_review %>
-</p>
-
-<p>
-  <strong>Season review:</strong>
-  <%= @revision.season_review %>
-</p>
-
-<p>
-  <strong>Trailtype review:</strong>
-  <%= @revision.trailtype_review %>
-</p>
-
-<p>
-  <strong>Gps review:</strong>
-  <%= @revision.gps_review %>
-</p>
-
-<p>
-  <strong>Traildirections review:</strong>
-  <%= @revision.traildirections_review %>
-</p>
-
-<p>
-  <strong>Trail:</strong>
-  <%= @revision.trail %>
-</p>
-
-<p>
-  <strong>Posted by:</strong>
-  <%= @revision.user %>
-</p>
-
-<%= link_to 'Edit', edit_revision_path(@revision) %> |
-<%= link_to 'Back', revisions_path %>
+<%= link_to 'Edit Trail', edit_trail_path(@trail), class: "btn btn-primary" %>
+<!-- Dispute link-->

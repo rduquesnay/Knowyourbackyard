@@ -31,7 +31,7 @@ body {
 }
 
 body {
-  padding-top: 75px; /*Set to fixed navbar height */
+  padding-top: 100px; /*Set to fixed navbar height */
   font-family: 'Open Sans', Verdana, Arial, sans-serif;
   color: white;
 }

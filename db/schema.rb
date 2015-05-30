@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20150529181108) do
+ActiveRecord::Schema.define(version: 20150530184036) do
 
   create_table "comments", force: true do |t|
     t.text     "message"
@@ -81,6 +81,19 @@ ActiveRecord::Schema.define(version: 20150529181108) do
 
   add_index "revisions", ["trail_id"], name: "index_revisions_on_trail_id"
   add_index "revisions", ["user_id"], name: "index_revisions_on_user_id"
+
+  create_table "rewards", force: true do |t|
+    t.integer  "points"
+    t.integer  "trail_id"
+    t.integer  "review_id"
+    t.integer  "revision_id"
+    t.integer  "update_id"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+    t.integer  "user_id"
+  end
+
+  add_index "rewards", ["user_id"], name: "index_rewards_on_user_id"
 
   create_table "trails", force: true do |t|
     t.string   "name"
