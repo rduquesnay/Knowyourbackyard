@@ -25,7 +25,7 @@
         <p> No Trails Under Revision </p>
       <%else%>
         <%@revision.each do |trail| %>
-          <%= link_to trail do %>
+          <%= link_to trail.revisions.last do %>
             <%= render partial: "shared/listtrails", locals: {t: trail} %>
           <%end%>
         <%end%>

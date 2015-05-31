@@ -1,6 +1,6 @@
 class RevisionsController < ApplicationController
   before_action :set_revision, only: [:show, :edit, :update, :destroy]
-
+  before_action :set_trail_rate, only: [:show, :edit]
   respond_to :html
 
   def index
@@ -9,7 +9,7 @@ class RevisionsController < ApplicationController
   end
 
   def show
-    @trail = Trial.find(@revision.trail_id)
+    @trail = Trail.find(@revision.trail_id)
     respond_with(@revision)
   end
 
@@ -62,5 +62,15 @@ class RevisionsController < ApplicationController
     end
     def check_params
       params.permit(:check_name, :check_location, :check_season, :check_type, :check_gps, :check_directions)
+    end
+    def set_trail_rate
+      ratings = Rating.where(trail_id: @revision.trail_id)
+      diff_sum = 0
+      dura_sum = 0
+      ratings.each do |rating|
+       diff_sum = diff_sum + rating.difficulty
+       dura_sum = dura_sum + rating.durationinsec
+      end
+      @rate = {avg_duration: diff_sum/ratings.count, avg_difficulty: dura_sum/ratings.count}
     end
 end

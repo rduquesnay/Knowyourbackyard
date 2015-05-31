@@ -108,11 +108,11 @@ class TrailsController < ApplicationController
     end
     def set_trail_comments
       @comments = []
-      @comments = Comment.where(trail_id: @trail.id).order(created_at: :asc).joins(:user)
+      @comments = Comment.where(trail_id: @trail.id).order(created_at: :asc).includes(:user)
     end
     def set_trail_updates
       @updates = []
-      @updates = Trailupdate.where(trail_id: @trail.id).order(created_at: :desc).joins(:user)
+      @updates = Trailupdate.where(trail_id: @trail.id).order(created_at: :desc).includes(:user)
     end
 
     def trail_params

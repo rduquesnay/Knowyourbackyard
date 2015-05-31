@@ -73,7 +73,7 @@
           <%= comment.message %>
           <br>
           <strong>posted by: </strong>
-          <%= comment.user_id%>
+          <%= comment.user.username%>
           <strong> posted at: </strong>
           <%= comment.created_at%>
           </p>
@@ -106,7 +106,7 @@
           <%= update.message %>
           <br>
           <strong>posted by: </strong>
-          <%= update.user_id%>
+          <%= update.user.username%>
           <strong> posted at: </strong>
           <%= update.created_at %>
           </p>

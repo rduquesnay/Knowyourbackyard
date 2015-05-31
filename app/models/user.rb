@@ -18,11 +18,11 @@ class User < ActiveRecord::Base
   scope :topusers, -> {order(points: :desc).limit(10)}
 
   def self.find_for_database_authentication(warden_conditions)
-  conditions = warden_conditions.dup
-  if login = conditions.delete(:login)
-    where(conditions).where(["lower(username) = :value OR lower(email) = :value", { :value => login.downcase }]).first
-  else
-    where(conditions).first
-  end
+    conditions = warden_conditions.dup
+    if login = conditions.delete(:login)
+      where(conditions).where(["lower(username) = :value OR lower(email) = :value", { :value => login.downcase }]).first
+    else
+      where(conditions).first
+    end
   end
 end
