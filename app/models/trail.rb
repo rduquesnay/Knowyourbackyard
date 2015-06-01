@@ -10,6 +10,5 @@ class Trail < ActiveRecord::Base
   scope :accepted, -> { where(status: "Accepted" )}
   scope :unreviewed, -> {where(status: "To be reviewed")}
   scope :reviewing, -> {where(status: "Under review")}
-  scope :revision, -> {where(status: "Under revision")}
   scope :disputed, -> {where(status: "Under dispute")}
 end

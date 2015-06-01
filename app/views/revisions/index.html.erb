@@ -3,12 +3,13 @@
 <table>
   <thead>
     <tr>
-      <th>Name review</th>
-      <th>Location review</th>
-      <th>Season review</th>
-      <th>Trailtype review</th>
-      <th>Gps review</th>
-      <th>Traildirections review</th>
+      <th>Name</th>
+      <th>Location</th>
+      <th>Season</th>
+      <th>Trailtype</th>
+      <th>Latitude</th>
+      <th>Longitude</th>
+      <th>Traildirections</th>
       <th>Trail</th>
       <th>Posted by</th>
       <th></th>
@@ -20,12 +21,13 @@
   <tbody>
     <% @revisions.each do |revision| %>
       <tr>
-        <td><%= revision.name_review %></td>
-        <td><%= revision.location_review %></td>
-        <td><%= revision.season_review %></td>
-        <td><%= revision.trailtype_review %></td>
-        <td><%= revision.gps_review %></td>
-        <td><%= revision.traildirections_review %></td>
+        <td><%= revision.name %></td>
+        <td><%= revision.location %></td>
+        <td><%= revision.season %></td>
+        <td><%= revision.trailtype %></td>
+        <td><%= revision.latitude %></td>
+        <td><%= revision.longitude %></td>
+        <td><%= revision.traildirections %></td>
         <td><%= revision.trail %></td>
         <td><%= revision.user %></td>
         <td><%= link_to 'Show', revision %></td>

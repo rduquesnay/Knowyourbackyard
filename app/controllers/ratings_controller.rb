@@ -1,4 +1,6 @@
 class RatingsController < ApplicationController
+  before_action :authenticate_user!, only: [:new, :create]
+  before_action :ensure_admin!, only: :destroy
   respond_to :html
   def new
     @rating = Rating.new

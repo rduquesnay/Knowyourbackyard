@@ -139,6 +139,24 @@
   <div class="row">
     <div class="col-md-4">
       <p>
+      <strong>Length: </strong>
+      <%= @trail.length %>
+      </p>
+    </div>
+    <div class="col-md-3">
+      <div class="field text-center">
+        <%= check_box_tag :check_length %>
+      </div>
+    </div>
+    <div class="col-md-5">
+      <div class="field">
+        <%= f.text_area :length_review %>
+      </div>
+    </div>
+  </div>
+  <div class="row">
+    <div class="col-md-4">
+      <p>
       <strong>GPS: </strong>
       lat: <%= @trail.latitude %>, long: <%= @trail.longitude %>
       </p>

@@ -11,7 +11,15 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20150530184036) do
+ActiveRecord::Schema.define(version: 20150601022039) do
+
+  create_table "chats", force: true do |t|
+    t.datetime "created_at"
+    t.datetime "updated_at"
+    t.string   "subject"
+    t.integer  "contact_id"
+    t.integer  "admin_id"
+  end
 
   create_table "comments", force: true do |t|
     t.text     "message"
@@ -23,6 +31,29 @@ ActiveRecord::Schema.define(version: 20150530184036) do
 
   add_index "comments", ["trail_id"], name: "index_comments_on_trail_id"
   add_index "comments", ["user_id"], name: "index_comments_on_user_id"
+
+  create_table "contacts", force: true do |t|
+    t.string   "subject"
+    t.text     "message"
+    t.string   "firstname"
+    t.string   "lastname"
+    t.string   "email"
+    t.integer  "from_id"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+    t.string   "username"
+  end
+
+  create_table "messages", force: true do |t|
+    t.text     "content"
+    t.integer  "user_id"
+    t.integer  "chat_id"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  add_index "messages", ["chat_id"], name: "index_messages_on_chat_id"
+  add_index "messages", ["user_id"], name: "index_messages_on_user_id"
 
   create_table "notifications", force: true do |t|
     t.string   "message"
@@ -61,39 +92,29 @@ ActiveRecord::Schema.define(version: 20150530184036) do
     t.datetime "created_at"
     t.datetime "updated_at"
     t.integer  "user_id"
+    t.text     "length_review"
   end
 
   add_index "reviews", ["trail_id"], name: "index_reviews_on_trail_id"
   add_index "reviews", ["user_id"], name: "index_reviews_on_user_id"
 
   create_table "revisions", force: true do |t|
-    t.text     "name_review"
-    t.text     "location_review"
-    t.text     "season_review"
-    t.text     "trailtype_review"
-    t.text     "gps_review"
-    t.text     "traildirections_review"
     t.integer  "trail_id"
     t.datetime "created_at"
     t.datetime "updated_at"
     t.integer  "user_id"
+    t.string   "name"
+    t.string   "location"
+    t.string   "season"
+    t.string   "trailtype"
+    t.float    "latitude"
+    t.float    "longitude"
+    t.text     "traildirections"
+    t.float    "length"
   end
 
   add_index "revisions", ["trail_id"], name: "index_revisions_on_trail_id"
   add_index "revisions", ["user_id"], name: "index_revisions_on_user_id"
-
-  create_table "rewards", force: true do |t|
-    t.integer  "points"
-    t.integer  "trail_id"
-    t.integer  "review_id"
-    t.integer  "revision_id"
-    t.integer  "update_id"
-    t.datetime "created_at"
-    t.datetime "updated_at"
-    t.integer  "user_id"
-  end
-
-  add_index "rewards", ["user_id"], name: "index_rewards_on_user_id"
 
   create_table "trails", force: true do |t|
     t.string   "name"
@@ -146,6 +167,7 @@ ActiveRecord::Schema.define(version: 20150530184036) do
     t.boolean  "admin",                  default: false
     t.boolean  "trailblazer",            default: false
     t.integer  "points",                 default: 0
+    t.boolean  "owner",                  default: false
   end
 
   add_index "users", ["email"], name: "index_users_on_email", unique: true

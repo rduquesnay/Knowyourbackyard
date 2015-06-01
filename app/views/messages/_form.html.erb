@@ -1,0 +1,22 @@
+<%= form_for(@message) do |f| %>
+  <% if @message.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(@message.errors.count, "error") %> prohibited this chat from being saved:</h2>
+
+      <ul>
+      <% @message.errors.full_messages.each do |message| %>
+        <li><%= message %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+  <%= f.hidden_field :chat_id, value: @ids[:chat_id] %>
+  <%= f.hidden_field :user_id, value: @ids[:user_id] %>
+  <div class="form-group">
+    <%= f.label :content %><br>
+    <%= f.text_area :content, class: "form-control "%>
+  </div>
+  <div class="actions">
+    <%= f.submit %>
+  </div>
+<% end %>

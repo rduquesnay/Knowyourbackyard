@@ -1,0 +1,42 @@
+<% content_for :title do %>
+  Contact Page
+<% end %>
+
+<p id="notice"><%= notice %></p>
+<div class="row">
+  <div class="col-md-6 col-md-offset-3">
+    <%if @contact.from_id.nil? %>
+      <p>
+      <strong>First Name: </strong>
+      <%= @contact.firstname %>
+      </p>
+      <p>
+      <strong>Last Name: </strong>
+      <%= @contact.lastname %>
+      </p>
+      <p>
+      <strong>e-mail</strong>
+      <%= @contact.email %>
+      </p>
+    <%else%>
+      <p>
+      <strong>Username:</strong>
+      <%= @contact.username %>
+      </p>
+    <%end%>
+    <p>
+    <strong>Subject: </strong>
+    <%= @contact.subject %>
+    </p>
+  </div>
+  <h3>Message</h3>
+  <p>
+  <%= @contact.message %>
+  </p>
+</div>
+<%if @contact.from_id.nil? %>
+  <%= link_to 'Send Reply'  %>
+<%else%>
+  <%= link_to 'Start Chat', controller: "chats", action: "new", contact_id: @contact.id %>
+<%end%>
+<%= link_to 'Back', contacts_path %>

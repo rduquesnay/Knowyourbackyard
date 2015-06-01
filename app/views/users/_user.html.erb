@@ -12,6 +12,19 @@
       <strong>Points: </strong>
       <%= user.points %>
       </p>
+      <%if user_signed_in? && current_user.admin? %>
+        <div class="row">
+          <%unless user.admin?%>
+            <%= link_to "Promte to Admin", adminpromote_path, method: :patch, id: user.id, class: "btn btn-primary" %>
+          <%end%>
+          <%unless user.trailblazer?%>
+            <%= link_to "Promte to Trailblazer", trailblazerpromote_path, method: :patch, id: user.id, class: "btn btn-primary" %>
+          <%end%>  
+          <%if current_user.owner? && user.admin?%>
+            <%= link_to "Demote from Admin", admindemote_path, method: :patch, id: user.id, class: "btn btn-primary" %>
+          <%end%>
+        </div>
+      <% end %>
     </div>
   </div>
 </div>

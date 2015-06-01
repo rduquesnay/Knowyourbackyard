@@ -1,0 +1,40 @@
+<% content_for :title do %>
+  Chat Page
+<% end %>
+<p id="notice"><%= notice %></p>
+<p>
+<strong>Subject: </strong>
+<%= @chat.subject %>
+</p>
+<p>
+<strong>Administrator: </strong>
+<%= @admin.username %>
+</p>
+<p>
+<strong>Contact: </strong>
+<%= @contact.username %>
+</p>
+<div id="chat-messages" class="well">
+  <strong>Messages</strong><br>
+  <% if @messages.count==0 %>
+    <p>No messagess</p>
+  <% else %>
+    <%@messages.each do |message|%>
+      <p>
+      <%= message.content %>
+      <br>
+      <strong>posted by: </strong>
+      <%= message.user.username%>
+      <strong> posted at: </strong>
+      <%= message.created_at%>
+      </p>
+      <br>
+    <%end%>
+  <% end %>
+  <%if user_signed_in? %>
+    <%= link_to "Send a Reply", controller: "messages", action: "new", chat_id: @chat.id %>
+  <%end%>
+  <%if current_user.admin? %>
+    <%= link_to "End Chat", controller: "chats", action: "destroy", id: @chat.id %>
+  <%end%>
+</div>

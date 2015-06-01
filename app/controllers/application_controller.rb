@@ -19,6 +19,14 @@ class ApplicationController < ActionController::Base
       return false
     end
   end
+  def ensure_owner!
+    authenticate_user!
+    unless current_user.owner?
+      sign_out current_user
+      redirect_to new_user_session_path
+      return false
+    end
+  end
   def ensure_trailblazer!
     authenticate_user!
     unless current_user.trailblazer?

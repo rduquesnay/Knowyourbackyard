@@ -1,10 +1,14 @@
+<% content_for :title do %>
+  Trails Review/Revision/Dispute List Page
+<% end %>
+
 <div role="tabpanel">
 
   <!-- Nav tabs -->
   <ul id="TRlist" class="nav nav-tabs" role="tablist">
     <li role="presentation" class="active"><a href="#for-review" aria-controls="for-review" role="tab" data-toggle="tab">Trails for Review</a></li>
     <li role="presentation"><a href="#revisions" aria-controls="revisions" role="tab" data-toggle="tab">Trail Revisions</a></li>
-    <li role="presentation"><a href="#disputed" aria-controls="disputed" role="tab" data-toggle="tab">Disputed Posts</a></li>
+    <li role="presentation"><a href="#disputed" aria-controls="disputed" role="tab" data-toggle="tab">Disputes</a></li>
   </ul>
 
   <!-- Tab panes -->
@@ -24,23 +28,24 @@
       <% if @revision.count==0 %>
         <p> No Trails Under Revision </p>
       <%else%>
-        <%@revision.each do |trail| %>
-          <%= link_to trail.revisions.last do %>
-            <%= render partial: "shared/listtrails", locals: {t: trail} %>
+        <%@revision.each do |revision| %>
+          <%= link_to revision do %>
+            <%= render partial: "shared/listrevisions", locals: {r: revision} %>
           <%end%>
         <%end%>
       <%end%>
     </div>
+    
     <div role="tabpanel" class="tab-pane" id="disputed">
-      <% if @disputed.count==0 %>
+      <%# if @disputed.count==0 %>
         <p> No Trails Under Dispute </p>
-      <%else%>
-        <%@dispute.each do |trail| %>
-          <%= link_to trail do %>
-            <%= render partial: "shared/listtrails", locals: {t: trail} %>
-          <%end%>
-        <%end%>
-      <%end%>
+      <%#else%>
+        <%#@dispute.each do |dispute| %>
+          <%= #link_to dispute do %>
+            <%= #render partial: "shared/listdispute", locals: {d: dispute} %>
+          <%#end%>
+        <%#end%>
+      <%#end%>
     </div>
   </div>
 </div>

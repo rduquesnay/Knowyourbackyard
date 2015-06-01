@@ -1,4 +1,7 @@
 Knowyourbackyard::Application.routes.draw do
+  resources :messages, only: [:new, :create, :destroy]
+  resources :chats, only: [:index, :show, :new, :destroy]
+  resources :contacts
   resources :users, only: [:show,:edit,:update], path: 'user/profile'
   get '/users', to: 'users#index', as: 'index'
   resources :ratings, only: [:new,:create,:destory]
@@ -8,8 +11,11 @@ Knowyourbackyard::Application.routes.draw do
   resources :reviews
   resources :revisions
   resources :notifications, only: :destroy
-  get "Trailreview", to: 'trails#trailsreview', as: 'trailreviewindex'
+  get "Trailreview", to: 'trailblazer_lists#trailsreview', as: 'trailreviewindex'
   get "Trailslist", to: 'trails#trailslist', as: 'trailsindex'
+  patch "Promoteadmin", to: 'actions#promote_to_admin', as: 'adminpromote'
+  patch "PromoteTrailblazer", to: 'actions#promote_to_trailblazer', as: 'trailblazerpromote'
+  patch "Demoteadmin", to: 'actions#demote_from_admin', as: 'admindemote'
   devise_for :users
   root to: 'pages#home'
   

@@ -16,11 +16,8 @@
     <div class="col-md-4">
       <h3>Trail Details</h3>
     </div>
-    <div class="col-md-3 text-center">
-      <h3>Mark for Revising</h3>
-    </div>
     <div class="col-md-5">
-      <h3>Reason</h3>
+      <h3>New Trail Details</h3>
     </div>
   </div>
   <div class="row">
@@ -30,14 +27,9 @@
       <%= @trail.name %>
       </p>
     </div>
-    <div class="col-md-3">
-      <div class="field text-center">
-        <%= check_box_tag :check_name %>
-      </div>
-    </div>
-    <div class="col-md-5">
+    <div class="col-md-5 col-md-offset-3">
       <div class="field">
-        <%= f.text_area :name_review %>
+        <%= f.text_field :name, value: @trail.name %>
       </div>
     </div>
   </div>
@@ -48,36 +40,10 @@
       <%= @trail.location %>
       </p>
     </div>
-    <div class="col-md-3">
-      <div class="field text-center">
-        <%= check_box_tag :check_location %>
-      </div>
-    </div>
-    <div class="col-md-5">
+    <div class="col-md-5 col-md-offset-3">
       <div class="field">
-        <%= f.text_area :location_review %>
+        <%= f.text_field :location, value: @trail.location %>
       </div>
-    </div>
-  </div>
-  <div class="row">
-    <div class="col-md-4">
-      <p>
-      <strong>Difficulty: </strong>
-      <%for i in 0..5 %>
-        <%if i==@rate[:avg_difficulty]%>
-          <%break%>
-        <%end%>
-        <span class="glyphicon glyphicon-star"> </span> 
-      <%end%>
-      </p>
-    </div>
-  </div>
-  <div class="row">
-    <div class="col-md-4">
-      <p>
-      <strong>Duration: </strong>
-      <%= @rate[:avg_duration] %>
-      </p>
     </div>
   </div>
   <div class="row">
@@ -87,14 +53,9 @@
       <%= @trail.season %>
       </p>
     </div>
-    <div class="col-md-3">
-      <div class="field text-center">
-        <%= check_box_tag :check_season %>
-      </div>
-    </div>
-    <div class="col-md-5">
-      <div class="field">
-        <%= f.text_area :season_review %>
+    <div class="col-md-5 col-md-offset-3">
+      <div class="form-group">
+        <%= f.select :season, ["Winter","Spring","Summer","Fall"], value: @trail.season %>
       </div>
     </div>
   </div>
@@ -105,14 +66,22 @@
       <%= @trail.trailtype %>
       </p>
     </div>
-    <div class="col-md-3">
-      <div class="field text-center">
-        <%= check_box_tag :check_type %>
+    <div class="col-md-5 col-md-offset-3">
+      <div class="field">
+        <%= f.select :trailtype, ["Hiking","Kayaking/Canoeing","Adventure Kayaking"], value: @trail.trailtype %>
       </div>
     </div>
-    <div class="col-md-5">
+  </div>
+  <div class="row">
+    <div class="col-md-4">
+      <p>
+      <strong>Length: </strong>
+        <%= @trail.length %>
+      </p>
+    </div>
+    <div class="col-md-5i col-md-offset-5">
       <div class="field">
-        <%= f.text_area :trailtype_review %>
+        <%= f.number_field :length, value: @trail.length %>
       </div>
     </div>
   </div>
@@ -123,14 +92,9 @@
       lat: <%= @trail.latitude %>, long: <%= @trail.longitude %>
       </p>
     </div>
-    <div class="col-md-3">
-      <div class="field text-center">
-        <%= check_box_tag :check_gps %>
-      </div>
-    </div>
-    <div class="col-md-5">
+    <div class="col-md-5 col-md-offset-5">
       <div class="field">
-        <%= f.text_area :gps_review %>
+        lat: <%= f.number_field :latitudei, value: @trail.latitude %>, long: <%= f.number_field :longitude, value: @trail.longitude %>
       </div>
     </div>
   </div>
@@ -138,20 +102,15 @@
     <div class="col-md-4">
       <p>
       <strong>Trail Directions/Description</strong>
+      <%= @trail.traildirections %>  
       </p>
-    </div>
-    <div class="col-md-3">
-      <div class="field text-center">
-        <%= check_box_tag :check_directions %>
-      </div>
     </div>
     <div class="col-md-5">
       <div class="field">
-        <%= f.text_area :traildirections_review %>
+        <%= f.text_area :traildirections, value: @trail.traildirections %>
       </div>
     </div>
   </div>
-  <%= @trail.traildirections %>  
   <div class="actions">
     <%= f.submit %>
   </div>
