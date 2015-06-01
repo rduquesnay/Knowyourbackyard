@@ -35,7 +35,7 @@
   </p>
 </div>
 <%if @contact.from_id.nil? %>
-  <%= link_to 'Send Reply'  %>
+  <%= link_to 'Send Reply', controller: "contact_mails", action: "new", contact_id: @contact.id %>
 <%else%>
   <%= link_to 'Start Chat', controller: "chats", action: "new", contact_id: @contact.id %>
 <%end%>

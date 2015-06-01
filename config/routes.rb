@@ -1,5 +1,6 @@
 Knowyourbackyard::Application.routes.draw do
   resources :messages, only: [:new, :create, :destroy]
+  resources :contact_mails, only: [:new, :create]
   resources :chats, only: [:index, :show, :new, :destroy]
   resources :contacts
   resources :users, only: [:show,:edit,:update], path: 'user/profile'

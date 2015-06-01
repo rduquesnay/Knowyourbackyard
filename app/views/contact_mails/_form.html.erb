@@ -1,0 +1,11 @@
+<%= form_tag(controller: "contact_mails", action: "create", method: "post") do %>
+  <%= hidden_field_tag(:user_id,  @ids[:user_id]) %>
+  <%= hidden_field_tag(:contact_id, @ids[:contact_id]) %>
+  <div class="form-group">
+    <%= label_tag(:content, "Content: ") %><br>
+    <%= text_area_tag(:content, nil, class: "form-control") %>
+  </div>
+  <div class="actions">
+    <%= submit_tag "Send" %>
+  </div>
+<% end %>
