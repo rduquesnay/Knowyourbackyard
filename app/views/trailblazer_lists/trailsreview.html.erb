@@ -37,7 +37,7 @@
     </div>
     
     <div role="tabpanel" class="tab-pane" id="disputed">
-      <% if @reviewDisputed.count==0 %>
+      <% if @reviewDispute.count==0 %>
         <p> No Trails Under Dispute </p>
       <%else%>
         <%@reviewDispute.each do |dispute| %>
@@ -46,7 +46,7 @@
           <%end%>
         <%end%>
       <%end%>
-      <% if @revisionDisputed.count==0 %>
+      <% if @revisionDispute.count==0 %>
         <p> No Revisions Under Dispute </p>
       <%else%>
         <%@revisionDispute.each do |dispute| %>
