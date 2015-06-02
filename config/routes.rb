@@ -1,4 +1,5 @@
 Knowyourbackyard::Application.routes.draw do
+  resources :sponsors
   resources :messages, only: [:new, :create, :destroy]
   resources :contact_mails, only: [:new, :create]
   resources :chats, only: [:index, :show, :new, :destroy]
@@ -21,6 +22,7 @@ Knowyourbackyard::Application.routes.draw do
   root to: 'pages#home'
   
   get 'AboutUs', to: 'pages#about', as: 'about'
+  get 'HowtoSponsor', to: 'pages#howtosponsor', as: 'howsponsor'
 
   
   

@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20150601022039) do
+ActiveRecord::Schema.define(version: 20150602004309) do
 
   create_table "chats", force: true do |t|
     t.datetime "created_at"
@@ -115,6 +115,14 @@ ActiveRecord::Schema.define(version: 20150601022039) do
 
   add_index "revisions", ["trail_id"], name: "index_revisions_on_trail_id"
   add_index "revisions", ["user_id"], name: "index_revisions_on_user_id"
+
+  create_table "sponsors", force: true do |t|
+    t.string   "companyname"
+    t.text     "about"
+    t.string   "link"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
 
   create_table "trails", force: true do |t|
     t.string   "name"

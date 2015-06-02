@@ -1,0 +1,46 @@
+<% content_for :title do %>
+  Sponsor/Advertise Page
+<% end %>
+
+<h1 class="text-center">Our Sponsors and Advertisers</h1>
+<div class="row">
+  <div class="col-md-5 col-md-offset-2">
+    <div class="well">
+      <p>
+        Text Thanking sponsors
+      </p>
+    </div>
+  </div>
+  <div class="col-md-5">
+    <p>
+      Find out how to advertise with us <%= link_to "here", howsponsor_path %>!
+    </p>
+  </div>
+</div>
+<% @sponsors.each do |sponsor| %>
+  <div class="row">
+    <%= link_to extlink(sponsor.link) do %>
+      <div class="col-md-2">
+        <!--logo here-->
+      </div>
+      <div class="col-md-8 col-md-offset-1">
+        <p>
+        <strong><%= sponsor.companyname %>: </strong>
+        <%= sponsor.about %>
+        </p>
+      </div>
+      <% if user_signed_in? && current_user.owner? %>
+        <div class="col-md-1">
+          <%= link_to 'Edit', edit_sponsor_path(sponsor) %>
+          <%= link_to 'Remove', sponsor, method: :delete, data: { confirm: 'Are you sure?' } %>
+        </div>
+      <% end %>
+    <% end %>
+  </div>
+  <br>
+<% end %>
+<div>
+<% if user_signed_in? && current_user.owner? %>
+  <%= link_to 'New Sponsor', new_sponsor_path %>
+<% end %>
+</div>

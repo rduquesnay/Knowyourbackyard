@@ -10,6 +10,9 @@ class PagesController < ApplicationController
   def guestviewtrail
 
   end
+  def howtosponsor
+  
+  end
 
 end
 

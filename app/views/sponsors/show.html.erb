@@ -1,0 +1,22 @@
+<% content_for :title do %>
+  Sponsor Page
+<% end %>
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>Companyname:</strong>
+  <%= @sponsor.companyname %>
+</p>
+
+<p>
+  <strong>About:</strong>
+  <%= @sponsor.about %>
+</p>
+
+<p>
+  <strong>Link:</strong>
+  <%= @sponsor.link %>
+</p>
+
+<%= link_to 'Edit', edit_sponsor_path(@sponsor) %> |
+<%= link_to 'Back', sponsors_path %>
