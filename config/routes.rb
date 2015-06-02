@@ -1,4 +1,7 @@
 Knowyourbackyard::Application.routes.draw do
+  resources :revisiondiputes
+  resources :revisionreviews
+  resources :reviewdiputes
   resources :sponsors
   resources :messages, only: [:new, :create, :destroy]
   resources :contact_mails, only: [:new, :create]
@@ -18,6 +21,7 @@ Knowyourbackyard::Application.routes.draw do
   patch "Promoteadmin", to: 'actions#promote_to_admin', as: 'adminpromote'
   patch "PromoteTrailblazer", to: 'actions#promote_to_trailblazer', as: 'trailblazerpromote'
   patch "Demoteadmin", to: 'actions#demote_from_admin', as: 'admindemote'
+  get "AccpetRevision", to: 'actions#set_trail_to_revision', as: 'setrevision'
   devise_for :users
   root to: 'pages#home'
   

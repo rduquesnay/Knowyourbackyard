@@ -21,6 +21,7 @@ class RevisionsController < ApplicationController
   end
 
   def edit
+    @trail = Trail.find(@revision.trail_id)
   end
 
   def create

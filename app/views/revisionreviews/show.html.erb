@@ -1,0 +1,170 @@
+<% content_for :title do %>
+  Revision Review Page
+<% end %>
+<p id="notice"><%= notice %></p>
+
+<h1 class="text-center">Revision Review Results</h1>
+<div class="well">
+  <p>
+    Please go through the review and correct any fields flagged for error. You may resubmit for review once finished.
+  </p>
+</div>
+<div class="well">
+  <div class="row">
+    <div class="col-md-3">
+      <h3>Old Trail Details</h3>
+    </div>
+    <div class="col-md-3">
+      <h3>New Trail Details</h3>
+    </div>
+    <div class="col-md-5">
+      <h3>Reason</h3>
+    </div>
+  </div>
+  <div class="row">
+    <div class="col-md-3">
+      <p>
+      <strong>Trail Name: </strong>
+      <%= @trail.name %>
+      </p>
+    </div>
+    <div class="col-md-3">
+      <p>
+      <%= @revision.name %>
+      </p>
+    </div>
+    <div class="col-md-5">
+      <p>
+      <%= @revisionreview.name_review %>
+      </p>
+    </div>
+  </div>
+  <div class="row">
+    <div class="col-md-3">
+      <p>
+      <strong>Location: </strong>
+      <%= @trail.location %>
+      </p>
+    </div>
+    <div class="col-md-3">
+      <p>
+      <%= @revision.location %>
+      </p>
+    </div>
+    <div class="col-md-5">
+      <p>
+      <%= @revisionreview.location_review %>
+      </p>
+    </div>
+  </div>
+  <div class="row">
+    <div class="col-md-3">
+      <p>
+      <strong>Season: </strong>
+      <%= @trail.season %>
+      </p>
+    </div>
+    <div class="col-md-3">
+      <p>
+      <%= @revision.season %>
+      </p>
+    </div>
+    <div class="col-md-5">
+      <p>
+      <%= @revisionreview.season_review %>
+      </p>
+    </div>
+  </div>
+  <div class="row">
+    <div class="col-md-3">
+      <p>
+      <strong>Type: </strong>
+      <%= @trail.trailtype %>
+      </p>
+    </div>
+    <div class="col-md-3">
+      <p>
+      <%= @revision.trailtype %>
+      </p>
+    </div>
+    <div class="col-md-5">
+      <p>
+      <%= @revisionreview.trailtype_review %>
+      </p>
+    </div>
+  </div>
+  <div class="row">
+    <div class="col-md-3">
+      <p>
+      <strong>Length: </strong>
+      <%= @trail.length %>
+      </p>
+    </div>
+    <div class="col-md-3">
+      <p>
+      <%= @revision.length %>
+      </p>
+    </div>
+    <div class="col-md-5">
+      <p>
+      <%= @revisionreview.length_review %>
+      </p>
+    </div>
+  </div>
+  <div class="row">
+    <div class="col-md-3">
+      <p>
+      <strong>GPS: </strong>
+      lat: <%= @trail.latitude %>, long: <%= @trail.longitude %>
+      </p>
+    </div>
+    <div class="col-md-3">
+      <p>
+      lat: <%= @revision.latitude %>, long: <%= @revision.longitude %>
+      </p>
+    </div>
+    <div class="col-md-5">
+      <p>
+      <%= @revisionreview.gps_review %>
+      </p>
+    </div>
+  </div>
+  <div class="row">
+    <div class="col-md-3">
+      <p>
+      <strong>Trail Directions/Description</strong>
+      <%= @trail.traildirections %>  
+      </p>
+    </div>
+    <div class="col-md-3">
+      <p>
+      <%= @revision.traildirections %>  
+      </p>
+    </div>
+    <div class="col-md-5">
+      <p>
+      <%= @revisionreview.traildirections_review %>
+      </p>
+    </div>
+  </div>
+  <div class="well">
+    <strong>Final Comments</strong><br>
+    <p>
+    <%= @revisionreview.finalcomments %>
+    </p>
+  </div>
+</div>
+<div class="well">
+  <div class="row">
+    <div class="col-md-10">
+      <p>
+      Don't agree with something in the review?
+      <p>
+    </div>
+    <div class="col-md-2">
+      <%= link_to "Dispute", controller: "revisiondisputes", action: "new", review_id: @revisionreview.id, class: "btn btn-primary" %><br><br>
+
+      <%= link_to "Edit Revision", edit_revision_path(@revision), class: "btn btn-primary" %>
+    </div>
+  </div>
+</div>

@@ -129,12 +129,10 @@
 </div>
 <% if user_signed_in? %>
   <% if @trail.status=="Accepted" %>
-    <%= link_to "Make a Revision on this trail", controller: "revisions", action: "new", trail_id: @trail.id %>
+    <%= link_to "Make a Revision on this trail", controller: "revisions", action: "new", trail_id: @trail.id %><br>
   <% elsif @trail.status=="To be reviewed" && current_user.trailblazer? %>
-    <%= link_to "Write a Review on this trail", controller: "reviews", action: "new", trail_id: @trail.id %>
+    <%= link_to "Write a Review on this trail", controller: "reviews", action: "new", trail_id: @trail.id %><br>
   <% elsif @trail.status=="Under review" && @trail.user_id==current_user.id %>
-    <%= link_to "View review", controller: "reviews", action: "index",trail_id: @trail.id %>
-  <% elsif @trail.status=="Under revision" && @trail.user_id==current_user.id %>
-    <%= link_to "View revision", controller: "revisions", action: "index",trail_id: @trail.id %>
+    <%= link_to "View review", controller: "reviews", action: "index",trail_id: @trail.id %><br>
   <% end %>
 <%end%>

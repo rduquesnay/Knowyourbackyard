@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20150602004309) do
+ActiveRecord::Schema.define(version: 20150602023502) do
 
   create_table "chats", force: true do |t|
     t.datetime "created_at"
@@ -78,6 +78,15 @@ ActiveRecord::Schema.define(version: 20150602004309) do
   add_index "ratings", ["trail_id"], name: "index_ratings_on_trail_id"
   add_index "ratings", ["user_id"], name: "index_ratings_on_user_id"
 
+  create_table "reviewdiputes", force: true do |t|
+    t.text     "comment"
+    t.integer  "review_id"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  add_index "reviewdiputes", ["review_id"], name: "index_reviewdiputes_on_review_id"
+
   create_table "reviews", force: true do |t|
     t.text     "name_review"
     t.text     "location_review"
@@ -97,6 +106,32 @@ ActiveRecord::Schema.define(version: 20150602004309) do
 
   add_index "reviews", ["trail_id"], name: "index_reviews_on_trail_id"
   add_index "reviews", ["user_id"], name: "index_reviews_on_user_id"
+
+  create_table "revisiondiputes", force: true do |t|
+    t.text     "comment"
+    t.integer  "revisionreview_id"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  add_index "revisiondiputes", ["revisionreview_id"], name: "index_revisiondiputes_on_revisionreview_id"
+
+  create_table "revisionreviews", force: true do |t|
+    t.text     "name_review"
+    t.text     "location_review"
+    t.text     "season_review"
+    t.text     "trailtype_review"
+    t.text     "gps_review"
+    t.string   "traildirection_review"
+    t.text     "finalcomments"
+    t.integer  "user_id"
+    t.integer  "revision_id"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  add_index "revisionreviews", ["revision_id"], name: "index_revisionreviews_on_revision_id"
+  add_index "revisionreviews", ["user_id"], name: "index_revisionreviews_on_user_id"
 
   create_table "revisions", force: true do |t|
     t.integer  "trail_id"

@@ -1,5 +1,5 @@
 class ReviewsController < ApplicationController
-  before_action :ensure_trailblazer!, only: [:show, :new, :create, :edit]
+  before_action :ensure_trailblazer!, only: [:show, :new, :create, :edit, :destroy]
   before_action :ensure_admin!, only: [:index,:update]
   before_action :set_review, only: [:show, :edit, :update, :destroy]
 
@@ -11,6 +11,8 @@ class ReviewsController < ApplicationController
   end
 
   def show
+    @trail = Trail.find(@review.trail_id)
+    @rate = Rating.where(trail_id: @trail.id,user_id: @trail.user_id).first
     respond_with(@review)
   end
 
@@ -31,7 +33,7 @@ class ReviewsController < ApplicationController
       @review = Review.new(review_params)
       @trail.update_attribute(:status, "Under review")
       @review.save
-      @note = Notification.new(message: "Your Trail: id: #{@trail.id} Name: #{@trail.name}, has been reviewed and changes are requested.", link: "<a href=\"\/trails\/#{@trail.id}\">Go to Trail<\/a>", user_id: @trail.user_id)
+      @note = Notification.new(message: "Your Trail: id: #{@trail.id} Name: #{@trail.name}, has been reviewed and changes are requested.", link: "<a href=\"\/reviews\/#{@review.id}\">Go to Trail Review<\/a>", user_id: @trail.user_id)
     else
       @trailuser = User.find(@trail.user_id)
       @trail.update_attribute(:status, "Accepted")

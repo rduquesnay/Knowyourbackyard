@@ -1,0 +1,22 @@
+<%= form_for(@revisiondipute) do |f| %>
+  <% if @revisiondipute.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(@revisiondipute.errors.count, "error") %> prohibited this revisiondipute from being saved:</h2>
+
+      <ul>
+      <% @revisiondipute.errors.full_messages.each do |message| %>
+        <li><%= message %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+  <%= f.hidden_field :revisionreview_id, value: @id %>
+
+  <div class="field">
+    <%= f.label :comment %><br>
+    <%= f.text_area :comment, class: "form-control" %>
+  </div>
+  <div class="actions">
+    <%= f.submit %>
+  </div>
+<% end %>
