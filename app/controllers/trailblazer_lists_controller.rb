@@ -5,6 +5,7 @@ class TrailblazerListsController < ApplicationController
   def trailsreview
     @review = Trail.unreviewed
     @revision = Revision.all
-    @disputed = Dispute.all
+    @reviewDispute = Reviewdispute.all
+    @revisionDispue = RevisionDispute.all
   end
 end

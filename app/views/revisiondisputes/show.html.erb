@@ -1,0 +1,14 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>Comment:</strong>
+  <%= @revisiondispute.comment %>
+</p>
+
+<p>
+  <strong>Revisionreview:</strong>
+  <%= @revisiondispute.revisionreview %>
+</p>
+
+<%= link_to 'Edit', edit_revisiondispute_path(@revisiondispute) %> |
+<%= link_to 'Back', revisiondisputes_path %>

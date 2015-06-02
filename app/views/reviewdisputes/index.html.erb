@@ -1,0 +1,27 @@
+<h1>Listing reviewdiputes</h1>
+
+<table>
+  <thead>
+    <tr>
+      <th>Comment</th>
+      <th>Review</th>
+      <th colspan="3"></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @reviewdisputes.each do |reviewdispute| %>
+      <tr>
+        <td><%= reviewdispute.comment %></td>
+        <td><%= reviewdispute.review %></td>
+        <td><%= link_to 'Show', reviewdispute %></td>
+        <td><%= link_to 'Edit', edit_reviewdispute_path(reviewdispute) %></td>
+        <td><%= link_to 'Destroy', reviewdispute, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<br>
+
+<%= link_to 'New Reviewdispute', new_reviewdispute_path %>

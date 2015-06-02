@@ -1,10 +1,10 @@
-<%= form_for(@revisiondipute) do |f| %>
-  <% if @revisiondipute.errors.any? %>
+<%= form_for(@revisiondispute) do |f| %>
+  <% if @revisiondispute.errors.any? %>
     <div id="error_explanation">
-      <h2><%= pluralize(@revisiondipute.errors.count, "error") %> prohibited this revisiondipute from being saved:</h2>
+      <h2><%= pluralize(@revisiondispute.errors.count, "error") %> prohibited this revisiondipute from being saved:</h2>
 
       <ul>
-      <% @revisiondipute.errors.full_messages.each do |message| %>
+      <% @revisiondispute.errors.full_messages.each do |message| %>
         <li><%= message %></li>
       <% end %>
       </ul>

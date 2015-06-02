@@ -1,6 +1,6 @@
 require 'test_helper'
 
-class RevisiondiputeTest < ActiveSupport::TestCase
+class ReviewdisputeTest < ActiveSupport::TestCase
   # test "the truth" do
   #   assert true
   # end

@@ -78,14 +78,14 @@ ActiveRecord::Schema.define(version: 20150602023502) do
   add_index "ratings", ["trail_id"], name: "index_ratings_on_trail_id"
   add_index "ratings", ["user_id"], name: "index_ratings_on_user_id"
 
-  create_table "reviewdiputes", force: true do |t|
+  create_table "reviewdisputes", force: true do |t|
     t.text     "comment"
     t.integer  "review_id"
     t.datetime "created_at"
     t.datetime "updated_at"
   end
 
-  add_index "reviewdiputes", ["review_id"], name: "index_reviewdiputes_on_review_id"
+  add_index "reviewdisputes", ["review_id"], name: "index_reviewdisputes_on_review_id"
 
   create_table "reviews", force: true do |t|
     t.text     "name_review"
@@ -107,14 +107,14 @@ ActiveRecord::Schema.define(version: 20150602023502) do
   add_index "reviews", ["trail_id"], name: "index_reviews_on_trail_id"
   add_index "reviews", ["user_id"], name: "index_reviews_on_user_id"
 
-  create_table "revisiondiputes", force: true do |t|
+  create_table "revisiondisputes", force: true do |t|
     t.text     "comment"
     t.integer  "revisionreview_id"
     t.datetime "created_at"
     t.datetime "updated_at"
   end
 
-  add_index "revisiondiputes", ["revisionreview_id"], name: "index_revisiondiputes_on_revisionreview_id"
+  add_index "revisiondisputes", ["revisionreview_id"], name: "index_revisiondisputes_on_revisionreview_id"
 
   create_table "revisionreviews", force: true do |t|
     t.text     "name_review"

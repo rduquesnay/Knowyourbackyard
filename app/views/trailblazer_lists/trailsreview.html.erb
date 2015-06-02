@@ -37,10 +37,19 @@
     </div>
     
     <div role="tabpanel" class="tab-pane" id="disputed">
-      <% if @disputed.count==0 %>
+      <% if @reviewDisputed.count==0 %>
         <p> No Trails Under Dispute </p>
       <%else%>
-        <%@dispute.each do |dispute| %>
+        <%@reviewDispute.each do |dispute| %>
+          <%= link_to dispute do %>
+            <%= render partial: "shared/listdispute", locals: {d: dispute} %>
+          <%end%>
+        <%end%>
+      <%end%>
+      <% if @revisionDisputed.count==0 %>
+        <p> No Revisions Under Dispute </p>
+      <%else%>
+        <%@revisionDispute.each do |dispute| %>
           <%= link_to dispute do %>
             <%= render partial: "shared/listdispute", locals: {d: dispute} %>
           <%end%>

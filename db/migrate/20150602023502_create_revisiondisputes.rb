@@ -1,6 +1,6 @@
-class CreateRevisiondiputes < ActiveRecord::Migration
+class CreateRevisiondisputes < ActiveRecord::Migration
   def change
-    create_table :revisiondiputes do |t|
+    create_table :revisiondisputes do |t|
       t.text :comment
       t.references :revisionreview, index: true
 

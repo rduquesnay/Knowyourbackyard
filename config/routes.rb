@@ -1,7 +1,7 @@
 Knowyourbackyard::Application.routes.draw do
-  resources :revisiondiputes
+  resources :revisiondisputes
   resources :revisionreviews
-  resources :reviewdiputes
+  resources :reviewdisputes
   resources :sponsors
   resources :messages, only: [:new, :create, :destroy]
   resources :contact_mails, only: [:new, :create]
