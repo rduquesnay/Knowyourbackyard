@@ -1,6 +1,6 @@
 .page-title {
   padding-top: 40px;
-  background: url(img/slide1.jpg);
+  background: url(slide1.jpg);
   background-size: cover;
   background-position: center;
 }
@@ -57,4 +57,267 @@
 .scrollToTop:hover i {
   opacity: 1;
   color: #fff;
+}
+
+.no-js {
+  padding-top: 106px;
+}
+
+.loading {
+  background: url('ico_loading.gif') no-repeat center center;
+}
+
+.loaded section,
+.no-js section {
+  opacity: 1;
+  -webkit-transition: opacity 300ms ease-out;
+  -moz-transition: opacity 300ms ease-out;
+  transition: opacity 300ms ease-out;
+}
+
+main {
+  overflow-x: hidden;
+}
+
+#preload {
+  width: 1px;
+  height: 1px;
+  overflow: hidden;
+  position: absolute;
+  top: 0;
+  left: 0;
+}
+
+.bcg {
+  background-position: center center;
+  background-repeat: no-repeat;
+  background-attachment: fixed;
+  background-size: cover;
+  height: 100%;
+  width: 100%;
+}
+
+.hsContainer {
+  width: 100%;
+  height: 100%;
+  overflow: hidden;
+  position: relative;
+}
+
+.hsContent {
+  position: absolute;
+  bottom: 100px;
+  right: 50px;
+}
+
+.loading #info-slide {
+  display: none;
+}
+
+.loaded #info-slide {
+  display: block;
+}
+
+.info-slide-content {
+  padding: 100px 50px;
+  padding-left: 150px;
+  padding-right: 150px;
+  color: #000;
+}
+
+.hsContent p.credit {
+  padding: 10px;
+  background: #FF7148;
+  color: #fff;
+}
+
+.hsContent p.credit a {
+  color: #000;
+}
+
+.hsContent p.credit a:hover {
+  color: #fff;
+}
+
+#main-text {
+  padding-left: 125px;
+  padding-right: 125px;
+  font-size: 12pt;
+}
+
+/* Parallax Slides */
+
+#slide-1 .bcg {
+  background-image: url(slide1.jpg);
+}
+
+#slide-2 .bcg {
+  background-image: url(slide2.jpg);
+}
+
+#slide-3 .bcg {
+  background-image: url(slide3.jpg);
+}
+
+#slide-4 .bcg {
+  background-image: url(slide4.jpg);
+}
+
+#info-slide {
+  background: #A7DBD8;
+}
+#info-title {
+  font: 'Roboto', Verdana, Arial, sans-serif;
+  font-size: 40pt;
+  font-weight: 900;
+  text-align: center;
+}
+#info-para {
+  font: 'Roboto', Verdana, Arial, sans-serif;
+  text-align: center;
+}
+#info-large {
+  font-weight: bold;
+  font-size: 14pt;
+}
+#info-hashtag {
+  text-align: center;
+  font-weight: bold;
+  font-size: 25pt;
+  font: 'Roboto', Verdana, Arial, sans-serif;
+}
+/* Top Scroll Button */
+
+.scrollToTop {
+  display: none;
+  position: fixed;
+  bottom: 30px;
+  left: 30px;
+  padding: 10px;
+  border-radius: 3px;
+  background: #FF7148;
+  border: 1px solid #3B3A35;
+}
+
+.scrollToTop i {
+  color: #3B3A35;
+  opacity: 1;
+  font-size: 18px;
+}
+
+.scrollToTop:hover i {
+  opacity: 1;
+  color: #fff;
+}
+
+.bottom-bump {
+  bottom: 120px;
+}
+/* Media Queries */
+
+@media screen and (max-width: 767px) {
+
+  .navbar .navbar-nav > li > a {
+    line-height: 50px;
+  }
+
+  .navbar-inverse .navbar-nav .open .dropdown-menu>li>a {
+    color: #3B3A35;
+  }
+
+  .navbar .navbar-brand {
+    padding-left: 20px;
+  }
+
+  .scrollToTop {
+    bottom: 5px;
+    left: 5px;
+  }
+
+  #main-text.info-slide-content {
+    padding: 100px 50px;
+    color: #000;
+  }
+  .scrollToTop {
+    display: none !important;
+  }
+
+}
+
+@media screen and (max-width: 479px) {
+
+  body {
+    padding-top: 59px;
+  }
+
+  .navbar-brand .logo {
+    max-width: 45px;
+  }
+
+  .navbar .navbar-brand {
+    padding-left: 10px;
+  }
+
+  .navbar-inverse .navbar-toggle {
+    margin-top: 10px;
+    margin-right: 10px;
+  }
+
+  .navbar-brand span {
+    font-size: 16px;
+    line-height: 40px;
+  }
+
+  .hsContent {
+    right: 0;
+    left: 0;
+    margin-left: 50%;
+    transform: translate(-50%, 0);
+    text-align: center;
+  }
+
+  .site-footer {
+    padding: 15px 0;
+    text-align: center;
+  }
+
+  .site-footer .copyright {
+    margin-bottom: 10px;
+  }
+
+  .site-footer .copyright,
+  .site-footer .contact {
+    float: none;
+  }
+
+  #main-text.info-slide-content {
+    padding: 50px 50px;
+    padding-left: 10px;
+    padding-right: 10px;
+    color: #000;
+  }
+
+  #info-title {
+    font: 'Roboto', Verdana, Arial, sans-serif;
+    font-size: 25pt;
+    font-weight: 900;
+    text-align: center;
+  }
+
+  #info-para {
+    font: 'Roboto', Verdana, Arial, sans-serif;
+    text-align: center;
+  }
+
+  #info-large {
+    font-weight: bold;
+    font-size: 14pt;
+  }
+
+  #info-hashtag {
+    text-align: center;
+    font-weight: bold;
+    font-size: 16pt;
+    font: 'Roboto', Verdana, Arial, sans-serif;
+  }
 }

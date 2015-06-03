@@ -22,7 +22,7 @@
  *= require footer.css.scss
  *= require_self
  */
-
+@import url(http://fonts.googleapis.com/css?family=Roboto:500,900,700,400|Open+Sans:400italic,600italic,400,600,700,800);
 html,
 body {
   height: 100%;
@@ -41,25 +41,32 @@ body {
 .field{
   color: black;
 }
-/*
-a {
-  color: #3B3A35;
-  transition: color 0.2s ease-in-out;
-}
-*/
+
+
 p.title-font {
   font: 'Roboto', Verdana, Arial, sans-serif;
   font-size: 35pt;
   font-weight: 700; 
 }
-/*
+a {
+  color: #3B3A35;
+  transition: color 0.2s ease-in-out;
+}
+
 a:hover,
 a:focus,
 a:active {
   color: #fff;
   text-decoration: none;
 }
-*/
+
+.well a:hover,
+.well a:focus,
+.well a:active {
+  color: #00F;
+  text-decoration: none;
+}
+
 .content {
   background: #A7DBD8;
   color: #000;
