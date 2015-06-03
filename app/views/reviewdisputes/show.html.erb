@@ -1,14 +1,189 @@
+<% content_for :title do %>
+  Trail Review Dispute Page
+<% end %>
 <p id="notice"><%= notice %></p>
 
-<p>
-  <strong>Comment:</strong>
-  <%= @reviewdispute.comment %>
-</p>
-
-<p>
-  <strong>Review:</strong>
-  <%= @reviewdispute.review %>
-</p>
-
-<%= link_to 'Edit', edit_reviewdispute_path(@reviewdispute) %> |
-<%= link_to 'Back', reviewdisputes_path %>
+<h1 class="text-center">Trail Review Dispute</h1>
+<div class="well">
+  <div class="row">
+    <div class="col-md-4">
+      <h3>Trail Details</h3>
+    </div>
+    <div class="col-md-5">
+      <h3>Review</h3>
+    </div>
+  </div>
+  <div class="row">
+    <% if @review.name_review=="" %>
+      <div class="col-md-4">
+    <%else%>
+      <div class="col-md-4 danger">
+    <%end%>
+      <p>
+      <strong>Trail Name: </strong>
+      <%= @trail.name %>
+      </p>
+    </div>
+    <div class="col-md-5 col-md-offset-3">
+      <p>
+      <%= @review.name_review %>
+      </p>
+    </div>
+  </div>
+  <div class="row">
+    <% if @review.location_review=="" %>
+      <div class="col-md-4">
+    <%else%>
+      <div class="col-md-4 danger">
+    <%end%>
+      <p>
+      <strong>Location: </strong>
+      <%= @trail.location %>
+      </p>
+    </div>
+    <div class="col-md-5 col-md-offset-3">
+      <p>
+      <%= @review.location_review %>
+      </p>
+    </div>
+  </div>
+  <div class="row">
+    <% if @review.rating_difficulty_review=="" %>
+      <div class="col-md-4">
+    <%else%>
+      <div class="col-md-4 danger">
+    <%end%>
+      <p>
+      <strong>Difficulty: </strong>
+      <%for i in 0..5 %>
+        <%if i==@rate.difficulty%>
+          <%break%>
+        <%end%>
+        <span class="glyphicon glyphicon-star"> </span> 
+      <%end%>
+      </p>
+    </div>
+    <div class="col-md-5 col-md-offset-3">
+      <p>
+      <%= @review.rating_difficulty_review %>
+      </p>
+    </div>
+  </div>
+  <div class="row">
+    <% if @review.rating_duration_review=="" %>
+      <div class="col-md-4">
+    <%else%>
+      <div class="col-md-4 danger">
+    <%end%>
+      <p>
+      <strong>Duration: </strong>
+      <%= @rate.durationinsec %>
+      </p>
+    </div>
+    <div class="col-md-5 col-md-offset-3">
+      <p>
+      <%= @review.rating_duration_review %>
+      </p>
+    </div>
+  </div>
+  <div class="row">
+    <% if @review.season_review=="" %>
+      <div class="col-md-4">
+    <%else%>
+      <div class="col-md-4 danger">
+    <%end%>
+      <p>
+      <strong>Season: </strong>
+      <%= @trail.season %>
+      </p>
+    </div>
+    <div class="col-md-5 col-md-offset-3">
+      <p>
+      <%= @review.season_review %>
+      </p>
+    </div>
+  </div>
+  <div class="row">
+    <% if @review.trailtype_review=="" %>
+      <div class="col-md-4">
+    <%else%>
+      <div class="col-md-4 danger">
+    <%end%>
+      <p>
+      <strong>Type: </strong>
+      <%= @trail.trailtype %>
+      </p>
+    </div>
+    <div class="col-md-5 col-md-offset-3">
+      <p>
+      <%= @review.trailtype_review %>
+      </p>
+    </div>
+  </div>
+  <div class="row">
+    <% if @review.length_review=="" %>
+      <div class="col-md-4">
+    <%else%>
+      <div class="col-md-4 danger">
+    <%end%>
+      <p>
+      <strong>Length: </strong>
+      <%= @trail.length %>
+      </p>
+    </div>
+    <div class="col-md-5 col-md-offset-3">
+      <p>
+      <%= @review.length_review %>
+      </p>
+    </div>
+  </div>
+  <div class="row">
+    <% if @review.gps_review=="" %>
+      <div class="col-md-4">
+    <%else%>
+      <div class="col-md-4 danger">
+    <%end%>
+      <p>
+      <strong>GPS: </strong>
+      lat: <%= @trail.latitude %>, long: <%= @trail.longitude %>
+      </p>
+    </div>
+    <div class="col-md-5 col-md-offset-3">
+      <p>
+        <%= @review.gps_review %>
+      </p>
+    </div>
+  </div>
+  <div class="row">
+    <% if @review.traildirections_review=="" %>
+      <div class="col-md-4">
+    <%else%>
+      <div class="col-md-4 danger">
+    <%end%>
+      <p>
+      <strong>Trail Directions/Description</strong>
+      <%= @trail.traildirections %>  
+      </p>
+    </div>
+    <div class="col-md-5 col-md-offset-3">
+      <p>
+      <%= @review.traildirections_review %>
+      </p>
+    </div>
+  </div>
+  <div class="well">
+    <strong>Final Comments</strong><br>
+    <p>
+    <%= @review.finalcomments %>
+    </p>
+  </div>
+</div>
+<div class="well">
+  <div class="row">
+    <div class="col-md-10">
+      <p>
+      <%= @reviewdispute.comment %>
+      </p>
+    </div>
+  </div>
+</div>

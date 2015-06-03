@@ -12,6 +12,9 @@ class ReviewdisputesController < ApplicationController
   end
 
   def show
+    @review = @reviewdispute.review
+    @trail = @review.trail
+    @rate = Rating.where(trail_id: @trail.id,user_id: @trail.user_id).first
     respond_with(@reviewdispute)
   end
 
