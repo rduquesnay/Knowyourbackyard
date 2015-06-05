@@ -42,7 +42,7 @@
       <%else%>
         <%@reviewDispute.each do |dispute| %>
           <%= link_to dispute do %>
-            <%= render partial: "shared/listdispute", locals: {d: dispute} %>
+            <%= render partial: "shared/listreviewdisputes", locals: {d: dispute} %>
           <%end%>
         <%end%>
       <%end%>
@@ -51,7 +51,7 @@
       <%else%>
         <%@revisionDispute.each do |dispute| %>
           <%= link_to dispute do %>
-            <%= render partial: "shared/listdispute", locals: {d: dispute} %>
+            <%= render partial: "shared/listrevisiondisputes", locals: {d: dispute} %>
           <%end%>
         <%end%>
       <%end%>

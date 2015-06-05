@@ -1,0 +1,209 @@
+<%= form_for(@resolvedrevisiondispute) do |f| %>
+  <% if @resolvedrevisiondispute.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(@resolvedrevisiondispute.errors.count, "error") %> prohibited this resolvedrevisiondispute from being saved:</h2>
+
+      <ul>
+      <% @resolvedrevisiondispute.errors.full_messages.each do |message| %>
+        <li><%= message %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+  <h1 class="text-center">Revision Review Dispute</h1>
+  <div class="well">
+    <div class="row">
+      <div class="col-md-3">
+        <h3>Old Trail Details</h3>
+      </div>
+      <div class="col-md-3">
+        <h3>New Trail Details</h3>
+      </div>
+      <div class="col-md-5">
+        <h3>Review</h3>
+      </div>
+    </div>
+    <div class="row">
+      <div class="col-md-3">
+        <p>
+        <strong>Trail Name: </strong>
+        <%= @trail.name %>
+        </p>
+      </div>
+      <div class="col-md-3">
+        <p>
+        <%= @revision.name %>
+        </p>
+      </div>
+      <div class="col-md-5">
+        <p>
+        <%= @revisionreview.name_review %>
+        </p>
+      </div>
+    </div>
+    <div class="row">
+      <div class="col-md-3">
+        <p>
+        <strong>Location: </strong>
+        <%= @trail.location %>
+        </p>
+      </div>
+      <div class="col-md-3">
+        <p>
+        <%= @revision.location %>
+        </p>
+      </div>
+      <div class="col-md-5">
+        <p>
+        <%= @revisionreview.location_review %>
+        </p>
+      </div>
+    </div>
+    <div class="row">
+      <div class="col-md-3">
+        <p>
+        <strong>Season: </strong>
+        <%= @trail.season %>
+        </p>
+      </div>
+      <div class="col-md-3">
+        <p>
+        <%= @revision.season %>
+        </p>
+      </div>
+      <div class="col-md-5">
+        <p>
+        <%= @revisionreview.season_review %>
+        </p>
+      </div>
+    </div>
+    <div class="row">
+      <div class="col-md-3">
+        <p>
+        <strong>Type: </strong>
+        <%= @trail.trailtype %>
+        </p>
+      </div>
+      <div class="col-md-3">
+        <p>
+        <%= @revision.trailtype %>
+        </p>
+      </div>
+      <div class="col-md-5">
+        <p>
+        <%= @revisionreview.trailtype_review %>
+        </p>
+      </div>
+    </div>
+    <div class="row">
+      <div class="col-md-3">
+        <p>
+        <strong>Length: </strong>
+        <%= @trail.length %>
+        </p>
+      </div>
+      <div class="col-md-3">
+        <p>
+        <%= @revision.length %>
+        </p>
+      </div>
+      <div class="col-md-5">
+        <p>
+        <%= @revisionreview.length_review %>
+        </p>
+      </div>
+    </div>
+    <div class="row">
+      <div class="col-md-3">
+        <p>
+        <strong>GPS: </strong>
+        lat: <%= @trail.latitude %>, long: <%= @trail.longitude %>
+        </p>
+      </div>
+      <div class="col-md-3">
+        <p>
+        lat: <%= @revision.latitude %>, long: <%= @revision.longitude %>
+        </p>
+      </div>
+      <div class="col-md-5">
+        <p>
+        <%= @revisionreview.gps_review %>
+        </p>
+      </div>
+    </div>
+    <div class="row">
+      <div class="col-md-3">
+        <p>
+        <strong>Trail Directions/Description</strong>
+        <%= @trail.traildirections %>  
+        </p>
+      </div>
+      <div class="col-md-3">
+        <p>
+        <%= @revision.traildirections %>  
+        </p>
+      </div>
+      <div class="col-md-5">
+        <p>
+        <%= @revisionreview.traildirection_review %>
+        </p>
+      </div>
+    </div>
+    <div class="well">
+      <strong>Final Comments</strong><br>
+      <p>
+      <%= @revisionreview.finalcomments %>
+      </p>
+    </div>
+  </div>
+  <div class="well">
+    <div class="row">
+      <div class="col-md-10">
+        <p>
+        <strong>Dispute Reason:</strong><br>
+        <%= @revisiondispute.comment %>
+        </p>
+      </div>
+    </div>
+  </div>
+  <%= f.hidden_field :trail_id, value: @trail.id %>
+  <%= f.hidden_field :revision_id, value: @revision.id %>
+  <%= f.hidden_field :revisied_name, value: @revision.name %>
+  <%= f.hidden_field :revisied_location, value: @revision.location %>
+  <%= f.hidden_field :revisied_season, value: @revision.season %>
+  <%= f.hidden_field :revisied_length, value: @revision.length %>
+  <%= f.hidden_field :revisied_trailtype, value: @revision.trailtype %>
+  <%= f.hidden_field :revisied_latitude, value: @revision.latitude %>
+  <%= f.hidden_field :revisied_longitude, value: @revision.longitude %>
+  <%= f.hidden_field :revisied_traildirections, value: @revision.traildirections %>
+  <%= f.hidden_field :review_id, value: @revisionreview.id %>
+  <%= f.hidden_field :name_review, value: @revisionreview.name_review %>
+  <%= f.hidden_field :location_review, value: @revisionreview.location_review %>
+  <%= f.hidden_field :length_review, value: @revisionreview.length_review %>
+  <%= f.hidden_field :season_review, value: @revisionreview.season_review %>
+  <%= f.hidden_field :trailtype_review, value: @revisionreview.trailtype_review %>
+  <%= f.hidden_field :gps_review, value: @revisionreview.gps_review %>
+  <%= f.hidden_field :traildirections_review, value: @revisionreview.traildirection_review %>
+  <%= f.hidden_field :finalcomments, value: @revisionreview.finalcomments %>
+  <%= f.hidden_field :review_user_id, value: @revisionreview.user_id %>
+  <%= f.hidden_field :dispute_comment, value: @revisiondispute.comment %>
+  <%= hidden_field_tag :dispute_id, value= @revisiondispute.id %>
+  <div class="field">
+    <%= f.label :dispute_action %>
+    <div class="input-group">
+      <span class="input-group-addon">
+        <%= f.radio_button :dispute_action, "Accepted" %>
+        <%= f.label :dispute_action, 'Accept', :value => "Accepted" %>
+        <%= f.radio_button :dispute_action, "Dismissed" %>
+        <%= f.label :dispute_action, 'Dismiss', :value => "Dismissed" %>
+      </span>
+    </div>
+  </div>
+  <div class="field">
+    <%= f.label :comment %><br>
+    <%= f.text_area :comment, class: "form-control" %>
+  </div>
+  <div class="actions">
+    <%= f.submit "Resolve" %>
+  </div>
+<% end %>

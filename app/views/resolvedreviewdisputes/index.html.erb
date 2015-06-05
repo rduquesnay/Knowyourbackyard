@@ -1,0 +1,55 @@
+<h1>Listing resolvedreviewdisputes</h1>
+
+<table>
+  <thead>
+    <tr>
+      <th>Trail</th>
+      <th>Review</th>
+      <th>Name review</th>
+      <th>Location review</th>
+      <th>Rating difficulty review</th>
+      <th>Rating duration review</th>
+      <th>Season review</th>
+      <th>Trailtype review</th>
+      <th>Length review</th>
+      <th>Gps review</th>
+      <th>Traildirections review</th>
+      <th>Finalcomments</th>
+      <th>Review user</th>
+      <th>Dispute comment</th>
+      <th>Dispute action</th>
+      <th>Comment</th>
+      <th colspan="3"></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @resolvedreviewdisputes.each do |resolvedreviewdispute| %>
+      <tr>
+        <td><%= resolvedreviewdispute.trail %></td>
+        <td><%= resolvedreviewdispute.review_id %></td>
+        <td><%= resolvedreviewdispute.name_review %></td>
+        <td><%= resolvedreviewdispute.location_review %></td>
+        <td><%= resolvedreviewdispute.rating_difficulty_review %></td>
+        <td><%= resolvedreviewdispute.rating_duration_review %></td>
+        <td><%= resolvedreviewdispute.season_review %></td>
+        <td><%= resolvedreviewdispute.trailtype_review %></td>
+        <td><%= resolvedreviewdispute.length_review %></td>
+        <td><%= resolvedreviewdispute.gps_review %></td>
+        <td><%= resolvedreviewdispute.traildirections_review %></td>
+        <td><%= resolvedreviewdispute.finalcomments %></td>
+        <td><%= resolvedreviewdispute.review_user_id %></td>
+        <td><%= resolvedreviewdispute.dispute_comment %></td>
+        <td><%= resolvedreviewdispute.dispute_action %></td>
+        <td><%= resolvedreviewdispute.comment %></td>
+        <td><%= link_to 'Show', resolvedreviewdispute %></td>
+        <td><%= link_to 'Edit', edit_resolvedreviewdispute_path(resolvedreviewdispute) %></td>
+        <td><%= link_to 'Destroy', resolvedreviewdispute, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<br>
+
+<%= link_to 'New Resolvedreviewdispute', new_resolvedreviewdispute_path %>

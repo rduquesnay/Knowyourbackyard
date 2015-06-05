@@ -25,8 +25,8 @@ class RevisionsController < ApplicationController
   end
 
   def create
-    @trail = Trail.find(revision_params[:trail_id])
     @revision = Revision.new(revision_params)
+    @trail = Trail.find(@revision.trail_id)
     @revision.save
     #@note = Notification.new(message: "Your Trail: id: #{@trail.id} Name: #{@trail.name}, a revision has been submitted for it", link: "<a href=\"\/revisions\/#{@revision.id}\">Go to Revision<\/a>", user_id: @trail.user_id)
     #@note.save
@@ -49,6 +49,6 @@ class RevisionsController < ApplicationController
     end
 
     def revision_params
-      params.require(:revision).permit(:name_review, :location_review, :season_review, :trailtype_review, :gps_review, :traildirections_review, :trail_id, :user_id)
+      params.require(:revision).permit(:name, :location, :season, :length, :trailtype, :latitude,:longitude, :traildirections, :trail_id, :user_id)
     end
 end

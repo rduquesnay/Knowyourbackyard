@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20150602023502) do
+ActiveRecord::Schema.define(version: 20150604231345) do
 
   create_table "chats", force: true do |t|
     t.datetime "created_at"
@@ -78,6 +78,59 @@ ActiveRecord::Schema.define(version: 20150602023502) do
   add_index "ratings", ["trail_id"], name: "index_ratings_on_trail_id"
   add_index "ratings", ["user_id"], name: "index_ratings_on_user_id"
 
+  create_table "resolvedreviewdisputes", force: true do |t|
+    t.integer  "trail_id"
+    t.integer  "review_id"
+    t.text     "name_review"
+    t.text     "location_review"
+    t.text     "rating_difficulty_review"
+    t.text     "rating_duration_review"
+    t.text     "season_review"
+    t.text     "trailtype_review"
+    t.text     "length_review"
+    t.text     "gps_review"
+    t.text     "traildirections_review"
+    t.text     "finalcomments"
+    t.integer  "review_user_id"
+    t.text     "dispute_comment"
+    t.string   "dispute_action"
+    t.text     "comment"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  add_index "resolvedreviewdisputes", ["trail_id"], name: "index_resolvedreviewdisputes_on_trail_id"
+
+  create_table "resolvedrevisiondisputes", force: true do |t|
+    t.integer  "trail_id"
+    t.integer  "revision_id"
+    t.string   "revisied_name"
+    t.string   "revisied_location"
+    t.string   "revisied_season"
+    t.string   "revisied_trailtype"
+    t.float    "revisied_latitude"
+    t.float    "revisied_longitude"
+    t.text     "revisied_traildirections"
+    t.integer  "review_id"
+    t.text     "name_review"
+    t.text     "location_review"
+    t.text     "length_review"
+    t.text     "season_review"
+    t.text     "trailtype_review"
+    t.text     "gps_review"
+    t.text     "traildirections_review"
+    t.text     "finalcomments"
+    t.string   "review_user_id"
+    t.text     "dispute_comment"
+    t.string   "dispute_action"
+    t.text     "comment"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+    t.text     "revisied_length"
+  end
+
+  add_index "resolvedrevisiondisputes", ["trail_id"], name: "index_resolvedrevisiondisputes_on_trail_id"
+
   create_table "reviewdisputes", force: true do |t|
     t.text     "comment"
     t.integer  "review_id"
@@ -128,6 +181,7 @@ ActiveRecord::Schema.define(version: 20150602023502) do
     t.integer  "revision_id"
     t.datetime "created_at"
     t.datetime "updated_at"
+    t.text     "length_review"
   end
 
   add_index "revisionreviews", ["revision_id"], name: "index_revisionreviews_on_revision_id"

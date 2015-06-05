@@ -1,0 +1,67 @@
+<h1>Listing resolvedrevisiondisputes</h1>
+
+<table>
+  <thead>
+    <tr>
+      <th>Trail</th>
+      <th>Revision</th>
+      <th>Revisied name</th>
+      <th>Revisied location</th>
+      <th>Revisied season</th>
+      <th>Revisied trailtype</th>
+      <th>Revisied latitude</th>
+      <th>Revisied longitude</th>
+      <th>Revisied traildirections</th>
+      <th>Review</th>
+      <th>Name review</th>
+      <th>Location review</th>
+      <th>Length review</th>
+      <th>Season review</th>
+      <th>Trailtype review</th>
+      <th>Gps review</th>
+      <th>Traildirections review</th>
+      <th>Finalcomments</th>
+      <th>Review user</th>
+      <th>Dispute comment</th>
+      <th>Dispute action</th>
+      <th>Comment</th>
+      <th colspan="3"></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @resolvedrevisiondisputes.each do |resolvedrevisiondispute| %>
+      <tr>
+        <td><%= resolvedrevisiondispute.trail %></td>
+        <td><%= resolvedrevisiondispute.revision_id %></td>
+        <td><%= resolvedrevisiondispute.revisied_name %></td>
+        <td><%= resolvedrevisiondispute.revisied_location %></td>
+        <td><%= resolvedrevisiondispute.revisied_season %></td>
+        <td><%= resolvedrevisiondispute.revisied_trailtype %></td>
+        <td><%= resolvedrevisiondispute.revisied_latitude %></td>
+        <td><%= resolvedrevisiondispute.revisied_longitude %></td>
+        <td><%= resolvedrevisiondispute.revisied_traildirections %></td>
+        <td><%= resolvedrevisiondispute.review_id %></td>
+        <td><%= resolvedrevisiondispute.name_review %></td>
+        <td><%= resolvedrevisiondispute.location_review %></td>
+        <td><%= resolvedrevisiondispute.length_review %></td>
+        <td><%= resolvedrevisiondispute.season_review %></td>
+        <td><%= resolvedrevisiondispute.trailtype_review %></td>
+        <td><%= resolvedrevisiondispute.gps_review %></td>
+        <td><%= resolvedrevisiondispute.traildirections_review %></td>
+        <td><%= resolvedrevisiondispute.finalcomments %></td>
+        <td><%= resolvedrevisiondispute.review_user_id %></td>
+        <td><%= resolvedrevisiondispute.dispute_comment %></td>
+        <td><%= resolvedrevisiondispute.dispute_action %></td>
+        <td><%= resolvedrevisiondispute.comment %></td>
+        <td><%= link_to 'Show', resolvedrevisiondispute %></td>
+        <td><%= link_to 'Edit', edit_resolvedrevisiondispute_path(resolvedrevisiondispute) %></td>
+        <td><%= link_to 'Destroy', resolvedrevisiondispute, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<br>
+
+<%= link_to 'New Resolvedrevisiondispute', new_resolvedrevisiondispute_path %>

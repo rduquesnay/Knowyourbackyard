@@ -1,41 +1,38 @@
-<% content_for :title do %>
-  Revision Review Page
-<% end %>
 <p id="notice"><%= notice %></p>
-
-<h1 class="text-center">Revision Review Results</h1>
-<div class="well">
+<h1 class="text-center">Resolved Revision Review Dispute</h1>
   <p>
-    Please go through the review and correct any fields flagged for error. You may resubmit for review once finished.
+  <strong>Trail Name: </strong>
+  <%= @trail.name %>
   </p>
-</div>
+  <p>
+    <strong>Review user:</strong>
+    <%= @resolvedrevisiondispute.review_user_id %>
+  </p>
 <div class="well">
   <div class="row">
     <div class="col-md-3">
-      <h3>Old Trail Details</h3>
     </div>
     <div class="col-md-3">
-      <h3>New Trail Details</h3>
+      <h3>Revision Details</h3>
     </div>
     <div class="col-md-5">
-      <h3>Reason</h3>
+      <h3>Review</h3>
     </div>
   </div>
   <div class="row">
     <div class="col-md-3">
       <p>
       <strong>Trail Name: </strong>
-      <%= @trail.name %>
       </p>
     </div>
     <div class="col-md-3">
       <p>
-      <%= @revision.name %>
+      <%= @resolvedrevisiondispute.revisied_name %>
       </p>
     </div>
     <div class="col-md-5">
       <p>
-      <%= @revisionreview.name_review %>
+      <%= @resolvedrevisiondispute.name_review %>
       </p>
     </div>
   </div>
@@ -43,17 +40,16 @@
     <div class="col-md-3">
       <p>
       <strong>Location: </strong>
-      <%= @trail.location %>
       </p>
     </div>
     <div class="col-md-3">
       <p>
-      <%= @revision.location %>
+      <%= @resolvedrevisiondispute.revisied_location %>
       </p>
     </div>
     <div class="col-md-5">
       <p>
-      <%= @revisionreview.location_review %>
+      <%= @resolvedrevisiondispute.location_review %>
       </p>
     </div>
   </div>
@@ -61,17 +57,16 @@
     <div class="col-md-3">
       <p>
       <strong>Season: </strong>
-      <%= @trail.season %>
       </p>
     </div>
     <div class="col-md-3">
       <p>
-      <%= @revision.season %>
+      <%= @resolvedrevisiondispute.revisied_season %>
       </p>
     </div>
     <div class="col-md-5">
       <p>
-      <%= @revisionreview.season_review %>
+      <%= @resolvedrevisiondispute.season_review %>
       </p>
     </div>
   </div>
@@ -79,17 +74,16 @@
     <div class="col-md-3">
       <p>
       <strong>Type: </strong>
-      <%= @trail.trailtype %>
       </p>
     </div>
     <div class="col-md-3">
       <p>
-      <%= @revision.trailtype %>
+      <%= @resolvedrevisiondispute.revisied_trailtype %>
       </p>
     </div>
     <div class="col-md-5">
       <p>
-      <%= @revisionreview.trailtype_review %>
+      <%= @resolvedrevisiondispute.trailtype_review %>
       </p>
     </div>
   </div>
@@ -97,17 +91,16 @@
     <div class="col-md-3">
       <p>
       <strong>Length: </strong>
-      <%= @trail.length %>
       </p>
     </div>
     <div class="col-md-3">
       <p>
-      <%= @revision.length %>
+      <%= @resolvedrevisiondispute.revisied_length %>
       </p>
     </div>
     <div class="col-md-5">
       <p>
-      <%= @revisionreview.length_review %>
+      <%= @resolvedrevisiondispute.length_review %>
       </p>
     </div>
   </div>
@@ -115,17 +108,16 @@
     <div class="col-md-3">
       <p>
       <strong>GPS: </strong>
-      lat: <%= @trail.latitude %>, long: <%= @trail.longitude %>
       </p>
     </div>
     <div class="col-md-3">
       <p>
-      lat: <%= @revision.latitude %>, long: <%= @revision.longitude %>
+      lat: <%= @resolvedrevisiondispute.revisied_latitude %>, long: <%= @resolvedrevisiondispute.revisied_longitude %>
       </p>
     </div>
     <div class="col-md-5">
       <p>
-      <%= @revisionreview.gps_review %>
+      <%= @resolvedrevisiondispute.gps_review %>
       </p>
     </div>
   </div>
@@ -133,24 +125,23 @@
     <div class="col-md-3">
       <p>
       <strong>Trail Directions/Description</strong>
-      <%= @trail.traildirections %>  
       </p>
     </div>
     <div class="col-md-3">
       <p>
-      <%= @revision.traildirections %>  
+      <%= @resolvedrevisiondispute.revisied_traildirections %>
       </p>
     </div>
     <div class="col-md-5">
       <p>
-      <%= @revisionreview.traildirection_review %>
+      <%= @resolvedrevisiondispute.traildirections_review %>
       </p>
     </div>
   </div>
   <div class="well">
     <strong>Final Comments</strong><br>
     <p>
-    <%= @revisionreview.finalcomments %>
+    <%= @resolvedrevisiondispute.finalcomments %>
     </p>
   </div>
 </div>
@@ -158,13 +149,21 @@
   <div class="row">
     <div class="col-md-10">
       <p>
-      Don't agree with something in the review?
+        <%= @resolvedrevisiondispute.dispute_comment %>
       </p>
-    </div>
-    <div class="col-md-2">
-      <%= link_to "Dispute", controller: "revisiondisputes", action: "new", review_id: @revisionreview.id %><br><br>
-
-      <%= link_to "Edit Revision", edit_revision_path(@revision), class: "btn btn-primary" %>
     </div>
   </div>
 </div>
+<div class="well">
+  <p>
+    <strong>Dispute action: </strong>
+    <%= @resolvedrevisiondispute.dispute_action %>
+  </p>
+  <p>
+    <strong>Comment: </strong><br>
+    <%= @resolvedrevisiondispute.comment %>
+  </p>
+</div>
+</p>
+
+<%= link_to 'Back', resolvedrevisiondisputes_path %>

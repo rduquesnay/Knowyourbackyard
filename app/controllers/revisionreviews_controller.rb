@@ -1,5 +1,6 @@
 class RevisionreviewsController < ApplicationController
-  before_action :ensure_trailblazer!, only: [:show, :new, :create, :edit, :destroy]
+  before_action :authenticate_user!, only: :show
+  before_action :ensure_trailblazer!, only: [:new, :create, :edit, :destroy]
   before_action :ensure_admin!, only: [:index,:update]
   before_action :set_revisionreview, only: [:show, :edit, :update, :destroy]
 
@@ -11,7 +12,7 @@ class RevisionreviewsController < ApplicationController
   end
 
   def show
-    @revision = Revision.find(@revisionreview.revision_id])
+    @revision = Revision.find(@revisionreview.revision_id)
     @trail = Trail.find(@revision.trail_id)
     respond_with(@revisionreview)
   end
@@ -53,6 +54,6 @@ class RevisionreviewsController < ApplicationController
     end
 
     def revisionreview_params
-      params.require(:revisionreview).permit(:name_review, :location_review, :season_review, :trailtype_review, :gps_review, :traildirection_review, :finalcomments, :user_id, :revision_id)
+      params.require(:revisionreview).permit(:name_review, :location_review, :season_review, :length_review, :trailtype_review, :gps_review, :traildirection_review, :finalcomments, :user_id, :revision_id)
     end
 end

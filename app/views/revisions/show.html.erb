@@ -102,5 +102,5 @@
     <%= @revision.traildirections %>
   </div>
 </div>
-<%= link_to 'Make Review', controller: "revisionreview", action: "new", revision_id: @revision.id, class: "btn btn-primary" %><br><br>
-<%= link_to 'Accept Revision', controller: "actions", action: "set_trail_to_revsion", revision_id: @revision.id, class: "btn btn-primary" %>
+<%= link_to 'Make Review', controller: "revisionreviews", action: "new", revision_id: @revision.id, class: "btn btn-primary" %><br><br>
+<%= link_to 'Accept Revision', controller: "actions", action: "set_trail_to_revision", revision_id: @revision.id, class: "btn btn-primary" %>

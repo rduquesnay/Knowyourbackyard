@@ -1,0 +1,81 @@
+<%= form_for(@resolvedreviewdispute) do |f| %>
+  <% if @resolvedreviewdispute.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(@resolvedreviewdispute.errors.count, "error") %> prohibited this resolvedreviewdispute from being saved:</h2>
+
+      <ul>
+      <% @resolvedreviewdispute.errors.full_messages.each do |message| %>
+        <li><%= message %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="field">
+    <%= f.label :trail_id %><br>
+    <%= f.text_field :trail_id %>
+  </div>
+  <div class="field">
+    <%= f.label :review_id %><br>
+    <%= f.number_field :review_id %>
+  </div>
+  <div class="field">
+    <%= f.label :name_review %><br>
+    <%= f.text_area :name_review %>
+  </div>
+  <div class="field">
+    <%= f.label :location_review %><br>
+    <%= f.text_area :location_review %>
+  </div>
+  <div class="field">
+    <%= f.label :rating_difficulty_review %><br>
+    <%= f.text_area :rating_difficulty_review %>
+  </div>
+  <div class="field">
+    <%= f.label :rating_duration_review %><br>
+    <%= f.text_area :rating_duration_review %>
+  </div>
+  <div class="field">
+    <%= f.label :season_review %><br>
+    <%= f.text_area :season_review %>
+  </div>
+  <div class="field">
+    <%= f.label :trailtype_review %><br>
+    <%= f.text_area :trailtype_review %>
+  </div>
+  <div class="field">
+    <%= f.label :length_review %><br>
+    <%= f.text_area :length_review %>
+  </div>
+  <div class="field">
+    <%= f.label :gps_review %><br>
+    <%= f.text_area :gps_review %>
+  </div>
+  <div class="field">
+    <%= f.label :traildirections_review %><br>
+    <%= f.text_area :traildirections_review %>
+  </div>
+  <div class="field">
+    <%= f.label :finalcomments %><br>
+    <%= f.text_area :finalcomments %>
+  </div>
+  <div class="field">
+    <%= f.label :review_user_id %><br>
+    <%= f.number_field :review_user_id %>
+  </div>
+  <div class="field">
+    <%= f.label :dispute_comment %><br>
+    <%= f.text_area :dispute_comment %>
+  </div>
+  <div class="field">
+    <%= f.label :dispute_action %><br>
+    <%= f.text_field :dispute_action %>
+  </div>
+  <div class="field">
+    <%= f.label :comment %><br>
+    <%= f.text_area :comment %>
+  </div>
+  <div class="actions">
+    <%= f.submit %>
+  </div>
+<% end %>

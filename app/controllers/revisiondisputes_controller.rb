@@ -12,13 +12,15 @@ class RevisiondisputesController < ApplicationController
   end
 
   def show
-    @revision = @revisiondispute.revision
+    @revisionreview=@revisiondispute.revisionreview
+    @revision = @revisionreview.revision
     @trail = @revision.trail
     respond_with(@revisiondispute)
   end
 
   def new
     @revisiondispute = Revisiondispute.new
+    @id = params[:review_id] 
     respond_with(@revisiondispute)
   end
 
@@ -28,7 +30,7 @@ class RevisiondisputesController < ApplicationController
   def create
     @revisiondispute = Revisiondispute.new(revisiondispute_params)
     @revisiondispute.save
-    respond_with(@revisiondispute)
+    redirect_to root_path
   end
 
   def update
