@@ -1,84 +1,202 @@
 <p id="notice"><%= notice %></p>
-
-<p>
-  <strong>Trail:</strong>
-  <%= @resolvedreviewdispute.trail %>
+<h1 class="text-center">Resolved Review Dispute</h1>
+  <p>
+    <strong>Review user:</strong>
+    <%= @resolvedreviewdispute.review_user_id %>
+  </p>
+<div class="well">
+  <div class="row">
+    <div class="col-md-3">
+    </div>
+    <div class="col-md-3">
+      <h3>Trail Details</h3>
+    </div>
+    <div class="col-md-5">
+      <h3>Review</h3>
+    </div>
+  </div>
+  <div class="row">
+    <div class="col-md-3">
+      <p>
+      <strong>Trail Name: </strong>
+      </p>
+    </div>
+    <div class="col-md-3">
+      <p>
+      <%= @trail.name %>
+      </p>
+    </div>
+    <div class="col-md-5">
+      <p>
+      <%= @resolvedreviewdispute.name_review %>
+      </p>
+    </div>
+  </div>
+  <div class="row">
+    <div class="col-md-3">
+      <p>
+      <strong>Location: </strong>
+      </p>
+    </div>
+    <div class="col-md-3">
+      <p>
+      <%= @trail.location %>
+      </p>
+    </div>
+    <div class="col-md-5">
+      <p>
+      <%= @resolvedreviewdispute.location_review %>
+      </p>
+    </div>
+  </div>
+  <div class="row">
+    <div class="col-md-4">
+      <p>
+      <strong>Difficulty: </strong>
+      </p>
+    </div>
+    <div class="col-md-3">
+      <p>
+      <%for i in 0..5 %>
+        <%if i==@rate.difficulty%>
+          <%break%>
+        <%end%>
+        <span class="glyphicon glyphicon-star"> </span> 
+      <%end%>
+      </p>
+    </div>
+    <div class="col-md-5">
+      <p>
+      <%= @resolvedreviewdispute.rating_difficulty_review %>
+      </p>
+    </div>
+  </div>
+  <div class="row">
+    <div class="col-md-4">
+      <p>
+      <strong>Duration: </strong>
+      </p>
+    </div>
+    <div class="col-md-3">
+      <p>
+      <%= @rate.durationinsec %>
+      </p>
+    </div>
+    <div class="col-md-5">
+      <p>
+      <%= @resolvedreviewdispute.rating_duration_review %>
+      </p>
+    </div>
+  </div>
+  <div class="row">
+    <div class="col-md-3">
+      <p>
+      <strong>Season: </strong>
+      </p>
+    </div>
+    <div class="col-md-3">
+      <p>
+      <%= @trail.season %>
+      </p>
+    </div>
+    <div class="col-md-5">
+      <p>
+      <%= @resolvedreviewdispute.season_review %>
+      </p>
+    </div>
+  </div>
+  <div class="row">
+    <div class="col-md-3">
+      <p>
+      <strong>Type: </strong>
+      </p>
+    </div>
+    <div class="col-md-3">
+      <p>
+      <%= @trail.trailtype %>
+      </p>
+    </div>
+    <div class="col-md-5">
+      <p>
+      <%= @resolvedreviewdispute.trailtype_review %>
+      </p>
+    </div>
+  </div>
+  <div class="row">
+    <div class="col-md-3">
+      <p>
+      <strong>Length: </strong>
+      </p>
+    </div>
+    <div class="col-md-3">
+      <p>
+      <%= @trail.length %>
+      </p>
+    </div>
+    <div class="col-md-5">
+      <p>
+      <%= @resolvedreviewdispute.length_review %>
+      </p>
+    </div>
+  </div>
+  <div class="row">
+    <div class="col-md-3">
+      <p>
+      <strong>GPS: </strong>
+      </p>
+    </div>
+    <div class="col-md-3">
+      <p>
+      lat: <%= @trail.latitude %>, long: <%= @trail.longitude %>
+      </p>
+    </div>
+    <div class="col-md-5">
+      <p>
+      <%= @resolvedreviewdispute.gps_review %>
+      </p>
+    </div>
+  </div>
+  <div class="row">
+    <div class="col-md-3">
+      <p>
+      <strong>Trail Directions/Description</strong>
+      </p>
+    </div>
+    <div class="col-md-3">
+      <p>
+      <%= @trail.traildirections %>
+      </p>
+    </div>
+    <div class="col-md-5">
+      <p>
+      <%= @resolvedreviewdispute.traildirections_review %>
+      </p>
+    </div>
+  </div>
+  <div class="well">
+    <strong>Final Comments</strong><br>
+    <p>
+    <%= @resolvedreviewdispute.finalcomments %>
+    </p>
+  </div>
+</div>
+<div class="well">
+  <div class="row">
+    <div class="col-md-10">
+      <p>
+        <%= @resolvedreviewdispute.dispute_comment %>
+      </p>
+    </div>
+  </div>
+</div>
+<div class="well">
+  <p>
+    <strong>Dispute action: </strong>
+    <%= @resolvedreviewdispute.dispute_action %>
+  </p>
+  <p>
+    <strong>Comment: </strong><br>
+    <%= @resolvedreviewdispute.comment %>
+  </p>
+</div>
 </p>
-
-<p>
-  <strong>Review:</strong>
-  <%= @resolvedreviewdispute.review_id %>
-</p>
-
-<p>
-  <strong>Name review:</strong>
-  <%= @resolvedreviewdispute.name_review %>
-</p>
-
-<p>
-  <strong>Location review:</strong>
-  <%= @resolvedreviewdispute.location_review %>
-</p>
-
-<p>
-  <strong>Rating difficulty review:</strong>
-  <%= @resolvedreviewdispute.rating_difficulty_review %>
-</p>
-
-<p>
-  <strong>Rating duration review:</strong>
-  <%= @resolvedreviewdispute.rating_duration_review %>
-</p>
-
-<p>
-  <strong>Season review:</strong>
-  <%= @resolvedreviewdispute.season_review %>
-</p>
-
-<p>
-  <strong>Trailtype review:</strong>
-  <%= @resolvedreviewdispute.trailtype_review %>
-</p>
-
-<p>
-  <strong>Length review:</strong>
-  <%= @resolvedreviewdispute.length_review %>
-</p>
-
-<p>
-  <strong>Gps review:</strong>
-  <%= @resolvedreviewdispute.gps_review %>
-</p>
-
-<p>
-  <strong>Traildirections review:</strong>
-  <%= @resolvedreviewdispute.traildirections_review %>
-</p>
-
-<p>
-  <strong>Finalcomments:</strong>
-  <%= @resolvedreviewdispute.finalcomments %>
-</p>
-
-<p>
-  <strong>Review user:</strong>
-  <%= @resolvedreviewdispute.review_user_id %>
-</p>
-
-<p>
-  <strong>Dispute comment:</strong>
-  <%= @resolvedreviewdispute.dispute_comment %>
-</p>
-
-<p>
-  <strong>Dispute action:</strong>
-  <%= @resolvedreviewdispute.dispute_action %>
-</p>
-
-<p>
-  <strong>Comment:</strong>
-  <%= @resolvedreviewdispute.comment %>
-</p>
-
-<%= link_to 'Edit', edit_resolvedreviewdispute_path(@resolvedreviewdispute) %> |
-<%= link_to 'Back', resolvedreviewdisputes_path %>

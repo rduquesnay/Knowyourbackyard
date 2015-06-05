@@ -10,72 +10,185 @@
       </ul>
     </div>
   <% end %>
-
-  <div class="field">
-    <%= f.label :trail_id %><br>
-    <%= f.text_field :trail_id %>
+  <h1 class="text-center">Trail Review Dispute</h1>
+  <div class="well">
+    <div class="row">
+      <div class="col-md-4">
+        <h3>Trail Details</h3>
+      </div>
+      <div class="col-md-5">
+        <h3>Review</h3>
+      </div>
+    </div>
+    <div class="row">
+      <div class="col-md-4">
+        <p>
+        <strong>Trail Name: </strong>
+        <%= @trail.name %>
+        </p>
+      </div>
+      <div class="col-md-5">
+        <p>
+        <%= @review.name_review %>
+        </p>
+      </div>
+    </div>
+    <div class="row">
+      <div class="col-md-4">
+        <p>
+        <strong>Location: </strong>
+        <%= @trail.location %>
+        </p>
+      </div>
+      <div class="col-md-5">
+        <p>
+        <%= @review.location_review %>
+        </p>
+      </div>
+    </div>
+    <div class="row">
+      <div class="col-md-4">
+        <p>
+        <strong>Difficulty: </strong>
+        <%for i in 0..5 %>
+          <%if i==@rate.difficulty%>
+            <%break%>
+          <%end%>
+          <span class="glyphicon glyphicon-star"> </span> 
+        <%end%>
+        </p>
+      </div>
+      <div class="col-md-5">
+        <p>
+        <%= @review.rating_difficulty_review %>
+        </p>
+      </div>
+    </div>
+    <div class="row">
+      <div class="col-md-4">
+        <p>
+        <strong>Duration: </strong>
+        <%= @rate.durationinsec %>
+        </p>
+      </div>
+      <div class="col-md-5">
+        <p>
+        <%= @review.rating_duration_review %>
+        </p>
+      </div>
+    </div>
+    <div class="row">
+      <div class="col-md-4">
+        <p>
+        <strong>Season: </strong>
+        <%= @trail.season %>
+        </p>
+      </div>
+      <div class="col-md-5">
+        <p>
+        <%= @review.season_review %>
+        </p>
+      </div>
+    </div>
+    <div class="row">
+      <div class="col-md-4">
+        <p>
+        <strong>Type: </strong>
+        <%= @trail.trailtype %>
+        </p>
+      </div>
+      <div class="col-md-5">
+        <p>
+        <%= @review.trailtype_review %>
+        </p>
+      </div>
+    </div>
+    <div class="row">
+      <div class="col-md-4">
+        <p>
+        <strong>Length: </strong>
+        <%= @trail.length %>
+        </p>
+      </div>
+      <div class="col-md-5">
+        <p>
+        <%= @review.length_review %>
+        </p>
+      </div>
+    </div>
+    <div class="row">
+      <div class="col-md-4">
+        <p>
+        <strong>GPS: </strong>
+        lat: <%= @trail.latitude %>, long: <%= @trail.longitude %>
+        </p>
+      </div>
+      <div class="col-md-5">
+        <p>
+          <%= @review.gps_review %>
+        </p>
+      </div>
+    </div>
+    <div class="row">
+      <div class="col-md-4">
+        <p>
+        <strong>Trail Directions/Description</strong>
+        <%= @trail.traildirections %>  
+        </p>
+      </div>
+      <div class="col-md-5">
+        <p>
+        <%= @review.traildirections_review %>
+        </p>
+      </div>
+    </div>
+    <div class="well">
+      <strong>Final Comments</strong><br>
+      <p>
+      <%= @review.finalcomments %>
+      </p>
+    </div>
   </div>
-  <div class="field">
-    <%= f.label :review_id %><br>
-    <%= f.number_field :review_id %>
+  <div class="well">
+    <div class="row">
+      <div class="col-md-10">
+        <p>
+        <%= @reviewdispute.comment %>
+        </p>
+      </div>
+    </div>
   </div>
+  <%= f.hidden_field :trail_id, value: @trail.id %>
+  <%= f.hidden_field :review_id, value: @review.id %>
+  <%= f.hidden_field :name_review, value: @review.name_review %>
+  <%= f.hidden_field :location_review, value: @review.location_review %>
+  <%= f.hidden_field :rating_difficulty_review, value: @review.rating_difficulty_review %>
+  <%= f.hidden_field :rating_duration_review, value: @review.rating_duration_review %>
+  <%= f.hidden_field :length_review, value: @review.length_review %>
+  <%= f.hidden_field :season_review, value: @review.season_review %>
+  <%= f.hidden_field :trailtype_review, value: @review.trailtype_review %>
+  <%= f.hidden_field :gps_review, value: @review.gps_review %>
+  <%= f.hidden_field :traildirections_review, value: @review.traildirections_review %>
+  <%= f.hidden_field :finalcomments, value: @review.finalcomments %>
+  <%= f.hidden_field :review_user_id, value: @review.user_id %>
+  <%= f.hidden_field :dispute_comment, value: @reviewdispute.comment %>
+  <%= hidden_field_tag :dispute_id, value= @reviewdispute.id %>
   <div class="field">
-    <%= f.label :name_review %><br>
-    <%= f.text_area :name_review %>
-  </div>
-  <div class="field">
-    <%= f.label :location_review %><br>
-    <%= f.text_area :location_review %>
-  </div>
-  <div class="field">
-    <%= f.label :rating_difficulty_review %><br>
-    <%= f.text_area :rating_difficulty_review %>
-  </div>
-  <div class="field">
-    <%= f.label :rating_duration_review %><br>
-    <%= f.text_area :rating_duration_review %>
-  </div>
-  <div class="field">
-    <%= f.label :season_review %><br>
-    <%= f.text_area :season_review %>
-  </div>
-  <div class="field">
-    <%= f.label :trailtype_review %><br>
-    <%= f.text_area :trailtype_review %>
-  </div>
-  <div class="field">
-    <%= f.label :length_review %><br>
-    <%= f.text_area :length_review %>
-  </div>
-  <div class="field">
-    <%= f.label :gps_review %><br>
-    <%= f.text_area :gps_review %>
-  </div>
-  <div class="field">
-    <%= f.label :traildirections_review %><br>
-    <%= f.text_area :traildirections_review %>
-  </div>
-  <div class="field">
-    <%= f.label :finalcomments %><br>
-    <%= f.text_area :finalcomments %>
-  </div>
-  <div class="field">
-    <%= f.label :review_user_id %><br>
-    <%= f.number_field :review_user_id %>
-  </div>
-  <div class="field">
-    <%= f.label :dispute_comment %><br>
-    <%= f.text_area :dispute_comment %>
-  </div>
-  <div class="field">
-    <%= f.label :dispute_action %><br>
-    <%= f.text_field :dispute_action %>
+    <%= f.label :dispute_action %>
+    <div class="input-group">
+      <span class="input-group-addon">
+        <%= f.radio_button :dispute_action, "Accepted" %>
+        <%= f.label :dispute_action, 'Accept', :value => "Accepted" %>
+        <%= f.radio_button :dispute_action, "Dismissed" %>
+        <%= f.label :dispute_action, 'Dismiss', :value => "Dismissed" %>
+      </span>
+    </div>
   </div>
   <div class="field">
     <%= f.label :comment %><br>
-    <%= f.text_area :comment %>
+    <%= f.text_area :comment, class: "form-control" %>
   </div>
   <div class="actions">
-    <%= f.submit %>
+    <%= f.submit "Resolve" %>
   </div>
 <% end %>

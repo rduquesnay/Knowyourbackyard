@@ -1,7 +1,7 @@
 class ResolvedrevisiondisputesController < ApplicationController
   before_action :authenticate_user!, only: :show
   before_action :ensure_trailblazer!, only: [:new, :edit]
-  before_action :ensure_admin!, only: [:update, :destroy]
+  before_action :ensure_admin!, only: [:index, :update, :destroy]
   before_action :set_resolvedrevisiondispute, only: [:show, :edit, :update, :destroy]
 
   respond_to :html
@@ -12,7 +12,7 @@ class ResolvedrevisiondisputesController < ApplicationController
   end
 
   def show
-    @trail=Trail.new(@resolvedrevisiondispute.trail_id)
+    @trail=Trail.find(@resolvedrevisiondispute.trail_id)
     respond_with(@resolvedrevisiondispute)
   end
 
@@ -37,9 +37,9 @@ class ResolvedrevisiondisputesController < ApplicationController
     @revisiondispute.destroy
     if @resolvedrevisiondispute.dispute_action=="Accepted"
       @revisionreview.destroy
-      @note = Notification.new(message: "Your Dispute has been Accepted.", link: "<a href=\"\/resolvedrevisiondispute\/#{@resolvedrevisiondispute.id}\">Go to Resolved Dispute<\/a>", user_id: @revision.user_id)
+      @note = Notification.new(message: "Your Dispute has been Accepted.", link: "<a href=\"\/resolvedrevisiondisputes\/#{@resolvedrevisiondispute.id}\">Go to Resolved Dispute<\/a>", user_id: @revision.user_id)
     elsif @resolvedrevisiondispute.dispute_action=="Dismissed"
-      @note = Notification.new(message: "Your Dispute has been dismissed.", link: "<a href=\"\/resolvedrevisiondispute\/#{@resolvedrevisiondispute.id}\">Go to Resolved Dispute<\/a>", user_id: @revision.user_id)
+      @note = Notification.new(message: "Your Dispute has been dismissed.", link: "<a href=\"\/resolvedrevisiondisputes\/#{@resolvedrevisiondispute.id}\">Go to Resolved Dispute<\/a>", user_id: @revision.user_id)
     end
     @note.save
     redirect_to trailreviewindex_path

@@ -33,7 +33,7 @@ group :doc do
 end
 
 gem 'modernizr-rails'
-
+gem 'jquery-turbolinks'
 gem 'devise'
 
 group :development do 

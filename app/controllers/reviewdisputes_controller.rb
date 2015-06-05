@@ -30,7 +30,7 @@ class ReviewdisputesController < ApplicationController
   def create
     @reviewdispute = Reviewdispute.new(reviewdispute_params)
     @reviewdispute.save
-    respond_with(@reviewdispute)
+    redirect_to root_path
   end
 
   def update

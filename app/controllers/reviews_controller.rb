@@ -1,5 +1,6 @@
 class ReviewsController < ApplicationController
-  before_action :ensure_trailblazer!, only: [:show, :new, :create, :edit, :destroy]
+  before_action :authenticate_user!, only: :show
+  before_action :ensure_trailblazer!, only: [:new, :create, :edit, :destroy]
   before_action :ensure_admin!, only: [:index,:update]
   before_action :set_review, only: [:show, :edit, :update, :destroy]
 

@@ -42,7 +42,7 @@
     <div id="trail-ratng" class="well">
       <% if @rating.nil? %>
         <%if user_signed_in? && @trail.status=="Accepted" %>
-          <%= link_to "Make a Rating", controller: "ratings", action: "new", id: @trail.id %>
+          <%= link_to "Make a Rating", new_rating_path({id: @trail.id}) %>
         <%end%>
       <%else%>
         <strong>Your Rating:</strong><br>
@@ -86,7 +86,7 @@
         <%end%>
       <% end %>
       <%if user_signed_in? && @trail.status=="Accepted" %>
-        <%= link_to "Make a Comment", controller: "comments", action: "new", id: @trail.id %>
+        <%= link_to "Make a Comment", new_comment_path({id: @trail.id}) %>
       <%end%>
     </div>
   </div>
@@ -119,7 +119,7 @@
         <%end%>
       <% end %>
       <%if user_signed_in? && @trail.status=="Accepted" %>
-        <%= link_to "Make a Update on the trail conditions", controller: "trailupdates", action: "new", id: @trail.id %>
+        <%= link_to "Make a Update on the trail conditions", new_trailupdate_path({id: @trail.id}) %>
       <%end%>
     </div>
     <div id="trail-map" class="well">
@@ -129,9 +129,9 @@
 </div>
 <% if user_signed_in? %>
   <% if @trail.status=="Accepted" %>
-    <%= link_to "Make a Revision on this trail", controller: "revisions", action: "new", trail_id: @trail.id %><br>
+    <%= link_to "Make a Revision on this trail", new_revision_path({trail_id: @trail.id}) %><br>
   <% elsif @trail.status=="To be reviewed" && current_user.trailblazer? %>
-    <%= link_to "Write a Review on this trail", controller: "reviews", action: "new", trail_id: @trail.id %><br>
+    <%= link_to "Write a Review on this trail", new_review_path({trail_id: @trail.id}) %><br>
   <% elsif @trail.status=="Under review" && @trail.user_id==current_user.id %>
     <%= link_to "View review", controller: "reviews", action: "index",trail_id: @trail.id %><br>
   <% end %>
