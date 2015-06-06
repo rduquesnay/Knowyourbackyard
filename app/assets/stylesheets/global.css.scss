@@ -1,0 +1,56 @@
+
+@import url(http://fonts.googleapis.com/css?family=Roboto:500,900,700,400|Open+Sans:400italic,600italic,400,600,700,800);
+html,
+body {
+  height: 100%;
+  min-height: 100%;
+  background-color: #000;
+}
+
+body {
+  padding-top: 75px; /*Set to fixed navbar height */
+  font-family: 'Open Sans', Verdana, Arial, sans-serif;
+  color: white;
+}
+.well{
+  color: black;
+}
+.field{
+  color: black;
+}
+
+/*
+p.title-font {
+  font: 'Roboto', Verdana, Arial, sans-serif;
+  font-size: 35pt;
+  font-weight: 700; 
+}
+  */
+a {
+  color: #3B3A35;
+  transition: color 0.2s ease-in-out;
+}
+
+a:hover,
+a:focus,
+a:active {
+  color: #fff;
+  text-decoration: none;
+}
+/*
+.well a:hover,
+.well a:focus,
+.well a:active {
+  color: #00F;
+  text-decoration: none;
+}
+*/
+.content {
+  background: white;
+  color: #000;
+}
+
+.content img {
+  max-width: 100%;
+  height: auto;
+}

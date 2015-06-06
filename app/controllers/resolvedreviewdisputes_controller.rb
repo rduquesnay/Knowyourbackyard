@@ -38,9 +38,9 @@ class ResolvedreviewdisputesController < ApplicationController
     @reviewdispute.destroy
     if @resolvedreviewdispute.dispute_action=="Accepted"
       @review.destroy
-      @note = Notification.new(message: "Your Dispute has been Accepted.", link: "<a href=\"\/resolvedreviewdisputes\/#{@resolvedreviewdispute.id}\">Go to Resolved Dispute<\/a>", user_id: @trail.user_id)
+      @note = Notification.new(message: "Your Dispute has been Accepted.", link: "<a class=\"btn btn-primary\" href=\"\/resolvedreviewdisputes\/#{@resolvedreviewdispute.id}\">Go to Resolved Dispute<\/a>", user_id: @trail.user_id)
     elsif @resolvedrevisiondispute.dispute_action=="Dismissed"
-      @note = Notification.new(message: "Your Dispute has been dismissed.", link: "<a href=\"\/resolvedreviewdisputes\/#{@resolvedreviewdispute.id}\">Go to Resolved Dispute<\/a>", user_id: @trail.user_id)
+      @note = Notification.new(message: "Your Dispute has been Dismissed.", link: "<a class=\"btn btn-primary\" href=\"\/resolvedreviewdisputes\/#{@resolvedreviewdispute.id}\">Go to Resolved Dispute<\/a>", user_id: @trail.user_id)
     end
     @note.save
     redirect_to trailreviewindex_path

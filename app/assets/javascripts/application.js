@@ -15,8 +15,8 @@
 //= require jquery_ujs
 //= require turbolinks
 //= require bootstrap.min.js
-//= require imagesloaded.js
-//= require skrollr.js
+//= require imagesloaded
+//= require skrollr
 //= require Parallax.js
 //= require home.js
 //= require reviews.js

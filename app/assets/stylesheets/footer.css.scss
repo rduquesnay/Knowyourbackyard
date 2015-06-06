@@ -4,9 +4,8 @@
 
 .site-footer {
   padding: 30px 0;
-  background: #FF7148;
-  color: #3B3A35;
-  border-top: 2px solid #3B3A35;
+  background: #2AA05C;
+  color: white;
 }
 
 .site-footer p {
@@ -20,12 +19,17 @@
 .site-footer .contact {
   float: right;
 }
+.site-footer .icons{
+  text-align: center;
+}
 
 .ContactButton {
   border:  1px solid rgba(255, 255, 255, .7);
   border-width: 2px;
   padding: 10px 15px;
+  color: #97E69D;
 }
-.ContactButton:hover{
-  border-color: #3B3A35;
+.ContactButton:hover {
+  border-color: #97E69D;
+  color: white;
 }

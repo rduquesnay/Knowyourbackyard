@@ -33,6 +33,8 @@ group :doc do
 end
 
 gem 'modernizr-rails'
+gem 'skrollr-rails'
+gem 'imagesLoaded_rails'
 gem 'jquery-turbolinks'
 gem 'devise'
 

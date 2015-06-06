@@ -4,6 +4,7 @@
 <p id="notice"><%= notice %></p>
 <div class="row">
   <div class="col-md-6">
+    <h6>Trail Info:</h6>
     <div id="trail-info" class="well">
       <p>
       <strong>Trail Name: </strong>
@@ -39,6 +40,7 @@
       lat: <%= @trail.latitude %>, long: <%= @trail.longitude %>
       </p>
     </div>
+    <h6>Trail Rating:</h6>
     <div id="trail-ratng" class="well">
       <% if @rating.nil? %>
         <%if user_signed_in? && @trail.status=="Accepted" %>
@@ -61,15 +63,15 @@
           </p>
         <%end%>
       <%end%>
-    </div>
+    </div> 
+    <h6>Trail Directions/Descriptions:</h6>
     <div id="trail-description" class="well">
-      <strong>Trail Descriptoins:</strong><br>
       <p>
         <%= @trail.traildirections %>
       </p>
     </div>
+    <h6>Comments:</h6>
     <div id="trail-comments" class="well">
-      <strong>Comments</strong><br>
       <% if @comments.count==0 %>
         <p>No comments submitted</p>
       <% else %>
@@ -95,14 +97,16 @@
       <strong>Trail submitted by:</strong>
       <%= @trail.user.username %>
     </p>
+    <h6>Trail Video:</h6>
     <div id="trail-video" class="well">
       <%= render partial: "video", locals: {t: @trail} %>
     </div>
+    <h6>Trail Photos:</h6>
     <div id="trail-photos" class= "well">
       <%= render partial: "photo", locals: {t: @trail} %>
     </div>
+    <h6>Trail Conditions:</h6>
     <div id="trail-updates" class="well">
-      <strong>Trail Conditions</strong><br>
       <%if @updates.count==0 %>
         <p>No posts about the condition of the trail</p>
       <% else %>
@@ -122,6 +126,7 @@
         <%= link_to "Make a Update on the trail conditions", new_trailupdate_path({id: @trail.id}) %>
       <%end%>
     </div>
+    <h6>Google Map:</h6>
     <div id="trail-map" class="well">
       <%= render partial: "map", locals: {lat: @trail.latitude, long: @trail.longitude} %>
     </div>

@@ -1,7 +1,8 @@
+/*
 .nav-btn-group>a{
   line-height: 75px;
 }
-
+*/
 .navbar {
   font-size: 18px;
   font: 'Open Sans', Verdana, Arial, sans-serif;
@@ -17,14 +18,13 @@
 .navbar-brand span {
   float: left;
   font: 'Roboto', Verdana, Arial, sans-serif;
-  font-weight: 700;
-  font-style: bold;
+  font-weight: 500;
   font-size: 19pt;
 }
 
 .navbar-brand span {
   padding-left: 10px;
-  color: #3B3A35;
+  color: white;
   line-height: 60px;
 }
 
@@ -39,13 +39,16 @@
 } 
 
 .navbar-inverse .navbar-nav>li>a {
-  color: #3B3A35;
+  color: #97E69D;
+}
+.navbar-inverse .navbar-nav>li>a:hover {
+  color: #fff;
+  opacity: 1;
 }
 
 .navbar-inverse {
   border-bottom: none;
-  background-color: #FF7148;
-  border-bottom: 2px solid #3B3A35;
+  background-color: #2AA05C;
 }
 
 .navbar-inverse .navbar-nav>a:focus, 
@@ -57,7 +60,7 @@
 .navbar-inverse .navbar-nav>.open>a, 
 .navbar-inverse .navbar-nav>.open>a:focus, 
 .navbar-inverse .navbar-nav>.open>a:hover {
-  background-color: #FF7148;
+  background-color: #2AA05C;
   color: #fff;
 }
 
@@ -66,12 +69,12 @@
 }
 
 .nav .dropdown-menu {
-  background: #FF7148;
+  background: #2AA05C;
 }
 
 .nav .dropdown li a {
   padding: 8px 20px;
-  color: #3B3A35;
+  color: #97E69D;
   font-size: 16px;
   font: 'Open Sans', Verdana, Arial, sans-serif;
   font-weight: 600;
@@ -80,7 +83,7 @@
 .nav .dropdown li a:hover,
 .nav .dropdown li a:focus,
 .nav .dropdown li a:active {
-  background-color: #FF7148;
+  background-color: #2AA05c;
   color: #fff;
 }
 
@@ -107,6 +110,12 @@
 
 .navbar-inverse .navbar-collapse, 
 .navbar-inverse .navbar-form {
-  border-color: #e35329;
+  border-color: #2AA05C;
+}
+
+
+
+nav .nav-btn-group {
+  margin-top: 20px;
 }
 

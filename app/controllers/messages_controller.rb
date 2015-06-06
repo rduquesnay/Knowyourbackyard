@@ -17,7 +17,7 @@ class MessagesController < ApplicationController
     else
       other_user = @chat.admin_id
     end
-    note = Notification.new(message: "A new message has been created in the chat area.", link: "<a href=\"\/chats\/#{@message.chat_id}\">Go to Chat<\/a>", user_id: other_user)
+    note = Notification.new(message: "A new message has been created in the chat area.", link: "<a class=\"btn btn-primary\" href=\"\/chats\/#{@message.chat_id}\">Go to Chat<\/a>", user_id: other_user)
     note.save
     redirect_to @chat
   end

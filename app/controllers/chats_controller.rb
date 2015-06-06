@@ -20,7 +20,7 @@ class ChatsController < ApplicationController
     @contact = Contact.find(params[:contact_id])
     @chat = Chat.new(subject: @contact.subject,contact_id: @contact.from_id, admin_id: current_user.id)
     @chat.save
-    note = Notification.new(message: "A chat area for you contact has been generated.", link: "<a href=\"\/chats\/#{@chat.id}\">Go to Chat<\/a>", user_id: @chat.contact_id)
+    note = Notification.new(message: "A chat area for you contact has been generated.", link: "<a class=\"btn btn-primary\" href=\"\/chats\/#{@chat.id}\" >Go to Chat<\/a>", user_id: @chat.contact_id)
     note.save
     @message = Message.new(content: @contact.message,chat_id: @chat.id,user_id: @chat.contact_id)
     @message.save

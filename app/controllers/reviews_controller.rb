@@ -34,12 +34,12 @@ class ReviewsController < ApplicationController
       @review = Review.new(review_params)
       @trail.update_attribute(:status, "Under review")
       @review.save
-      @note = Notification.new(message: "Your Trail: id: #{@trail.id} Name: #{@trail.name}, has been reviewed and changes are requested.", link: "<a href=\"\/reviews\/#{@review.id}\">Go to Trail Review<\/a>", user_id: @trail.user_id)
+      @note = Notification.new(message: "Your Trail: id: #{@trail.id} Name: #{@trail.name}, has been reviewed and changes are requested.", link: "<a class=\"btn btn-primary\" href=\"\/reviews\/#{@review.id}\">Go to Trail Review<\/a>", user_id: @trail.user_id)
     else
       @trailuser = User.find(@trail.user_id)
       @trail.update_attribute(:status, "Accepted")
       @trailuser.update_attribute(:points, @trailuser.points+200)
-      @note = Notification.new(message: "Your Trail: id: #{@trail.id} Name: #{@trail.name}, has been reviewed and accepted.", link: "<a href=\"\/trails\/#{@trail.id}\">Go to Trail<\/a>", user_id: @trail.user_id)
+      @note = Notification.new(message: "Your Trail: id: #{@trail.id} Name: #{@trail.name}, has been reviewed and accepted.", link: "<a class=\"btn btn-primary\" href=\"\/trails\/#{@trail.id}\">Go to Trail<\/a>", user_id: @trail.user_id)
     end
     @reviewuser.update_attribute(:points, @reviewuser.points+150)
     @note.save
