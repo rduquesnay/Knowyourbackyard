@@ -16,11 +16,16 @@
       </p>
       <p>
       <strong>Difficulty: </strong>
-      <%= @rate[:avg_difficulty] %>
+      <%for i in 0..5 %>
+        <%if i==@trail.avgdifficulty%>
+          <%break%>
+        <%end%>
+        <span class="glyphicon glyphicon-star"> </span> 
+      <%end%>
       </p>
       <p>
       <strong>Duration: </strong>
-      <%= @rate[:avg_duration] %>
+      <%= @trail.avgduration %>
       </p>
       <p>
       <strong>Season: </strong>

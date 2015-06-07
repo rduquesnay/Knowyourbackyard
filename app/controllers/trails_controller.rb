@@ -2,7 +2,6 @@ class TrailsController < ApplicationController
   before_action :ensure_admin!, only: :index
   before_action :authenticate_user!, only: [:trailslist, :create]
   before_action :set_trail, only: [:show, :edit, :update, :destroy]
-  before_action :set_trail_rate, only: :show
   before_action :set_user_rate, only: :show
   before_action :set_trail_updates, only: :show
   before_action :set_trail_comments, only: :show
@@ -31,15 +30,17 @@ class TrailsController < ApplicationController
 
   def create
     @trail = Trail.new(trail_params)
+    @rating = Rating.new(rate_params)
+    @trail.avgdifficulty=@rating.difficulty
+    @trail.avgduration=@rating.durationinsec
+    @rating.user_id=@trail.user_id 
+    @rating.trail_id= @trail.id
     if current_user.trailblazer?
       @trail.status="Accepted"
       @user = User.find(current_user.id)
       @user.update_attribute(:points, @user.points+200)
     end
     @trail.save
-    @rating = Rating.new(rate_params)
-    @rating.user_id=@trail.user_id 
-    @rating.trail_id= @trail.id
     @rating.save
     respond_with(@trail)
   end
@@ -85,17 +86,6 @@ class TrailsController < ApplicationController
   private
     def set_trail
       @trail = Trail.find(params[:id])
-    end
-
-    def set_trail_rate
-      ratings = Rating.where(trail_id: @trail.id)
-      diff_sum = 0
-      dura_sum = 0
-      ratings.each do |rating|
-       diff_sum = diff_sum + rating.difficulty
-       dura_sum = dura_sum + rating.durationinsec
-      end
-      @rate = {avg_duration: diff_sum/ratings.count, avg_difficulty: dura_sum/ratings.count}
     end
 
     def set_user_rate

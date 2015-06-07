@@ -51,7 +51,7 @@
         <p>
         <strong>Difficulty: </strong>
         <%for i in 0..5 %>
-          <%if i==@rate.difficulty%>
+          <%if i==@trail.avgdifficulty%>
             <%break%>
           <%end%>
           <span class="glyphicon glyphicon-star"> </span> 
@@ -68,7 +68,7 @@
       <div class="col-md-4">
         <p>
         <strong>Duration: </strong>
-        <%= @rate.durationinsec %>
+        <%= @trail.avgduration %>
         </p>
       </div>
       <div class="col-md-5">

@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20150604231345) do
+ActiveRecord::Schema.define(version: 20150607162317) do
 
   create_table "chats", force: true do |t|
     t.datetime "created_at"
@@ -226,6 +226,9 @@ ActiveRecord::Schema.define(version: 20150604231345) do
     t.string   "trailtype"
     t.string   "status",          default: "To be reviewed"
     t.float    "length",          default: 0.0
+    t.boolean  "viewbyguest"
+    t.integer  "avgdifficulty"
+    t.integer  "avgduration"
   end
 
   add_index "trails", ["user_id"], name: "index_trails_on_user_id"

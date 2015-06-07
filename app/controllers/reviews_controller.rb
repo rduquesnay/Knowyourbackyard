@@ -13,14 +13,12 @@ class ReviewsController < ApplicationController
 
   def show
     @trail = Trail.find(@review.trail_id)
-    @rate = Rating.where(trail_id: @trail.id,user_id: @trail.user_id).first
     respond_with(@review)
   end
 
   def new
     @review = Review.new
     @trail = Trail.find(params[:trail_id])
-    @rate = Rating.where(trail_id: @trail.id,user_id: @trail.user_id).first
     respond_with(@review)
   end
 

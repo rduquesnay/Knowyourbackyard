@@ -11,4 +11,20 @@ class Trail < ActiveRecord::Base
   scope :unreviewed, -> {where(status: "To be reviewed")}
   scope :reviewing, -> {where(status: "Under review")}
   scope :disputed, -> {where(status: "Under dispute")}
+  scope :hikking, -> {where(trailtype: "Hiking")}
+  scope :aquatic, -> {where(trailtype: ["Kayaking/Canoeing", "Adventure Kayaking"])}
+
+
+  def set_averages
+    ratings = Rating.where(trail_id: self.id)
+    diffsum = 0
+    durasum = 0
+    ratings.each do |rate|
+      diffsum = diffsum + rate.difficulty
+      durasum = durasum + rate.durationinsec
+    end
+    self.avgdifficulty = diffsum/ratings.count
+    self.avgduration = durasum/ratings.count
+    save
+  end
 end
