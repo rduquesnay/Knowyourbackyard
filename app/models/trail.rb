@@ -10,8 +10,7 @@ class Trail < ActiveRecord::Base
   scope :accepted, -> { where(status: "Accepted" )}
   scope :unreviewed, -> {where(status: "To be reviewed")}
   scope :reviewing, -> {where(status: "Under review")}
-  scope :disputed, -> {where(status: "Under dispute")}
-  scope :hikking, -> {where(trailtype: "Hiking")}
+  scope :hiking, -> {where(trailtype: "Hiking")}
   scope :aquatic, -> {where(trailtype: ["Kayaking/Canoeing", "Adventure Kayaking"])}
 
 

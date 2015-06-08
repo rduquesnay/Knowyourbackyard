@@ -2,6 +2,7 @@ class TrailsController < ApplicationController
   before_action :ensure_admin!, only: :index
   before_action :authenticate_user!, only: [:trailslist, :create]
   before_action :set_trail, only: [:show, :edit, :update, :destroy]
+  before_action :check_for_guest, only: :show
   before_action :set_user_rate, only: :show
   before_action :set_trail_updates, only: :show
   before_action :set_trail_comments, only: :show
@@ -87,9 +88,16 @@ class TrailsController < ApplicationController
     def set_trail
       @trail = Trail.find(params[:id])
     end
-
+    def check_for_guest
+      unless @trail.viewbyguest
+        authenticate_user!
+      end
+    end
     def set_user_rate
-      @rating = Rating.where(trail_id: @trail.id, user_id: current_user.id).first
+      @rating=nil
+      if user_signed_in?
+        @rating = Rating.where(trail_id: @trail.id, user_id: current_user.id).first
+      end
     end
 
     def set_trail_comments
