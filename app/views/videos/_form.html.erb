@@ -1,0 +1,23 @@
+<%= form_for(@video) do |f| %>
+  <% if @video.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(@video.errors.count, "error") %> prohibited this comment from being saved:</h2>
+
+      <ul>
+      <% @video.errors.full_messages.each do |msg| %>
+        <li><%= msg %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+  <%= f.hidden_field :trail_id, value: params[:id] %>
+  <div class="form-group">
+    <p>
+    <strong>Embedding Code:</strong>
+    <%= text_area_tag :code, class: "form-control "%>
+    </p>
+  </div>
+  <div class="actions">
+    <%= f.submit %>
+  </div>
+<% end %>

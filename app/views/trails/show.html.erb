@@ -104,7 +104,12 @@
     </p>
     <h6>Trail Video:</h6>
     <div id="trail-video" class="well">
-      <%= render partial: "video", locals: {t: @trail} %>
+      <%if user_signed_in? && @video==nil && @trail.user_id==current_user.id %>
+        <%= link_to "Embed Video", new_video_path({id: @trail.id}) %>
+      <%end%>
+      <%unless @video==nil %>
+        <%=  Videoparser.get_embed(@video.src).html_safe %>
+      <%end%>
     </div>
     <h6>Trail Photos:</h6>
     <div id="trail-photos" class= "well">

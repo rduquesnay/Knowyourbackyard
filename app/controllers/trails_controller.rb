@@ -18,6 +18,7 @@ class TrailsController < ApplicationController
     respond_with(@trails)
   end
   def show
+    @video = Video.where(trail_id: @trail.id)
     respond_with(@trail)
   end
 

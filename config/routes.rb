@@ -18,6 +18,7 @@ Knowyourbackyard::Application.routes.draw do
   resources :reviews
   resources :revisions
   resources :notifications, only: :destroy
+  resources :videos, only: [:new, :create, :destroy]
   get "Trailreview", to: 'trailblazer_lists#trailsreview', as: 'trailreviewindex'
   get "Trailslist", to: 'trails#trailslist', as: 'trailsindex'
   get "GuestTrailslist", to: 'pages#guestviewtrail', as: 'guestindex'
