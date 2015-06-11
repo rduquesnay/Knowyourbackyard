@@ -42,7 +42,7 @@ class ChatsController < ApplicationController
       message.destroy
     end
     @chat.destroy
-    respond_with(@chat)
+    redirect_to chats_path
   end
 
   private
