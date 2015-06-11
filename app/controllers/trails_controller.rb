@@ -18,7 +18,7 @@ class TrailsController < ApplicationController
     respond_with(@trails)
   end
   def show
-    @video = Video.where(trail_id: @trail.id)
+    @video = Video.where(trail_id: @trail.id).first
     respond_with(@trail)
   end
 
@@ -35,14 +35,14 @@ class TrailsController < ApplicationController
     @rating = Rating.new(rate_params)
     @trail.avgdifficulty=@rating.difficulty
     @trail.avgduration=@rating.durationinsec
-    @rating.user_id=@trail.user_id 
-    @rating.trail_id= @trail.id
     if current_user.trailblazer?
       @trail.status="Accepted"
       @user = User.find(current_user.id)
       @user.update_attribute(:points, @user.points+200)
     end
     @trail.save
+    @rating.user_id=@trail.user_id 
+    @rating.trail_id= @trail.id
     @rating.save
     respond_with(@trail)
   end

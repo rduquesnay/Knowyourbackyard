@@ -8,11 +8,11 @@ class ActionsController < ApplicationController
     if @user.points >=1400 || current_user.admin?
       @user.update_attribute(:trailblazer, true)
     end
-    redirect_to root_path
   end
 
   def promote_to_admin
     @user.update_attribute(:admin, true)
+    @user.update_attribute(:trailblazer, true)
     redirect_to users_path
   end
 
@@ -21,7 +21,7 @@ class ActionsController < ApplicationController
     redirect_to users_path
   end
   def set_trail_to_revision
-    revision = Revision.find(params[:revision_id]
+    revision = Revision.find(params[:revision_id])
     trail = Trail.find(revision.trail_id)
     revisionuser = User.find(revision.user_id)
     user = User.find(current_user.id)
@@ -29,6 +29,7 @@ class ActionsController < ApplicationController
     revisionuser.update_attribute(:points, revisionuser.points+150)
     user.update_attribute(:points, user.points+150)
     revision.destroy
+    redirect_to trailreviewindex_path 
   end
 
   private

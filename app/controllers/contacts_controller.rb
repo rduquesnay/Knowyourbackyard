@@ -39,6 +39,6 @@ class ContactsController < ApplicationController
       @contact = Contact.find(params[:id])
     end
     def contact_params
-      params.require(:contact).permit(:subject,:message,:firstname,:lastname,:email,:from_id)
+      params.require(:contact).permit(:subject,:message,:firstname,:lastname,:email,:from_id,:username)
     end
 end

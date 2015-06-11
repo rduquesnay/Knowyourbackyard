@@ -52,10 +52,10 @@
     </div>
     <div class="well">
       <strong>Trails Posted</strong><br>
-      <% if @trails %>
-        <% @trails.each do |trail| %>
-          <% link_to trail do %>
-            <%=trail.name%>
+      <% unless @trails==[] %>
+        <% @trails.each do |t| %>
+          <%= link_to t do %>
+            <%=t.name%>
           <%end%>
         <%end%>
       <%end%>
