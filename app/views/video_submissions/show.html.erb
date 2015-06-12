@@ -1,0 +1,19 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>Trail: </strong>
+  <%= @trail.name %>
+</p>
+
+<p>
+  <strong>Demo link: </strong>
+  <%= link_to extlink(@video_submission.demo_link) %>
+</p>
+
+<p>
+<strong>About:</strong><br>
+  <%= @video_submission.about %>
+</p>
+
+<%= link_to 'Edit', edit_video_submission_path(@video_submission) %> |
+<%= link_to 'Back', video_submissions_path %>

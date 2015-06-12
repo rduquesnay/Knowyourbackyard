@@ -6,6 +6,7 @@ class Trail < ActiveRecord::Base
   has_many :reviews
   has_many :revisions
   has_one :video
+  has_one :video_submission
   accepts_nested_attributes_for :ratings, allow_destroy: true
 
   scope :accepted, -> { where(status: "Accepted" )}

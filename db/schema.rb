@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20150611021112) do
+ActiveRecord::Schema.define(version: 20150612011540) do
 
   create_table "chats", force: true do |t|
     t.datetime "created_at"
@@ -273,6 +273,16 @@ ActiveRecord::Schema.define(version: 20150611021112) do
   add_index "users", ["email"], name: "index_users_on_email", unique: true
   add_index "users", ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
   add_index "users", ["username"], name: "index_users_on_username", unique: true
+
+  create_table "video_submissions", force: true do |t|
+    t.integer  "trail_id"
+    t.string   "demo_link"
+    t.text     "about"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  add_index "video_submissions", ["trail_id"], name: "index_video_submissions_on_trail_id"
 
   create_table "videos", force: true do |t|
     t.string   "src"

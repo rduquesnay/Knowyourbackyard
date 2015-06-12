@@ -1,4 +1,5 @@
 Knowyourbackyard::Application.routes.draw do
+  resources :video_submissions
   resources :resolvedreviewdisputes
   resources :resolvedrevisiondisputes
   resources :revisiondisputes

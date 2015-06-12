@@ -1,0 +1,11 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  trail_id: 
+  demo_link: MyString
+  about: MyText
+
+two:
+  trail_id: 
+  demo_link: MyString
+  about: MyText

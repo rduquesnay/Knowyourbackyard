@@ -105,7 +105,7 @@
     <h6>Trail Video:</h6>
     <div id="trail-video" class="well">
       <%if user_signed_in? && @video==nil && @trail.user_id==current_user.id %>
-        <%= link_to "Embed Video", new_video_path({id: @trail.id}) %>
+        <%= link_to "Submit a Video", new_video_submission_path({id: @trail.id}) %>
       <%end%>
       <%unless @video==nil %>
         <%=  Videoparser.get_embed(@video.src).html_safe %>
