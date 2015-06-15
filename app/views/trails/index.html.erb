@@ -1,47 +1,25 @@
 <% content_for :title do %>
   Trail List Page
 <% end %>
-
-<table>
-  <thead>
-    <tr>
-      <th>Name</th>
-      <th>Location</th>
-      <th>Season</th>
-      <th>Type</th>
-      <th>Latitude</th>
-      <th>Longitude</th>
-      <th>Traildirections</th>
-      <th></th>
-      <th></th>
-      <th></th>
-    </tr>
-  </thead>
-
-  <tbody>
-    <% @trails.each do |trail| %>
-      <tr>
-        <td><%= trail.name unless trail.name.blank? %></td>
-        <td><%= trail.location %></td>
-        <td><%= trail.season %></td>
-        <td><%= trail.trailtype %></td>
-        <td><%= trail.latitude %></td>
-        <td><%= trail.longitude %></td>
-        <td><%= trail.traildirections %></td>
-        <td><%= link_to 'Show', trail %></td>
-        <% if user_signed_in? %>
-          <% if current_user.id == trail.user_id %>
-            <td><%= link_to 'Edit', edit_trail_path(trail) %> </td>
-          <% end %>
-          <% if current_user.admin? || current_user.id == trail.user_id %>
-            <td><%= link_to 'Destroy', trail,  method: :delete, data: { confirm: 'Are you sure?' } %></td>
-          <% end %>
+<% if @trails.count==0 %>
+  <p> No Trails found </p>
+<%else%>
+  <%@trails.each do |trail| %>
+    <div class="row well">
+      <div class="col-md-9">
+        <%= link_to trail do %>
+          <%= render partial: "shared/listtrails", locals: {t: trail} %>
+        <%end%>
+      </div>
+      <div class="col-md-3">
+        <% if user_signed_in? && current_user.admin? %>
+          <%= link_to "Toggle Trail View to Guests: #{trail.viewbyguest}", toggleview_path({trail_id: trail.id, path: "trailindex"}), method: :patch, class: "btn btn-primary" %>
+          <%= link_to "Delete Trail", trail, method: :delete, data: {confirm: 'Are you sure?'}, class: "btn btn-primary" %>
         <% end %>
-      </tr>
-    <% end %>
-  </tbody>
-</table>
-
-<br>
-
-<%= link_to 'New Trail', new_trail_path %>
+      </div>
+    </div>
+  <%end%>
+<%end%>
+<% if user_signed_in? %> 
+  <%= link_to "Post New Trail", new_trail_path %>
+<%end%>

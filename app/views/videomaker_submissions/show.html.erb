@@ -1,0 +1,19 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>User:</strong>
+  <%= @videomaker_submission.user %>
+</p>
+
+<p>
+  <strong>Demo link:</strong>
+  <%= @videomaker_submission.demo_link %>
+</p>
+
+<p>
+  <strong>About:</strong>
+  <%= @videomaker_submission.about %>
+</p>
+
+<%= link_to 'Edit', edit_videomaker_submission_path(@videomaker_submission) %> |
+<%= link_to 'Back', videomaker_submissions_path %>

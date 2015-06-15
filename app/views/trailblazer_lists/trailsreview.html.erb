@@ -18,8 +18,10 @@
         <p> No Trails need reviewing </p>
       <%else%>
         <%@review.each do |trail| %>
-          <%= link_to trail do %>
-            <%= render partial: "shared/listtrails", locals: {t: trail} %>
+          <%unless current_user.id==trail.user_id%>
+            <%= link_to trail do %>
+              <%= render partial: "shared/listtrails", locals: {t: trail} %>
+            <%end%>
           <%end%>
         <%end%>
       <%end%>
@@ -29,8 +31,10 @@
         <p> No Trails Under Revision </p>
       <%else%>
         <%@revision.each do |revision| %>
-          <%= link_to revision do %>
-            <%= render partial: "shared/listrevisions", locals: {r: revision} %>
+          <%unless current_user.id==revision.user_id%>
+            <%= link_to revision do %>
+              <%= render partial: "shared/listrevisions", locals: {r: revision} %>
+            <%end%>
           <%end%>
         <%end%>
       <%end%>
@@ -41,8 +45,10 @@
         <p> No Trails Under Dispute </p>
       <%else%>
         <%@reviewDispute.each do |dispute| %>
-          <%= link_to dispute do %>
-            <%= render partial: "shared/listreviewdisputes", locals: {d: dispute} %>
+          <%unless current_user.id==dispute.review.trail.user_id || current_user.id==dispute.review.user_id %>
+            <%= link_to dispute do %>
+              <%= render partial: "shared/listreviewdisputes", locals: {d: dispute} %>
+            <%end%>
           <%end%>
         <%end%>
       <%end%>
@@ -50,8 +56,10 @@
         <p> No Revisions Under Dispute </p>
       <%else%>
         <%@revisionDispute.each do |dispute| %>
-          <%= link_to dispute do %>
-            <%= render partial: "shared/listrevisiondisputes", locals: {d: dispute} %>
+          <%unless current_user.id==dispute.revisionreview.revision.user_id || current_user.id==dispute.revisionreview.user_id %>
+            <%= link_to dispute do %>
+              <%= render partial: "shared/listrevisiondisputes", locals: {d: dispute} %>
+            <%end%>
           <%end%>
         <%end%>
       <%end%>

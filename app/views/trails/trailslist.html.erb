@@ -5,9 +5,19 @@
   <p> No Trails found </p>
 <%else%>
   <%@trails.each do |trail| %>
-    <%= link_to trail do %>
-      <%= render partial: "shared/listtrails", locals: {t: trail} %>
-    <%end%>
+    <div class="row">
+      <div class="col-md-10">
+        <%= link_to trail do %>
+          <%= render partial: "shared/listtrails", locals: {t: trail} %>
+        <%end%>
+      </div>
+      <div class="col-md-2">
+        <% if user_signed_in? && current_user.admin? %>
+          <%= link_to "Toggle Trail View to Guests: #{trail.viewbyguest}", toggleview_path({trail_id: trail.id,path: "traillist"}), method: :patch, class: "btn btn-primary" %>
+          <%= link_to "Delete Trail", trail, method: :delete, data: {confirm: 'Are you sure?'}, class: "btn btn-primary" %>
+        <% end %>
+      </div>
+    </div>
   <%end%>
 <%end%>
 <% if user_signed_in? %> 

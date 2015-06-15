@@ -1,9 +1,10 @@
 class VideosController < ApplicationController
-  before_action :authenticate_user!
+  before_action :ensure_admin!
   before_action :set_video, only: :destroy
 
   def new
     @video = Video.new
+    @trail_id = params[:id]
   end
   
   def create

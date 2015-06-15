@@ -1,5 +1,5 @@
 class TrailsController < ApplicationController
-  before_action :ensure_admin!, only: [:index, :destory]
+  before_action :ensure_admin!, only: [:index,:trailslist, :destory]
   before_action :authenticate_user!, only: [:new, :edit, :update, :trailslist, :create]
   before_action :set_trail, only: [:show, :edit, :update, :destroy]
   before_action :check_for_guest, only: :show

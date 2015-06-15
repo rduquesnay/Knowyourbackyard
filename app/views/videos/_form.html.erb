@@ -10,10 +10,10 @@
       </ul>
     </div>
   <% end %>
-  <%= f.hidden_field :trail_id, value: params[:id] %>
+  <%= f.hidden_field :trail_id, value: @trail_id %>
   <div class="form-group">
     <p>
-    <strong>Embedding Code:</strong>
+    <strong>Embedding Code: </strong>
     <%= text_area_tag :code, class: "form-control "%>
     </p>
   </div>

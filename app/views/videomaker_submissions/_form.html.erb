@@ -1,0 +1,26 @@
+<%= form_for(@videomaker_submission) do |f| %>
+  <% if @videomaker_submission.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(@videomaker_submission.errors.count, "error") %> prohibited this videomaker_submission from being saved:</h2>
+
+      <ul>
+      <% @videomaker_submission.errors.full_messages.each do |message| %>
+        <li><%= message %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <%= f.hidden_field :user_id, value: current_user.id %>
+  <div class="field">
+  <strong>Link to Demo(s) on Your work(video/s):</strong><br>
+    <%= f.text_field :demo_link, class: "form-control" %>
+  </div>
+  <div class="field">
+    <strong> Tell us about yourself:</strong><br>
+    <%= f.text_area :about, class: "form-control" %>
+  </div>
+  <div class="actions">
+    <%= f.submit %>
+  </div>
+<% end %>

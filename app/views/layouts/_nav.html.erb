@@ -1,17 +1,17 @@
 <nav class="navbar navbar-inverse navbar-fixed-top">
+<div class="navbar-header">
+  <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar" aria-expanded="false" aria-controls="navbar">
+    <span class="sr-only">Toggle navigation</span>
+    <span class="icon-bar"></span>
+    <span class="icon-bar"></span>
+    <span class="icon-bar"></span>
+  </button>
+  <%= link_to root_path, class: "navbar-brand" do %>
+    <%= image_tag("logo.png", class: "logo") %> 
+    <span>Know Your Backyard</span>
+  <% end %>  
+</div>
 <div class="container">
-  <div class="navbar-header">
-    <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar" aria-expanded="false" aria-controls="navbar">
-      <span class="sr-only">Toggle navigation</span>
-      <span class="icon-bar"></span>
-      <span class="icon-bar"></span>
-      <span class="icon-bar"></span>
-    </button>
-    <%= link_to root_path, class: "navbar-brand" do %>
-      <%= image_tag("logo.png", class: "logo") %> 
-      <span>Know Your Backyard</span>
-    <% end %>  
-  </div>
   <div id="navbar" class="collapse navbar-collapse">
     <ul class="nav navbar-nav navbar-right">
       <li class="dropdown">
@@ -56,7 +56,10 @@
               <%= link_to "Trails",trails_path %> 
             </li>
             <li>
-              <%= link_to "Video Maker's Submissions", video_submissions_path %>
+              <%= link_to "Video Maker's Submissions", videomaker_submissions_path %>
+            </li>
+            <li>
+              <%= link_to "Video Submissions", video_submissions_path %>
             </li>
           </ul> 
         </li>

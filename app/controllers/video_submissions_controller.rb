@@ -46,6 +46,6 @@ class VideoSubmissionsController < ApplicationController
     end
 
     def video_submission_params
-      params.require(:video_submission).permit(:trail_id, :demo_link, :about)
+      params.require(:video_submission).permit(:trail_id, :demo_link)
     end
 end

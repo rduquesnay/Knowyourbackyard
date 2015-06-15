@@ -104,13 +104,19 @@
     </p>
     <h6>Trail Video:</h6>
     <div id="trail-video" class="well">
-      <%if user_signed_in? && @video==nil && @trail.user_id==current_user.id %>
-        <%= link_to "Submit a Video", new_video_submission_path({id: @trail.id}) %>
+      <%if user_signed_in? && @video==nil && current_user.admin? %>
+        <%= link_to "Add Video", new_video_path({id: @trail.id}) %>
       <%end%>
       <%unless @video==nil %>
         <%=  Videoparser.get_embed(@video.src).html_safe %>
       <%end%>
     </div>
+    <% if user_signed_in? && current_user.videomaker? && @video==nil %>
+      <%= link_to "Submit Video for Trail", new_video_submission_path({id: @trail.id}) %>
+    <%end%>
+    <% if user_signed_in? && !current_user.videomaker? %>
+      <%= link_to "Become Video Maker", new_videomaker_submission_path %>
+    <%end%>
     <h6>Trail Photos:</h6>
     <div id="trail-photos" class= "well">
       <%= render partial: "photo", locals: {t: @trail} %>

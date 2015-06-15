@@ -1,4 +1,6 @@
 class UsersController < ApplicationController
+  before_action :authenticate_user!, only: [:show, :edit, :update]
+  before_action :ensure_admin!, only: :index
   before_action :set_user, only: [:show,:edit,:update]
   respond_to :html
   def index

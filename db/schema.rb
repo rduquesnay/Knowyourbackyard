@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20150614172429) do
+ActiveRecord::Schema.define(version: 20150615203742) do
 
   create_table "chats", force: true do |t|
     t.datetime "created_at"
@@ -269,6 +269,8 @@ ActiveRecord::Schema.define(version: 20150614172429) do
     t.integer  "points",                 default: 0
     t.boolean  "owner",                  default: false
     t.boolean  "original_trailblazer",   default: false
+    t.boolean  "demoted",                default: false
+    t.boolean  "videomaker",             default: false
   end
 
   add_index "users", ["email"], name: "index_users_on_email", unique: true
@@ -278,12 +280,21 @@ ActiveRecord::Schema.define(version: 20150614172429) do
   create_table "video_submissions", force: true do |t|
     t.integer  "trail_id"
     t.string   "demo_link"
-    t.text     "about"
     t.datetime "created_at"
     t.datetime "updated_at"
   end
 
   add_index "video_submissions", ["trail_id"], name: "index_video_submissions_on_trail_id"
+
+  create_table "videomaker_submissions", force: true do |t|
+    t.integer  "user_id"
+    t.string   "demo_link"
+    t.text     "about"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  add_index "videomaker_submissions", ["user_id"], name: "index_videomaker_submissions_on_user_id"
 
   create_table "videos", force: true do |t|
     t.string   "src"

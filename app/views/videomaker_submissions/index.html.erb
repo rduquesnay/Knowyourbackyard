@@ -1,0 +1,24 @@
+<h1>Listing videomaker_submissions</h1>
+
+<table>
+  <thead>
+    <tr>
+      <th>User</th>
+      <th>Demo link</th>
+      <th>About</th>
+      <th colspan="3"></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @videomaker_submissions.each do |videomaker_submission| %>
+      <tr>
+        <td><%= videomaker_submission.user %></td>
+        <td><%= videomaker_submission.demo_link %></td>
+        <td><%= videomaker_submission.about %></td>
+        <td><%= link_to 'Show', videomaker_submission %></td>
+        <td><%= link_to 'Destroy', videomaker_submission, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
