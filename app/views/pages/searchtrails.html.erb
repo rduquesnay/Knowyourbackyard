@@ -1,0 +1,51 @@
+<% content_for :title do %>
+  Trail List Page
+<% end %>
+<h1>Trail Search</h1>
+
+<%= form_tag results_path, method: 'get' do %>
+  <p>
+  <strong>Name: </strong>
+  <%= text_field_tag :name %>
+  </p>
+  <p>
+  <strong>Location: </strong>
+  <%= text_field_tag :location %>
+  </p>
+  <p>
+  <strong>Length: </strong>
+    <div class="input-group">
+      <span class="input-group-addon">
+        <%= radio_button_tag :length, 4, true %>
+        <%= label_tag :length, 'Any', :value => 4 %>
+        <%= radio_button_tag :length, 1 %>
+        <%= label_tag :length, '<=10km', :value => 1 %>
+        <%= radio_button_tag :length, 2 %>
+        <%= label_tag :length, '>10km <=20km', :value => 2 %>
+        <%= radio_button_tag :length, 3 %>
+        <%= label_tag :length, '>20km', :value => 3 %>
+      </span>
+    </div>
+  </p>
+  <p>
+  <strong>Season: </strong>
+  <%= select_tag :season, options_for_select([["All"],["Winter"],["Spring"],["Summer"],["Fall"]],"All") %>
+  </p>
+  <p>
+  <strong>Type: </strong>
+  <%= select_tag :trailtype, options_for_select([["All"],["Hiking"],["Kayaking/Canoeing"],["Adventure Kayaking"]],"All") %>
+  </p>
+  <%= submit_tag "Search", :name => nil %>
+<%end%>
+<% if @trails.count==0 %>
+  <p> No Trails found </p>
+<%else%>
+  <%@trails.each do |trail| %>
+    <%= link_to trail do %>
+      <%= render partial: "shared/listtrails", locals: {t: trail} %>
+    <%end%>
+  <%end%>
+<%end%>
+<% if user_signed_in? %> 
+  <%= link_to "Post New Trail", new_trail_path %>
+<%end%>

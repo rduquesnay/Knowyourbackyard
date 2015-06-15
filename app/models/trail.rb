@@ -28,4 +28,10 @@ class Trail < ActiveRecord::Base
     self.avgduration = durasum/ratings.count
     save
   end
+  def self.searchname(search)
+    where("name LIKE ?", "%#{search}%")
+  end
+  def self.searchlocation(search)
+    where("location LIKE ?", "%#{search}%")
+  end
 end

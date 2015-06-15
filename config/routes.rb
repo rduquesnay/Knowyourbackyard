@@ -12,6 +12,7 @@ Knowyourbackyard::Application.routes.draw do
   resources :contacts
   resources :users, only: [:show,:edit,:update], path: 'user/profile'
   get '/users', to: 'users#index', as: 'index'
+  get '/topusers', to: 'users#clockuser', as: 'clockuser'
   resources :ratings, only: [:new,:create,:destory]
   resources :trailupdates, only: [:new, :create, :destroy]
   resources :comments, only: [:new, :create, :destroy]
@@ -23,10 +24,6 @@ Knowyourbackyard::Application.routes.draw do
   get "Trailreview", to: 'trailblazer_lists#trailsreview', as: 'trailreviewindex'
   get "Trailslist", to: 'trails#trailslist', as: 'trailsindex'
   get "GuestTrailslist", to: 'pages#guestviewtrail', as: 'guestindex'
-  get "GuestHikiglist", to: 'pages#hikingguestviewtrail', as: 'hikingguestindex'
-  get "GuestAquaticlist", to: 'pages#aquaticguestviewtrail', as: 'aquaticguestindex'
-  get "HikingTrailslist", to: 'pages#hikingviewtrail', as: 'hikingindex'
-  get "AquaticTrailslist", to: 'pages#aquaticviewtrail', as: 'aquaticindex'
   patch "Promoteadmin", to: 'actions#promote_to_admin', as: 'adminpromote'
   patch "PromoteTrailblazer", to: 'actions#promote_to_trailblazer', as: 'trailblazerpromote'
   patch "Demoteadmin", to: 'actions#demote_from_admin', as: 'admindemote'
@@ -34,6 +31,8 @@ Knowyourbackyard::Application.routes.draw do
   devise_for :users
   root to: 'pages#home'
   
+  get 'TrailSearch', to: 'pages#searchtrails', as: 'search'
+  get 'TrailResults', to: 'pages#searchresults', as: 'results'
   get 'AboutUs', to: 'pages#about', as: 'about'
   get 'HowtoSponsor', to: 'pages#howtosponsor', as: 'howsponsor'
 

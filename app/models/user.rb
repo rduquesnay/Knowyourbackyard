@@ -18,7 +18,8 @@ class User < ActiveRecord::Base
   scope :trailblazer, -> {where(trailblazer: true)}
   scope :admin, -> {where(admin: true)}
   scope :trekker, -> {where(trailblazer: false)}
-  scope :topusers, -> {order(points: :desc).limit(10)}
+  scope :topusers, -> {order(points: :desc).limit(15)}
+  scope :original, -> {where(original_trailblazer: true)}
 
 
   def send_promote_notification

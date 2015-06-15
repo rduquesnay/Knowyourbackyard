@@ -4,6 +4,11 @@ class UsersController < ApplicationController
   def index
     @trekker = User.trekker
     @trailblazer = User.trailblazer
+    @admin = User.admin
+  end
+ 
+  def clockuser
+    @trailblazer = User.original
     @top = User.trailblazer.topusers
   end
 
