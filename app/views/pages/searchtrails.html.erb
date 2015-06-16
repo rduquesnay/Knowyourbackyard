@@ -29,11 +29,23 @@
   </p>
   <p>
   <strong>Season: </strong>
-  <%= select_tag :season, options_for_select([["All"],["Winter"],["Spring"],["Summer"],["Fall"]],"All") %>
+  <%= label_tag "Winter" %>
+  <%= check_box_tag "season[]", 'Winter' %>
+  <%= label_tag "Spring" %>
+  <%= check_box_tag "season[]", 'Spring' %>
+  <%= label_tag "Summer" %>
+  <%= check_box_tag "season[]", 'Summer' %>
+  <%= label_tag "Fall" %>
+  <%= check_box_tag "season[]", 'Fall' %>
   </p>
   <p>
   <strong>Type: </strong>
-  <%= select_tag :trailtype, options_for_select([["All"],["Hiking"],["Kayaking/Canoeing"],["Adventure Kayaking"]],"All") %>
+  <%= label_tag "Hiking" %>
+  <%= check_box_tag "trailtype[]", 'Hiking' %>
+  <%= label_tag "Kayaking/Canoeing" %>
+  <%= check_box_tag "trailtype[]", 'Kayaking/Canoeing' %>
+  <%= label_tag "Adventure Kayaking" %>
+  <%= check_box_tag "trailtype[]", 'Adventure Kayaking' %>
   </p>
   <%= submit_tag "Search", :name => nil %>
 <%end%>

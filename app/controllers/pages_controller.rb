@@ -40,10 +40,10 @@ class PagesController < ApplicationController
         @trails = @trails.where("length > 20")
       end
     end
-    unless params[:season]=="All"
+    unless params[:season].count==4 || params[:season].count==0
       @trails = @trails.where(season: params[:season])
     end
-    unless params[:trailtype]=="All"
+    unless params[:season].count==3 || params[:season].count==0
       @trails = @trails.where(trailtype: params[:trailtype])
     end
     
