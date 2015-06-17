@@ -1,4 +1,6 @@
 class User < ActiveRecord::Base
+  include Gravtastic
+  gravtastic
   has_many :trails
   has_many :comments
   has_many :trailupdates

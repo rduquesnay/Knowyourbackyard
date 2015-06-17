@@ -37,6 +37,7 @@ gem 'skrollr-rails'
 gem 'imagesLoaded_rails'
 gem 'jquery-turbolinks'
 gem 'devise'
+gem 'gravtastic'
 
 group :development do 
   gem 'pry-rails' 
