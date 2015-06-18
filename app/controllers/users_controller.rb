@@ -3,6 +3,7 @@ class UsersController < ApplicationController
   before_action :ensure_admin!, only: :index
   before_action :set_user, only: [:show,:edit,:update]
   respond_to :html
+
   def index
     @trekker = User.trekker
     @trailblazer = User.trailblazer
@@ -18,6 +19,7 @@ class UsersController < ApplicationController
     @trails = Trail.where(user_id: @user.id).accepted
     respond_with(@user)
   end
+
   def edit
   end
 

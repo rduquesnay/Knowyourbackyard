@@ -28,8 +28,6 @@ class RevisionsController < ApplicationController
     @revision = Revision.new(revision_params)
     @trail = Trail.find(@revision.trail_id)
     @revision.save
-    #@note = Notification.new(message: "Your Trail: id: #{@trail.id} Name: #{@trail.name}, a revision has been submitted for it", link: "<a href=\"\/revisions\/#{@revision.id}\">Go to Revision<\/a>", user_id: @trail.user_id)
-    #@note.save
     respond_with(@trail)
   end
 

@@ -2,6 +2,7 @@ class ContactsController < ApplicationController
   before_action :ensure_admin!, only: [:index,:show,:destroy]
   before_action :set_contact, only:[:show,:edit,:update,:destroy]
   respond_to :html
+
   def index
     @contacts =Contact.all
     respond_with(@contacts)
@@ -15,14 +16,17 @@ class ContactsController < ApplicationController
     @contact=Contact.new
     respond_with(@contact)
   end
-  def edit
 
+  def edit
   end
 
   def create
     @contact = Contact.new(contact_params)
-    @contact.save
-    redirect_to root_path
+    if @contact.save
+      redirect_to root_path
+    else
+      redirect_to 'new'
+    end
   end
 
   def update

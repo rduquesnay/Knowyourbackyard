@@ -33,18 +33,12 @@ class TrailsController < ApplicationController
   def create
     @trail = Trail.new(trail_params)
     @rating = Rating.new(rate_params)
-    @trail.avgdifficulty=@rating.difficulty
-    @trail.avgduration=@rating.durationinsec
-    if current_user.trailblazer?
-      @trail.status="Accepted"
-      @user = User.find(current_user.id)
-      @user.update_attribute(:points, @user.points+200)
+    newtrail = Posttrail.new({trail: @trail,rating: @rating})
+    if newtrail.post
+      respond_with(@trail)
+    else
+      redirect_to 'new'
     end
-    @trail.save
-    @rating.user_id=@trail.user_id 
-    @rating.trail_id= @trail.id
-    @rating.save
-    respond_with(@trail)
   end
 
   def update

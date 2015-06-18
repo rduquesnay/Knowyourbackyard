@@ -30,18 +30,20 @@ class ResolvedrevisiondisputesController < ApplicationController
 
   def create
     @resolvedrevisiondispute = Resolvedrevisiondispute.new(resolvedrevisiondispute_params)
-    @resolvedrevisiondispute.save
     @revisionreview = Revisionreview.find(@resolvedrevisiondispute.review_id)
     @revision = Revision.find(@revisionreview.revision_id)
     @revisiondispute = Revisiondispute.find(dispute_params[:dispute_id])
-    @revisiondispute.destroy
-    if @resolvedrevisiondispute.dispute_action=="Accepted"
-      @revisionreview.destroy
-      @note = Notification.new(message: "Your Dispute has been Accepted.", link: "<a class=\"btn btn-primary\" href=\"\/resolvedrevisiondisputes\/#{@resolvedrevisiondispute.id}\">Go to Resolved Dispute<\/a>", user_id: @revision.user_id)
-    elsif @resolvedrevisiondispute.dispute_action=="Dismissed"
-      @note = Notification.new(message: "Your Dispute has been Dismissed.", link: "<a class=\"btn btn-primary\" href=\"\/resolvedrevisiondisputes\/#{@resolvedrevisiondispute.id}\">Go to Resolved Dispute<\/a>", user_id: @revision.user_id)
+    self.class.transaction do
+      @resolvedrevisiondispute.save
+      @revisiondispute.destroy
+      if @resolvedrevisiondispute.dispute_action=="Accepted"
+        @revisionreview.destroy
+        @notice = Notice.new({type: "Dispute Accepted", link_to: @resolvedrevisiondispute.id, to_user: @revision.user_id, dispute_type: "revision"}
+      elsif @resolvedrevisiondispute.dispute_action=="Dismissed"
+        @notice = Notice.new({type: "Dispute Dismissed", link_to: @resolvedrevisiondispute.id, to_user: @revision.user_id, dispute_type: "revision"}
+      end
+      @notice.send
     end
-    @note.save
     redirect_to trailreviewindex_path
   end
 

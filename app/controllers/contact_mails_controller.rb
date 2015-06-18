@@ -1,15 +1,17 @@
 class ContactMailsController < ApplicationController
+  before_action :ensure_admin!
   respond_to :html
+
   def new
     @message = Message.new()
-    @ids = {user_id: current_user.id, contact_id: params[:contact_id]}
+    @contact = Contact.find(params[:contact_id])
+    @user = User.find(current_user.id)
     respond_with(@message)
   end
 
   def create
-    binding.pry
-    contact = Contact.find(mail_params[:contact_id])
-    admin = User.find(mail_params[:user_id])
+    contact = Contact.find(mail_params[:contact])
+    admin = User.find(mail_params[:from])
     message = Message.new(content: mail_params[:content])
     Contactmailer.reply({message: message, to: contact, from: admin}).deliver_now
     redirect_to contacts_path
@@ -17,6 +19,6 @@ class ContactMailsController < ApplicationController
   
   private
   def mail_params
-    params.permit(:content,:user_id,:contact_id)
+    params.permit(:content,:from,:contact)
   end
 end

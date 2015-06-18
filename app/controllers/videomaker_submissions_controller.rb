@@ -3,6 +3,7 @@ class VideomakerSubmissionsController < ApplicationController
   before_action :ensure_admin!, only: [:index, :destroy]
   before_action :set_videomaker_submission, only: [:show, :edit, :update, :destroy]
   respond_to :html
+
   def index
     @videomaker_submissions = VideomakerSubmission.all
     respond_with(@videomaker_submissions)

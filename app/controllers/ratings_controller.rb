@@ -9,8 +9,11 @@ class RatingsController < ApplicationController
 
   def create
     @rating = Rating.new(rating_params)
-    @rating.save
-    redirect_to trail_url(@rating.trail_id)
+    if @rating.save
+      redirect_to trail_url(@rating.trail_id)
+    else
+      redirect_to 'new'
+    end
   end
 
   def destroy

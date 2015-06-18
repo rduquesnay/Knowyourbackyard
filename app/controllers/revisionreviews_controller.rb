@@ -31,10 +31,12 @@ class RevisionreviewsController < ApplicationController
     @revision = Revision.find(revisionreview_params[:revision_id])
     @reviewuser = User.find(current_user)
     @revisionreview = Revisionreview.new(revisionreview_params)
-    @revisionreview.save
-    @reviewuser.update_attribute(:points, @reviewuser.points+150)
-    @note = Notification.new(message: "Your Revision has been reviewed and changes are requested.", link: "<a class=\"btn btn-primary\" href=\"\/revisionreviews\/#{@revisionreview.id}\">Go to Revision Review<\/a>", user_id: @revision.user_id)
-    @note.save
+    self.class.transaction do
+      @revisionreview.save
+      @reviewuser.update_attribute(:points, @reviewuser.points+150)
+      noitce = Notice.new({type: "Revision Reviewed", link_id: @revisionreview.id, to_user: @revision.user_id})
+      notice.send
+    end
     respond_with(@revisionreview)
   end
 

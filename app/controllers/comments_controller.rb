@@ -9,8 +9,11 @@ class CommentsController < ApplicationController
 
   def create
     @comment = Comment.new(comment_params)
-    @comment.save
-    redirect_to trail_url(@comment.trail_id)
+    if @comment.save
+      redirect_to trail_url(@comment.trail_id)
+    else
+      redirect_to 'new'
+    end
   end
   def destroy
     @comment = Comment.find(params[:id])

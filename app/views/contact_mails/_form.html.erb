@@ -1,6 +1,8 @@
 <%= form_tag(controller: "contact_mails", action: "create", method: "post") do %>
-  <%= hidden_field_tag(:user_id,  @ids[:user_id]) %>
-  <%= hidden_field_tag(:contact_id, @ids[:contact_id]) %>
+  <%= hidden_field_tag(:from,  @user.id) %>
+  <%= hidden_field_tag(:contact, @contact.id) %>
+  <p><strong>To: </strong><%= @contact.firstname %> <%= @contact.lastname %></p>
+  <p><strong>From: </strong><%= @user.username %></p>
   <div class="form-group">
     <%= label_tag(:content, "Content: ") %><br>
     <%= text_area_tag(:content, nil, class: "form-control") %>
