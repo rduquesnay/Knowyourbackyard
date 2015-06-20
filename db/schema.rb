@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20150615203742) do
+ActiveRecord::Schema.define(version: 20150620024047) do
 
   create_table "chats", force: true do |t|
     t.datetime "created_at"
@@ -120,13 +120,13 @@ ActiveRecord::Schema.define(version: 20150615203742) do
     t.text     "gps_review"
     t.text     "traildirections_review"
     t.text     "finalcomments"
-    t.string   "review_user_id"
     t.text     "dispute_comment"
     t.string   "dispute_action"
     t.text     "comment"
     t.datetime "created_at"
     t.datetime "updated_at"
     t.text     "revisied_length"
+    t.integer  "review_user_id"
   end
 
   add_index "resolvedrevisiondisputes", ["trail_id"], name: "index_resolvedrevisiondisputes_on_trail_id"

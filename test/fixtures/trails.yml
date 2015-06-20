@@ -3,21 +3,24 @@
 one:
   name: MyString
   location: MyString
-  difficulty: 1
-  durationinsec: 1
+  avgdifficulty: 1
+  avgduration: 1
   season: MyString
-  type: 
+  trailtype: string 
   latitude: 1.5
   longitude: 1.5
   traildirections: MyText
-
+  length: 1.5
+  user_id: 1
 two:
   name: MyString
   location: MyString
-  difficulty: 1
-  durationinsec: 1
+  avgdifficulty: 1
+  avgduration: 1
   season: MyString
-  type: 
+  trailtype: string
   latitude: 1.5
   longitude: 1.5
   traildirections: MyText
+  length: 2.5
+  user_id: 2

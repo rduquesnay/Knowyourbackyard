@@ -1,7 +1,10 @@
 # Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
 
 one:
-  message: MyText
-
+  message: MyText1
+  trail_id: 1
+  user_id: 1
 two:
-  message: MyText
+  message: MyText2
+  trail_id: 2
+  user_id: 2

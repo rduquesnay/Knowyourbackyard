@@ -19,7 +19,7 @@ class MessagesController < ApplicationController
       else
         other_user = @chat.admin_id
       end
-      notice = Notice.new({type: "New Message", link_id: @message.chat_id, to_user: other_user}]
+      notice = Notice.new({type: "New Message", link_id: @message.chat_id, to_user: other_user})
       notice.send
     end
     redirect_to @chat

@@ -1,21 +1,24 @@
 # Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
 
 one:
-  name_review: MyText
-  location_review: MyText
-  season_review: MyText
-  trailtype_review: MyText
-  gps_review: MyText
-  traildirections_review: MyText
-  trail_id: 
-  posted_by: 1
-
+  name: MyString
+  location: MyString
+  season: MyString
+  trailtype: string 
+  latitude: 1.5
+  longitude: 1.5
+  traildirections: MyText
+  length: 1.5
+  user_id: 1
+  trail_id: 1
 two:
-  name_review: MyText
-  location_review: MyText
-  season_review: MyText
-  trailtype_review: MyText
-  gps_review: MyText
-  traildirections_review: MyText
-  trail_id: 
-  posted_by: 1
+  name: MyString
+  location: MyString
+  season: MyString
+  trailtype: string 
+  latitude: 1.5
+  longitude: 1.5
+  traildirections: MyText
+  length: 2.5
+  user_id: 2
+  trail_id: 2

@@ -1,7 +1,7 @@
 # Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
 
 one:
-  trail_id: 
+  trail_id: 1 
   revision_id: 1
   revisied_name: MyString
   revisied_location: MyString
@@ -19,13 +19,13 @@ one:
   gps_review: MyText
   traildirections_review: MyText
   finalcomments: MyText
-  review_user_id: MyString
+  review_user_id: 1 
   dispute_comment: MyText
   dispute_action: MyString
   comment: MyText
 
 two:
-  trail_id: 
+  trail_id: 1
   revision_id: 1
   revisied_name: MyString
   revisied_location: MyString
@@ -43,7 +43,7 @@ two:
   gps_review: MyText
   traildirections_review: MyText
   finalcomments: MyText
-  review_user_id: MyString
+  review_user_id: 2
   dispute_comment: MyText
   dispute_action: MyString
   comment: MyText

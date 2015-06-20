@@ -37,9 +37,9 @@ class ResolvedreviewdisputesController < ApplicationController
       @reviewdispute.destroy
       if @resolvedreviewdispute.dispute_action=="Accepted"
         @review.destroy
-        @notice = Notice.new({type: "Dispute Accepted", link_to: @resolvedreviewdispute.id, to_user: @trail.user_id, dispute_type: "review"}
+        @notice = Notice.new({type: "Dispute Accepted", link_to: @resolvedreviewdispute.id, to_user: @trail.user_id, dispute_type: "review"})
       elsif @resolvedreviewdispute.dispute_action=="Dismissed"
-        @notice = Notice.new({type: "Dispute Dismissed", link_to: @resolvedreviewdispute.id, to_user: @trail.user_id, dispute_type: "review"}
+        @notice = Notice.new({type: "Dispute Dismissed", link_to: @resolvedreviewdispute.id, to_user: @trail.user_id, dispute_type: "review"})
       end
       @notice.send
     end

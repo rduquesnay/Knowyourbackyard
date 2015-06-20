@@ -8,8 +8,9 @@ one:
   gps_review: MyText
   traildirection_review: MyString
   finalcomments: MyText
-  user_id: 
-  revision_id: 
+  length_review: string
+  user_id: 1
+  revision_id: 1
 
 two:
   name_review: MyText
@@ -19,5 +20,6 @@ two:
   gps_review: MyText
   traildirection_review: MyString
   finalcomments: MyText
-  user_id: 
-  revision_id: 
+  length_review: string
+  user_id: 2
+  revision_id: 2

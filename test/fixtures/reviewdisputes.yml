@@ -2,8 +2,8 @@
 
 one:
   comment: MyText
-  review_id: 
+  review_id: 1 
 
 two:
   comment: MyText
-  review_id: 
+  review_id: 2

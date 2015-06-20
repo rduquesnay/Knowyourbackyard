@@ -14,7 +14,7 @@ class User < ActiveRecord::Base
     :recoverable, :rememberable, :trackable, :validatable
   validates :email, uniqueness: true
   validates :username, :email, :password, :firstname, :lastname, :country, presence: true
-  #validates :username, :uniqueness: {:case_sensitive => false} 
+  validates :username, uniqueness: {:case_sensitive => false} 
   after_update :send_promote_notification, :if => proc{points_changed? && points >=1400 && points_was <1400 && !trailblazer && !demoted}
 
   scope :trailblazer, -> {where(trailblazer: true)}

@@ -2,8 +2,8 @@
 
 one:
   comment: MyText
-  revisionreview_id: 
+  revisionreview_id: 1
 
 two:
   comment: MyText
-  revisionreview_id: 
+  revisionreview_id: 2
