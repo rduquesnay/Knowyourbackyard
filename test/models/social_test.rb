@@ -1,6 +1,6 @@
 require 'test_helper'
 
-class RewardTest < ActiveSupport::TestCase
+class SocialTest < ActiveSupport::TestCase
   # test "the truth" do
   #   assert true
   # end

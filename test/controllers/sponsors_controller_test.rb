@@ -2,13 +2,13 @@ require 'test_helper'
 
 class SponsorsControllerTest < ActionController::TestCase
   setup do
-  #  @sponsor = sponsors(:one)
+    @sponsor = sponsors(:one)
   end
 
   test "should get index" do
-  #  get :index
-  #  assert_response :success
-  #  assert_not_nil assigns(:sponsors)
+    get :index
+    assert_response :success
+    assert_not_nil assigns(:sponsors)
   end
 
   test "should get new" do
@@ -25,13 +25,13 @@ class SponsorsControllerTest < ActionController::TestCase
   end
 
   test "should show sponsor" do
-  #  get :show, id: @sponsor
-  #  assert_response :success
+    get :show, id: @sponsor
+    assert_response :success
   end
 
   test "should get edit" do
-  #  get :edit, id: @sponsor
-  #  assert_response :success
+    get :edit, id: @sponsor
+    assert_response :success
   end
 
   test "should update sponsor" do

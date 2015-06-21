@@ -3,7 +3,7 @@
 <% end %>
 <div class="row">
   <div class="col-md-4">
-      <%= image_tag user.gravatar_url(size: 300) %>
+      <%= image_tag @user.gravatar_url(size: 200) %>
   </div>
   <div class="col-md-4">
     <p>
@@ -48,7 +48,43 @@
   </div>
   <div class="col-md-6">
     <div class="well">
-      <!-- Soical connects here -->
+      <% if @links.nil? %>
+        <%= link_to "Add Social Connections", new_social_path({id: @user.id}) %>
+      <% else %>
+        <% unless @links.facebook_link==nil || @links.facebook_link=="" %>
+          <p>
+          <strong>Facebook: </strong>
+          <%= link_to extlink(@links.facebook_link) do %>
+            <%= image_tag "facebook.png", width: "30px" %>
+          <% end %>
+          </p>
+        <%end%>
+        <% unless @links.linkedin_link==nil || @links.linkedin_link=="" %>
+          <p>
+          <strong>LinkedIn: </strong>
+          <%= link_to extlink(@links.linkedin_link) do %>
+            <%= image_tag "linkedin.png", width: "30px" %>
+          <% end %>
+          </p>
+        <%end%>
+        <% unless @links.youtube_link==nil || @links.youtube_link=="" %>
+          <p>
+          <strong>YouTube: </strong>
+          <%= link_to extlink(@links.youtube_link) do %>
+            <%= image_tag "Youtube.png", width: "30px" %>
+          <% end %>
+          </p>
+        <%end%>
+        <% unless @links.instagram_link==nil || @links.instagram_link=="" %>
+          <p>
+          <strong>Instagram: </strong>
+          <%= link_to extlink(@links.youtube_link) do %>
+            <%= image_tag "Instagram.png", width: "30px" %>
+          <% end %>
+          </p>
+        <%end%>
+        <%= link_to "Edit Social Connections", edit_social_path(@links) %>
+      <% end %>
     </div>
     <div class="well">
       <strong>Trails Posted</strong><br>

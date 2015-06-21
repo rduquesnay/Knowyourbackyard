@@ -1,4 +1,5 @@
 Knowyourbackyard::Application.routes.draw do
+  resources :socials, only: [:new, :create, :edit, :update, :destory]
   resources :videomaker_submissions
   resources :video_submissions
   resources :resolvedreviewdisputes

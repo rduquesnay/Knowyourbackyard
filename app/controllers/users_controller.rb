@@ -17,6 +17,7 @@ class UsersController < ApplicationController
 
   def show
     @trails = Trail.where(user_id: @user.id).accepted
+    @links = Social.where(user_id: @user.id).first
     respond_with(@user)
   end
 

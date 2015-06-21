@@ -42,6 +42,10 @@ gem 'gravtastic'
 group :development do 
   gem 'pry-rails' 
 end 
+group :test do 
+  gem 'shoulda' 
+  gem 'mocha' 
+end 
 
 # Use ActiveModel has_secure_password
 # gem 'bcrypt', '~> 3.1.7'
