@@ -1,7 +1,7 @@
 class RevisiondisputesController < ApplicationController
-  before_action :authenticate_user!, only: [:new, :create]
+  before_action :authenticate_user!, only: [:new, :create, :edit, :update]
   before_action :ensure_trailblazer!, only: [:show, :destroy]
-  before_action :ensure_admin!, only: [:index, :update]
+  before_action :ensure_admin!, only: :index
   before_action :set_revisiondispute, only: [:show, :edit, :update, :destroy]
 
   respond_to :html

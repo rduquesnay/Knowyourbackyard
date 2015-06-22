@@ -31,7 +31,7 @@ class ContactsController < ApplicationController
 
   def update
     @contact.update(contact_params)
-    respond_with(@contact)
+    redirect_to root_path
   end
 
   def destroy

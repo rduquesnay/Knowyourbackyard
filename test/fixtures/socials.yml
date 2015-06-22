@@ -5,11 +5,11 @@ one:
   linkedin_link: MyString
   youtube_link: MyString
   instagram_link: MyString
-  user_id: 
+  user_id: 1 
 
 two:
   facebook_link: MyString
   linkedin_link: MyString
   youtube_link: MyString
   instagram_link: MyString
-  user_id: 
+  user_id: 2

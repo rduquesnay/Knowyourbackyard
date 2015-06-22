@@ -1,14 +1,32 @@
 require 'test_helper'
 
 class TrailupdatesControllerTest < ActionController::TestCase
+  setup do
+    @user = users(:one)
+    @admin = users(:admin)
+    @update = trailupdates(:one)
+  end
+
   test "should get new" do
-  #  get :new
-  #  assert_response :success
+    sign_in(@user)
+    get :new
+    assert_response :success
   end
 
   test "should get create" do
-  #  get :create
-  #  assert_response :success
+  #  sign_in(@user)
+  #  assert_difference('Trailupdate.count') do
+  #    post :create, trailupdate: { message: @update.message}
+  #  end
+  #  assert_redirected_to trail_path
+  end
+
+  test "should destory trailupdate" do
+    sign_in(@admin)
+    assert_difference('Trailupdate.count', -1) do
+      delete :destroy, id: @update
+    end
+  #  assert_redirected_to trail_path
   end
 
 end

@@ -29,15 +29,6 @@ class ChatsController < ApplicationController
     redirect_to new_message_url(chat_id: @chat.id)
   end
 
-  def edit
-  end
-
-  def create
-  end
-
-  def update
-  end
-
   def destroy
     messages = Message.where(chat_id: @chat.id)
     messages.each do |message|

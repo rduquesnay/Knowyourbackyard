@@ -2,10 +2,10 @@
 
 one:
   content: MyText
-  user_id: 
-  chat_id: 
+  user_id: 1
+  chat_id: 1
 
 two:
   content: MyText
-  user_id: 
-  chat_id: 
+  user_id: 2
+  chat_id: 2

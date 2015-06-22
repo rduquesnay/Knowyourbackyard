@@ -18,3 +18,36 @@ two:
   city: cy2
   province: p2
   about: about2
+admin: 
+  email: admin@admin.com
+  username: admin
+  firstname: u
+  lastname: ser
+  country: c2
+  city: cy2
+  province: p2
+  about: about2
+  admin: true
+  encrypted_password: password
+tb: 
+  email: tb@tb.com
+  username: tb
+  firstname: u
+  lastname: ser
+  country: c2
+  city: cy2
+  province: p2
+  about: about2
+  trailblazer: true
+  encrypted_password: password
+owner: 
+  email: owner@owner.com
+  username: owner
+  firstname: u
+  lastname: ser
+  country: c2
+  city: cy2
+  province: p2
+  about: about2
+  owner: true
+  encrypted_password: password

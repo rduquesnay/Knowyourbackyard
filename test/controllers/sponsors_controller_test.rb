@@ -3,6 +3,7 @@ require 'test_helper'
 class SponsorsControllerTest < ActionController::TestCase
   setup do
     @sponsor = sponsors(:one)
+    @owner = users(:owner)
   end
 
   test "should get index" do
@@ -12,16 +13,18 @@ class SponsorsControllerTest < ActionController::TestCase
   end
 
   test "should get new" do
-  #  get :new
-  #  assert_response :success
+    sign_in(@owner)
+    get :new
+    assert_response :success
   end
 
   test "should create sponsor" do
-  #  assert_difference('Sponsor.count') do
-  #    post :create, sponsor: { about: @sponsor.about, companyname: @sponsor.companyname, link: @sponsor.link }
-  #  end
+    sign_in(@owner)
+    assert_difference('Sponsor.count') do
+      post :create, sponsor: { about: @sponsor.about, companyname: @sponsor.companyname, link: @sponsor.link }
+    end
 
-  #  assert_redirected_to sponsor_path(assigns(:sponsor))
+    assert_redirected_to sponsor_path(assigns(:sponsor))
   end
 
   test "should show sponsor" do
@@ -30,20 +33,23 @@ class SponsorsControllerTest < ActionController::TestCase
   end
 
   test "should get edit" do
+    sign_in(@owner)
     get :edit, id: @sponsor
     assert_response :success
   end
 
   test "should update sponsor" do
-  #  patch :update, id: @sponsor, sponsor: { about: @sponsor.about, companyname: @sponsor.companyname, link: @sponsor.link }
-  #  assert_redirected_to sponsor_path(assigns(:sponsor))
+    sign_in(@owner)
+    patch :update, id: @sponsor, sponsor: { about: @sponsor.about, companyname: @sponsor.companyname, link: @sponsor.link }
+    assert_redirected_to sponsor_path(assigns(:sponsor))
   end
 
   test "should destroy sponsor" do
-  #  assert_difference('Sponsor.count', -1) do
-  #    delete :destroy, id: @sponsor
-  #  end
+    sign_in(@owner)
+    assert_difference('Sponsor.count', -1) do
+      delete :destroy, id: @sponsor
+    end
 
-  #  assert_redirected_to sponsors_path
+    assert_redirected_to sponsors_path
   end
 end

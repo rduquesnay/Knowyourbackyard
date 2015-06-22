@@ -13,8 +13,8 @@
   <%= f.hidden_field :trail_id, value: @trail_id %>
   <div class="form-group">
     <p>
-    <strong>Embedding Code: </strong>
-    <%= text_area_tag :code, class: "form-control "%>
+    <strong>Link: </strong>
+    <%= f.text_field :src, class: "form-control "%>
     </p>
   </div>
   <div class="actions">

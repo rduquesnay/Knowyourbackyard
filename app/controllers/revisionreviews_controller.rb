@@ -1,7 +1,7 @@
 class RevisionreviewsController < ApplicationController
   before_action :authenticate_user!, only: :show
-  before_action :ensure_trailblazer!, only: [:new, :create, :edit, :destroy]
-  before_action :ensure_admin!, only: [:index,:update]
+  before_action :ensure_trailblazer!, only: [:new, :create, :edit, :update, :destroy]
+  before_action :ensure_admin!, only: :index
   before_action :set_revisionreview, only: [:show, :edit, :update, :destroy]
 
   respond_to :html

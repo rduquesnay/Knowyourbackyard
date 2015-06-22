@@ -1,7 +1,7 @@
 class ResolvedrevisiondisputesController < ApplicationController
   before_action :authenticate_user!, only: :show
-  before_action :ensure_trailblazer!, only: [:new, :edit]
-  before_action :ensure_admin!, only: [:index, :update, :destroy]
+  before_action :ensure_trailblazer!, only: [:new, :create, :edit, :update]
+  before_action :ensure_admin!, only: [:index, :destroy]
   before_action :set_resolvedrevisiondispute, only: [:show, :edit, :update, :destroy]
 
   respond_to :html

@@ -1,4 +1,5 @@
 class RevisionsController < ApplicationController
+  before_action :authenticate_user!, only: [:new, :create, :edit, :update, :destory]
   before_action :ensure_trailblazer!, only: :show
   before_action :ensure_admin!, only: :index
   before_action :set_revision, only: [:show, :edit, :update, :destroy]

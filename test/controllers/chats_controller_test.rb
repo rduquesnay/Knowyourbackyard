@@ -2,13 +2,16 @@ require 'test_helper'
 
 class ChatsControllerTest < ActionController::TestCase
   setup do
-  #  @chat = chats(:one)
+    @chat = chats(:one)
+    @user = users(:one)
+    @admin = users(:admin)
   end
 
   test "should get index" do
-  #  get :index
-  #  assert_response :success
-  #  assert_not_nil assigns(:chats)
+    sign_in(@admin)
+    get :index
+    assert_response :success
+    assert_not_nil assigns(:chats)
   end
 
   test "should get new" do
@@ -16,34 +19,18 @@ class ChatsControllerTest < ActionController::TestCase
   #  assert_response :success
   end
 
-  test "should create chat" do
-  #  assert_difference('Chat.count') do
-  #    post :create, chat: {  }
-  #  end
-
-  #  assert_redirected_to chat_path(assigns(:chat))
-  end
-
   test "should show chat" do
+    sign_in(@user)
   #  get :show, id: @chat
   #  assert_response :success
   end
 
-  test "should get edit" do
-  #  get :edit, id: @chat
-  #  assert_response :success
-  end
-
-  test "should update chat" do
-  #  patch :update, id: @chat, chat: {  }
-  #  assert_redirected_to chat_path(assigns(:chat))
-  end
-
   test "should destroy chat" do
-  #  assert_difference('Chat.count', -1) do
-  #    delete :destroy, id: @chat
-  #  end
+    sign_in(@admin)
+    assert_difference('Chat.count', -1) do
+      delete :destroy, id: @chat
+    end
 
-  #  assert_redirected_to chats_path
+    assert_redirected_to chats_path
   end
 end

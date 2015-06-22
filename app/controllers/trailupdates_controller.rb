@@ -1,5 +1,5 @@
 class TrailupdatesController < ApplicationController
-  before_action :authrnticate_user!, only: [:new, :create]
+  before_action :authenticate_user!, only: [:new, :create]
   before_action :ensure_admin!, only: :destroy
   respond_to :html
   def new
@@ -12,7 +12,7 @@ class TrailupdatesController < ApplicationController
     @user = User.find(current_user.id)
     if @update.save
       @user.update_attribute(:points, @user.points+25)
-      redirect_to trail_url(@update.trail_id)
+      redirect_to trail_path(@update.trail_id)
     else
       redirect_to 'new'
     end
@@ -21,7 +21,7 @@ class TrailupdatesController < ApplicationController
   def destroy
     @update = Trailupdate.find(params[:id])
     @update.destroy
-    respond_with(@update)
+    redirect_to trail_url(@update.trail_id)
   end
 
   private

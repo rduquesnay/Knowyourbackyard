@@ -8,7 +8,7 @@ class VideosController < ApplicationController
   end
   
   def create
-    @video = Video.new({trail_id: video_params[:trail_id],src: set_src})
+    @video = Video.new(video_params)
     @video.save
     redirect_to @video.trail_id
   end
@@ -23,10 +23,6 @@ class VideosController < ApplicationController
       @video = Video.find(params[:id])
     end
     def video_params
-      params.require(:video).permit(:trail_id)
-    end
-
-    def set_src
-      Videoparser.get_src(params[:code]) 
+      params.require(:video).permit(:src,:trail_id)
     end
 end

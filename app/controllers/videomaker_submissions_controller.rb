@@ -1,5 +1,5 @@
 class VideomakerSubmissionsController < ApplicationController
-  before_action :authenticate_user!, only: [:show, :edit, :update]
+  before_action :authenticate_user!, only: [:new, :create, :show, :edit, :update]
   before_action :ensure_admin!, only: [:index, :destroy]
   before_action :set_videomaker_submission, only: [:show, :edit, :update, :destroy]
   respond_to :html

@@ -2,23 +2,28 @@ require 'test_helper'
 
 class TrailsControllerTest < ActionController::TestCase
   setup do
-  #  @trail = trails(:one)
+    @trail = trails(:one)
+    @user = users(:one)
+    @admin = users(:admin)
   end
 
   test "should get index" do
-  #  get :index
-  #  assert_response :success
-  #  assert_not_nil assigns(:trails)
+    sign_in(@admin)
+    get :index
+    assert_response :success
+    assert_not_nil assigns(:trails)
   end
 
   test "should get new" do
-  #  get :new
-  #  assert_response :success
+    sign_in(@user)
+    get :new
+    assert_response :success
   end
 
   test "should create trail" do
+    sign_in(@user)
   #  assert_difference('Trail.count') do
-  #    post :create, trail: { difficulty: @trail.difficulty, durationinsec: @trail.durationinsec, latitude: @trail.latitude, location: @trail.location, longitude: @trail.longitude, name: @trail.name, season: @trail.season, traildirections: @trail.traildirections, type: @trail.type }
+  #    post :create, trail: { avgdifficulty: @trail.avgdifficulty, avgduration: @trail.avgduration, latitude: @trail.latitude, location: @trail.location, longitude: @trail.longitude, name: @trail.name, season: @trail.season, traildirections: @trail.traildirections, trailtype: @trail.trailtype, length: @trail.length }
   #  end
 
   #  assert_redirected_to trail_path(assigns(:trail))
@@ -30,20 +35,23 @@ class TrailsControllerTest < ActionController::TestCase
   end
 
   test "should get edit" do
-  #  get :edit, id: @trail
-  #  assert_response :success
+    sign_in(@user)
+    get :edit, id: @trail
+    assert_response :success
   end
 
   test "should update trail" do
-  #  patch :update, id: @trail, trail: { difficulty: @trail.difficulty, durationinsec: @trail.durationinsec, latitude: @trail.latitude, location: @trail.location, longitude: @trail.longitude, name: @trail.name, season: @trail.season, traildirections: @trail.traildirections, type: @trail.type }
-  #  assert_redirected_to trail_path(assigns(:trail))
+    sign_in(@user)
+    patch :update, id: @trail, trail: { avgdifficulty: @trail.avgdifficulty, avgduration: @trail.avgduration, latitude: @trail.latitude, location: @trail.location, longitude: @trail.longitude, name: @trail.name, season: @trail.season, traildirections: @trail.traildirections, trailtype: @trail.trailtype, length: @trail.length }
+    assert_redirected_to trail_path(assigns(:trail))
   end
 
   test "should destroy trail" do
-  #  assert_difference('Trail.count', -1) do
-  #    delete :destroy, id: @trail
-  #  end
+    sign_in(@admin)
+    assert_difference('Trail.count', -1) do
+      delete :destroy, id: @trail
+    end
 
-  #  assert_redirected_to trails_path
+    assert_redirected_to trails_path
   end
 end

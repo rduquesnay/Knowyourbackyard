@@ -1,5 +1,5 @@
 Knowyourbackyard::Application.routes.draw do
-  resources :socials, only: [:new, :create, :edit, :update, :destory]
+  resources :socials, only: [:new, :create, :edit, :update, :destroy]
   resources :videomaker_submissions
   resources :video_submissions
   resources :resolvedreviewdisputes
@@ -15,7 +15,7 @@ Knowyourbackyard::Application.routes.draw do
   resources :users, only: [:show,:edit,:update], path: 'user/profile'
   get '/users', to: 'users#index', as: 'index'
   get '/topusers', to: 'users#clockuser', as: 'clockuser'
-  resources :ratings, only: [:new,:create,:destory]
+  resources :ratings, only: [:new,:create,:destroy]
   resources :trailupdates, only: [:new, :create, :destroy]
   resources :comments, only: [:new, :create, :destroy]
   resources :trails
