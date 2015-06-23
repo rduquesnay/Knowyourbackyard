@@ -1,7 +1,7 @@
 require 'test_helper'
 
 class RevisionreviewTest < ActiveSupport::TestCase
-  # test "the truth" do
-  #   assert true
-  # end
+  should belong_to(:user)
+  should belong_to(:revision)
+  should have_one(:revisiondispute)
 end

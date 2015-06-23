@@ -1,7 +1,6 @@
 require 'test_helper'
 
 class VideoTest < ActiveSupport::TestCase
-  # test "the truth" do
-  #   assert true
-  # end
+  should belong_to(:trail)
+  should validate_presence_of(:src)
 end

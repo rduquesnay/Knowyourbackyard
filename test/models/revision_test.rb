@@ -1,7 +1,7 @@
 require 'test_helper'
 
 class RevisionTest < ActiveSupport::TestCase
-  # test "the truth" do
-  #   assert true
-  # end
+  should belong_to(:trail)
+  should belong_to(:user)
+  should have_many(:revisionreviews)
 end
