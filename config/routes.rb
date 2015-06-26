@@ -1,4 +1,5 @@
 Knowyourbackyard::Application.routes.draw do
+  resources :advertisers
   resources :socials, only: [:new, :create, :edit, :update, :destroy]
   resources :videomaker_submissions
   resources :video_submissions
@@ -38,6 +39,8 @@ Knowyourbackyard::Application.routes.draw do
   get 'TrailSearch', to: 'pages#searchtrails', as: 'search'
   get 'TrailResults', to: 'pages#searchresults', as: 'results'
   get 'AboutUs', to: 'pages#about', as: 'about'
+  get 'FAQ', to: 'pages#faq', as: 'faq'
+  get 'E-Mag', to: 'pages#emag', as: 'emag'
   get 'HowtoSponsor', to: 'pages#howtosponsor', as: 'howsponsor'
 
 end

@@ -9,6 +9,12 @@ class PagesController < ApplicationController
     render layout: "home"
   end
 
+  def faq
+  end
+
+  def emag
+  end
+
   def guestviewtrail
     @trails = Trail.accepted.where(viewbyguest: true)
     render "trails/trailslist"

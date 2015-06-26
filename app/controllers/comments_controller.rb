@@ -12,7 +12,7 @@ class CommentsController < ApplicationController
     if @comment.save
       redirect_to trail_url(@comment.trail_id)
     else
-      redirect_to 'new'
+      render 'new'
     end
   end
   def destroy

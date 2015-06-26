@@ -25,9 +25,12 @@ class VideoSubmissionsController < ApplicationController
 
   def create
     @video_submission = VideoSubmission.new(video_submission_params)
-    @video_submission.save
-    @trail = Trail.find(@video_submission.trail_id)
-    respond_with(@trail)
+    if @video_submission.save
+      @trail = Trail.find(@video_submission.trail_id)
+      respond_with(@trail)
+    else
+      render 'new'
+    end
   end
 
   def update

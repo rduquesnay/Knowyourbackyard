@@ -3,9 +3,9 @@
     <p class="copyright">&copy; 2015</p>
     <p>&nbsp;&nbsp;&nbsp;&nbsp;
     <%= link_to "Who Are We", about_path %>&nbsp;&nbsp;&nbsp;&nbsp;
-    <%= link_to "FAQ" %>&nbsp;&nbsp;&nbsp;&nbsp;
+    <%= link_to "FAQ", faq_path %>&nbsp;&nbsp;&nbsp;&nbsp;
     <%= link_to "Our Sponsors", sponsors_path %>&nbsp;&nbsp;&nbsp;&nbsp;
-    <%= link_to "Advertize With Us", howsponsor_path %>&nbsp;&nbsp;&nbsp;&nbsp;
+    <%= link_to "Advertize With Us", new_advertiser_path %>&nbsp;&nbsp;&nbsp;&nbsp;
     <% if user_signed_in? && !current_user.videomaker? %>
       <%= link_to "Become a Videographer", new_videomaker_submission_path %>&nbsp;&nbsp;&nbsp;&nbsp;
     <%end%>

@@ -12,7 +12,7 @@ class RatingsController < ApplicationController
     if @rating.save
       redirect_to trail_url(@rating.trail_id)
     else
-      redirect_to 'new'
+      render 'new'
     end
   end
 

@@ -16,8 +16,11 @@ class SocialsController < ApplicationController
 
   def create
     @social = Social.new(social_params)
-    @social.save
-    redirect_to user_path(@social.user.id)
+    if @social.save
+      redirect_to user_path(@social.user.id)
+    else
+      render 'new'
+    end
   end
 
   def update

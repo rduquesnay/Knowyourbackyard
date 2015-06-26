@@ -23,8 +23,11 @@ class VideomakerSubmissionsController < ApplicationController
 
   def create
     @videomaker_submission = VideomakerSubmission.new(videomaker_submission_params)
-    @videomaker_submission.save
-    respond_with(@videomaker_submission)
+    if @videomaker_submission.save
+      respond_with(@videomaker_submission)
+    else
+      render 'new'
+    end
   end
 
   def update

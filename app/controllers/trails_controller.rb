@@ -37,7 +37,7 @@ class TrailsController < ApplicationController
     if newtrail.post
       respond_with(@trail)
     else
-      redirect_to 'new'
+      render 'new'
     end
   end
 

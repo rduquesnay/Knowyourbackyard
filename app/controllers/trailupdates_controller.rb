@@ -14,7 +14,7 @@ class TrailupdatesController < ApplicationController
       @user.update_attribute(:points, @user.points+25)
       redirect_to trail_path(@update.trail_id)
     else
-      redirect_to 'new'
+      render 'new'
     end
   end
 

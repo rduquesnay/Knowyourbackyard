@@ -23,8 +23,11 @@ class SponsorsController < ApplicationController
 
   def create
     @sponsor = Sponsor.new(sponsor_params)
-    @sponsor.save
-    respond_with(@sponsor)
+    if @sponsor.save
+      respond_with(@sponsor)
+    else
+      render 'new'
+    end
   end
 
   def update

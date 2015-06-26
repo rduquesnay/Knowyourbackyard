@@ -45,30 +45,32 @@
       lat: <%= @trail.latitude %>, long: <%= @trail.longitude %>
       </p>
     </div>
-    <h6>Trail Rating:</h6>
-    <div id="trail-ratng" class="well">
-      <% if @rating.nil? %>
-        <%if user_signed_in? && @trail.status=="Accepted" %>
-          <%= link_to "Make a Rating", new_rating_path({id: @trail.id}) %>
-        <%end%>
-      <%else%>
-        <strong>Your Rating:</strong><br>
-        <p>
-        <strong>Difficulty: </strong>
-        <%= @rating.difficulty %>
-        </p>
-        <p>
-        <strong>Duration: </strong>
-        <%= @rating.durationinsec %>
-        </p>
-        <% if @rating.favourite %>
+    <% if user_signed_in? %>
+      <h6>Trail Rating:</h6>
+      <div id="trail-ratng" class="well">
+        <% if @rating.nil? %>
+          <%if @trail.status=="Accepted" %>
+            <%= link_to "Make a Rating", new_rating_path({id: @trail.id}) %>
+          <%end%>
+        <%else%>
+          <strong>Your Rating:</strong><br>
           <p>
-          <strong>Favourite: </strong>
-          <span class="glyphicon glyphicon-thumbs-up"></span>
+          <strong>Difficulty: </strong>
+          <%= @rating.difficulty %>
           </p>
+          <p>
+          <strong>Duration: </strong>
+          <%= @rating.durationinsec %>
+          </p>
+          <% if @rating.favourite %>
+            <p>
+            <strong>Favourite: </strong>
+            <span class="glyphicon glyphicon-thumbs-up"></span>
+            </p>
+          <%end%>
         <%end%>
-      <%end%>
-    </div> 
+      </div> 
+    <%end%>
     <h6>Trail Directions/Descriptions:</h6>
     <div id="trail-description" class="well">
       <p>

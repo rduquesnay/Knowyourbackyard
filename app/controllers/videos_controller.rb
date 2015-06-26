@@ -9,8 +9,11 @@ class VideosController < ApplicationController
   
   def create
     @video = Video.new(video_params)
-    @video.save
-    redirect_to @video.trail_id
+    if @video.save
+      redirect_to @video.trail_id
+    else
+      render 'new'
+    end
   end
 
   def destroy

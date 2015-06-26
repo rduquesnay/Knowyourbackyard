@@ -25,7 +25,7 @@ class ContactsController < ApplicationController
     if @contact.save
       redirect_to root_path
     else
-      redirect_to 'new'
+      render 'new'
     end
   end
 
