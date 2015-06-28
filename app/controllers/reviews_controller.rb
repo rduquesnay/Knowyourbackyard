@@ -13,12 +13,14 @@ class ReviewsController < ApplicationController
 
   def show
     @trail = Trail.find(@review.trail_id)
+    @images = @trail.images.load
     respond_with(@review)
   end
 
   def new
     @review = Review.new
     @trail = Trail.find(params[:trail_id])
+    @images = @trail.images.load
     respond_with(@review)
   end
 
@@ -28,8 +30,8 @@ class ReviewsController < ApplicationController
   def create
     @trail = Trail.find(review_params[:trail_id])
     @reviewuser = User.find(current_user.id)
-    self.class.transaction do
-      if check_params[:check_name] || check_params[:check_location] || check_params[:check_difficulty] || check_params[:check_duration] || check_params[:check_season] || check_params[:check_type] || check_params[:check_length] || check_params[:check_gps] || check_params[:check_directions]
+    ActiveRecord::Base.transaction do
+      if check_params[:check_name] || check_params[:check_location] || check_params[:check_difficulty] || check_params[:check_duration] || check_params[:check_season] || check_params[:check_type] || check_params[:check_length] || check_params[:check_gps] || check_params[:check_directions] || check_params[:check_photos]
         @review = Review.new(review_params)
         @trail.update_attribute(:status, "Under review")
         @review.save
@@ -62,9 +64,9 @@ class ReviewsController < ApplicationController
     end
 
     def review_params
-      params.require(:review).permit(:name_review, :location_review,:length_review, :rating_difficulty_review, :rating_duration_review, :season_review, :trailtype_review, :gps_review, :traildirections_review, :finalcomments, :trail_id, :user_id)
+      params.require(:review).permit(:name_review, :location_review,:length_review, :rating_difficulty_review, :rating_duration_review, :season_review, :trailtype_review, :gps_review, :traildirections_review, :finalcomments, :trail_id, :user_id, :photos_review)
     end
     def check_params
-      params.permit(:check_name, :check_location, :check_length, :check_difficulty, :check_duration, :check_season, :check_type, :check_length, :check_gps, :check_directions)
+      params.permit(:check_name, :check_location, :check_length, :check_difficulty, :check_duration, :check_season, :check_type, :check_length, :check_gps, :check_directions, :check_photos)
     end
 end

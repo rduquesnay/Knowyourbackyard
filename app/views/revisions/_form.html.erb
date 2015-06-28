@@ -101,6 +101,27 @@
   <div class="row">
     <div class="col-md-4">
       <p>
+      <strong>Photos(Max 7): </strong>
+      <div class="row">
+        <% @images.files.each do |image| %>
+          <div class="col-md-3">
+            <%= link_to image.cdn_url do %>
+              <%= image_tag image.cdn_url, width: 100 %>
+            <%end%>
+          </div>
+        <%end%>
+      </div>
+      </p>
+    </div>
+    <div class="col-md-5">
+      <div class="field">
+        <%= f.uploadcare_field :images, data: {imagesOnly: true, multipleMax: 7} %>
+      </div>
+    </div>
+  </div>
+  <div class="row">
+    <div class="col-md-4">
+      <p>
       <strong>Trail Directions/Description</strong>
       <%= @trail.traildirections %>  
       </p>

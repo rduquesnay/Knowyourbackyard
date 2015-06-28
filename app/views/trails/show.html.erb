@@ -119,10 +119,20 @@
     <% if user_signed_in? && !current_user.videomaker? %>
       <%= link_to "Become Video Maker", new_videomaker_submission_path %>
     <%end%>
-    <h6>Trail Photos:</h6>
-    <div id="trail-photos" class= "well">
-      <%= render partial: "photo", locals: {t: @trail} %>
-    </div>
+    <% unless @images.nil? %>
+      <h6>Trail Photos:</h6>
+      <div id="trail-photos" class= "well">
+        <div class="row">
+          <% @images.files.each do |image| %>
+            <div class="col-md-3">
+              <%= link_to image.cdn_url do %>
+                <%= image_tag image.cdn_url, width: 100 %>
+              <%end%>
+            </div>
+          <%end%>
+        </div>
+      </div>
+    <% end %>
     <h6>Trail Conditions:</h6>
     <div id="trail-updates" class="well">
       <%if @updates.count==0 %>

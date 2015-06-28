@@ -1,11 +1,11 @@
-class posttrail
+class Posttrail
   def initialize(params)
     @trail=params[:trail]
     @rating=params[:rating]
     @user=User.find(@trail.user_id)
   end
   def post
-    self.class.transaction do
+    ActiveRecord::Base.transaction do
       @trail.avgdifficulty=@rating.difficulty
       @trail.avgduration=@rating.durationinsec
       if @user.trailblazer?

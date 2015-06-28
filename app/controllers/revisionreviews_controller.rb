@@ -14,6 +14,8 @@ class RevisionreviewsController < ApplicationController
   def show
     @revision = Revision.find(@revisionreview.revision_id)
     @trail = Trail.find(@revision.trail_id)
+    @images = @trail.images.load
+    @rev_images = @revision.images.load
     respond_with(@revisionreview)
   end
 
@@ -21,6 +23,8 @@ class RevisionreviewsController < ApplicationController
     @revisionreview = Revisionreview.new
     @revision = Revision.find(params[:revision_id])
     @trail = Trail.find(@revision.trail_id)
+    @images = @trail.images.load
+    @rev_images = @revision.images.load
     respond_with(@revisionreview)
   end
 
@@ -56,6 +60,6 @@ class RevisionreviewsController < ApplicationController
     end
 
     def revisionreview_params
-      params.require(:revisionreview).permit(:name_review, :location_review, :season_review, :length_review, :trailtype_review, :gps_review, :traildirection_review, :finalcomments, :user_id, :revision_id)
+      params.require(:revisionreview).permit(:name_review, :location_review, :season_review, :length_review, :trailtype_review, :gps_review, :traildirection_review, :finalcomments, :user_id, :revision_id, :photos_review)
     end
 end

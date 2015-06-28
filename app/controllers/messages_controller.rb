@@ -12,7 +12,7 @@ class MessagesController < ApplicationController
   def create
     @message = Message.new(message_params)
     @chat = Chat.find(@message.chat_id)
-    self.class.transaction do
+    ActiveRecord::Base.transaction do
       @message.save
       if @message.user_id == @chat.admin_id
         other_user = @chat.contact_id

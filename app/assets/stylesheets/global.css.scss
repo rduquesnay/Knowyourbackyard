@@ -12,6 +12,14 @@ body {
   font-family: 'Open Sans', Verdana, Arial, sans-serif;
   color: white;
 }
+form {
+  label {
+      color:white;
+    };
+  div > span > label{
+    color:black;
+  };
+}
 .well{
   color: black;
 }
@@ -53,9 +61,4 @@ a:active {
 .content img {
   max-width: 100%;
   height: auto;
-}
-form {
-  label {
-      color:white;
-    };
 }

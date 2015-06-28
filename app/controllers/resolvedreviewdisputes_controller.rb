@@ -13,12 +13,14 @@ class ResolvedreviewdisputesController < ApplicationController
 
   def show
     @trail=Trail.find(@resolvedreviewdispute.trail_id)
+    @images = @trail.images.load
     respond_with(@resolvedreviewdispute)
   end
 
   def new
     @resolvedreviewdispute = Resolvedreviewdispute.new
     @trail = Trail.find(params[:trail_id])
+    @images = @trail.images.load
     @review = Review.find(params[:review_id])
     @reviewdispute = Reviewdispute.find(params[:dispute_id])
     respond_with(@resolvedreviewdispute)
@@ -62,7 +64,7 @@ class ResolvedreviewdisputesController < ApplicationController
     end
 
     def resolvedreviewdispute_params
-      params.require(:resolvedreviewdispute).permit(:trail_id, :review_id, :name_review, :location_review, :rating_difficulty_review, :rating_duration_review, :season_review, :trailtype_review, :length_review, :gps_review, :traildirections_review, :finalcomments, :review_user_id, :dispute_comment, :dispute_action, :comment)
+      params.require(:resolvedreviewdispute).permit(:trail_id, :review_id, :name_review, :location_review, :rating_difficulty_review, :rating_duration_review, :season_review, :trailtype_review, :length_review, :gps_review, :traildirections_review, :finalcomments, :review_user_id, :dispute_comment, :dispute_action, :comment, :photos_review)
     end
     def dispute_params
       params.permit(:dispute_id)

@@ -38,6 +38,7 @@ gem 'imagesLoaded_rails'
 gem 'jquery-turbolinks'
 gem 'devise'
 gem 'gravtastic'
+gem 'uploadcare-rails', "~> 1.0"
 
 group :development do 
   gem 'pry-rails' 

@@ -15,6 +15,8 @@ class RevisiondisputesController < ApplicationController
     @revisionreview=@revisiondispute.revisionreview
     @revision = @revisionreview.revision
     @trail = @revision.trail
+    @images = @trail.images.load
+    @rev_images = @revision.images.load
     respond_with(@revisiondispute)
   end
 

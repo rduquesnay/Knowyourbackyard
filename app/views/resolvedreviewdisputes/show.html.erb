@@ -159,6 +159,31 @@
   <div class="row">
     <div class="col-md-3">
       <p>
+      <strong>Photos: </strong>
+      </p>
+    </div>
+    <div class="col-md-3">
+      <p>
+      <div class="row">
+        <% @images.files.each do |image| %>
+          <div class="col-md-3">
+            <%= link_to image.cdn_url do %>
+              <%= image_tag image.cdn_url, width: 100 %>
+            <%end%>
+          </div>
+        <%end%>
+      </div>
+      </p>
+    </div>
+    <div class="col-md-5">
+      <p>
+      <%= @resolvedreviewdispute.photos_review %>
+      </p>
+    </div>
+  </div>
+  <div class="row">
+    <div class="col-md-3">
+      <p>
       <strong>Trail Directions/Description</strong>
       </p>
     </div>

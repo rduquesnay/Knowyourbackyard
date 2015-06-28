@@ -13,6 +13,7 @@ class ResolvedrevisiondisputesController < ApplicationController
 
   def show
     @trail=Trail.find(@resolvedrevisiondispute.trail_id)
+    @images = @resolvedrevisiondispute.revisied_photos.load
     respond_with(@resolvedrevisiondispute)
   end
 
@@ -22,6 +23,8 @@ class ResolvedrevisiondisputesController < ApplicationController
     @revision = Revision.find(params[:revision_id])
     @revisionreview = Revisionreview.find(params[:review_id])
     @revisiondispute = Revisiondispute.find(params[:dispute_id])
+    @images = @trail.images.load
+    @rev_images = @revision.images.load
     respond_with(@resolvedrevisiondispute)
   end
 
@@ -63,7 +66,7 @@ class ResolvedrevisiondisputesController < ApplicationController
     end
 
     def resolvedrevisiondispute_params
-      params.require(:resolvedrevisiondispute).permit(:trail_id, :revision_id, :revisied_name, :revisied_location, :revisied_length, :revisied_season, :revisied_trailtype, :revisied_latitude, :revisied_longitude, :revisied_traildirections, :review_id, :name_review, :location_review, :length_review, :season_review, :trailtype_review, :gps_review, :traildirections_review, :finalcomments, :review_user_id, :dispute_comment, :dispute_action, :comment)
+      params.require(:resolvedrevisiondispute).permit(:trail_id, :revision_id, :revisied_name, :revisied_location, :revisied_length, :revisied_season, :revisied_trailtype, :revisied_latitude, :revisied_longitude, :revisied_traildirections, :review_id, :name_review, :location_review, :length_review, :season_review, :trailtype_review, :gps_review, :traildirections_review, :finalcomments, :review_user_id, :dispute_comment, :dispute_action, :comment, :revisied_photos, :photos_review)
     end
     def dispute_params
       params.permit(:dispute_id)

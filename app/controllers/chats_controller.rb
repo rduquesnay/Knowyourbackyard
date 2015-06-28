@@ -19,7 +19,7 @@ class ChatsController < ApplicationController
   def new
     @contact = Contact.find(params[:contact_id])
     @chat = Chat.new(subject: @contact.subject,contact_id: @contact.from_id, admin_id: current_user.id)
-    self.class.transaction do
+    ActiveRecord::Base.transaction do
       @chat.save
       notice = Notice.new({type: "New Chat", link_id: @chat.id, to_user: @chat.contact_id})
       notice.send

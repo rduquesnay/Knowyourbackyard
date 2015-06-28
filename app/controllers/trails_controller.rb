@@ -18,6 +18,7 @@ class TrailsController < ApplicationController
     respond_with(@trails)
   end
   def show
+    @images = @trail.images.load
     @video = Video.where(trail_id: @trail.id).first
     respond_with(@trail)
   end
@@ -106,7 +107,7 @@ class TrailsController < ApplicationController
     end
 
     def trail_params
-      params.require(:trail).permit(:name, :location, :length, :season, :trailtype, :latitude, :longitude, :traildirections, :user_id)
+      params.require(:trail).permit(:name, :location, :length, :season, :trailtype, :latitude, :longitude, :traildirections, :user_id, :images)
     end
 
     def rate_params

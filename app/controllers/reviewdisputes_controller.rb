@@ -14,6 +14,7 @@ class ReviewdisputesController < ApplicationController
   def show
     @review = @reviewdispute.review
     @trail = @review.trail
+    @images = @trail.images.load
     respond_with(@reviewdispute)
   end
 

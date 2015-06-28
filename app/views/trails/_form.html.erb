@@ -24,7 +24,10 @@
     <%= f.label :length %><br>
     <%= f.text_field :length, class: "form-control" %>
   </div>
-
+  <div class="form-group">
+    <strong>Photos(Max 7): </strong>
+    <%= f.uploadcare_field :images, data: {imagesOnly: true, multipleMax: 7} %>
+  </div>
   <div id="rating">  
     <%= render :partial => "ratingsform", :locals => {f: f} %>
   </div>
