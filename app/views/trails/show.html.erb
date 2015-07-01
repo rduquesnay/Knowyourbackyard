@@ -161,6 +161,9 @@
   </div>
 </div>
 <% if user_signed_in? %>
+  <% if @trail.user_id == current_user.id || current_user.owner? %>
+    <%= link_to "Edit Trail", edit_trail_path(@trail) %><br>
+  <% end %>
   <% if @trail.status=="Accepted" %>
     <%= link_to "Make a Revision on this trail", new_revision_path({trail_id: @trail.id}) %><br>
   <% elsif @trail.status=="To be reviewed" && current_user.trailblazer? %>

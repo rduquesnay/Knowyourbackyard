@@ -6,7 +6,8 @@
   <%= javascript_include_tag :modernizr %>
   <%= javascript_include_tag "application", "data-turbolinks-track" => true %>
   <%= csrf_meta_tags %>
-  <%= yield :head %>
+  <%= include_uploadcare_widget_from_cdn version: "1.5.5", min: true %>
+  <%= uploadcare_settings %>
 </head>
 <body <%= yield :bodyclass %>>
   <%= yield :preload %>

@@ -18,7 +18,7 @@ class TrailsController < ApplicationController
     respond_with(@trails)
   end
   def show
-    @images = @trail.images.load
+    @images = @trail.images.load unless @trail.images.nil?
     @video = Video.where(trail_id: @trail.id).first
     respond_with(@trail)
   end
@@ -43,10 +43,24 @@ class TrailsController < ApplicationController
   end
 
   def update
-    @trail.update(trail_params)
-    if @trail.status == "Under review" 
-      @trail.update_attribute(:status, "To be reviewed")
+    if @trail.images==trail_params[:images]
+      @trail.update(trail_params)
+      if @trail.status == "Under review" 
+        @trail.update_attribute(:status, "To be reviewed")
+      end
+    else
+      unless @trail.images.nil?
+        @trail.images.load.files.each do |file|
+          file.delete
+        end
+      end
+      @trail.update(trail_params)
+      @trail.images.store unless @trail.images.nil?
+      if @trail.status == "Under review" 
+        @trail.update_attribute(:status, "To be reviewed")
+      end
     end
+
     respond_with(@trail)
   end
 
@@ -61,6 +75,11 @@ class TrailsController < ApplicationController
     @comments = Comment.where(trail_id: @trail.id)
     @reviews = Review.where(trail_id: @trail.id)
     @revisions = Revision.where(trail_id: @trail.id)
+    unless @trail.images.nil?
+      @trail.images.load.files.each do |file|
+        file.delete
+      end
+    end
     @trail.destroy
     @updates.each do |trailupdate|
       trailupdate.destroy
