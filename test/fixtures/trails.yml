@@ -12,6 +12,7 @@ one:
   traildirections: MyText
   length: 1.5
   user_id: 1
+  images: Mystring
 two:
   name: MyString
   location: MyString
@@ -24,3 +25,4 @@ two:
   traildirections: MyText
   length: 2.5
   user_id: 2
+  images: Mystring

@@ -24,7 +24,7 @@ class RevisionreviewsControllerTest < ActionController::TestCase
   test "should create revisionreview" do
     sign_in(@tb)
   #  assert_difference('Revisionreview.count') do
-  #    post :create, revisionreview: { finalcomments: @revisionreview.finalcomments, gps_review: @revisionreview.gps_review, location_review: @revisionreview.location_review, name_review: @revisionreview.name_review, revision_id: @revisionreview.revision_id, season_review: @revisionreview.season_review, traildirection_review: @revisionreview.traildirection_review, trailtype_review: @revisionreview.trailtype_review, user_id: @revisionreview.user_id }
+  #    post :create, revisionreview: { finalcomments: @revisionreview.finalcomments, gps_review: @revisionreview.gps_review, location_review: @revisionreview.location_review, name_review: @revisionreview.name_review, revision_id: @revisionreview.revision_id, season_review: @revisionreview.season_review, traildirection_review: @revisionreview.traildirection_review, trailtype_review: @revisionreview.trailtype_review, user_id: @revisionreview.user_id, photos_review: @revisionreview.photos_review  }
   #  end
 
   #  assert_redirected_to revisionreview_path(assigns(:revisionreview))
@@ -44,7 +44,7 @@ class RevisionreviewsControllerTest < ActionController::TestCase
 
   test "should update revisionreview" do
     sign_in(@tb)
-    patch :update, id: @revisionreview, revisionreview: { finalcomments: @revisionreview.finalcomments, gps_review: @revisionreview.gps_review, location_review: @revisionreview.location_review, name_review: @revisionreview.name_review, revision_id: @revisionreview.revision_id, season_review: @revisionreview.season_review, traildirection_review: @revisionreview.traildirection_review, trailtype_review: @revisionreview.trailtype_review, user_id: @revisionreview.user_id }
+    patch :update, id: @revisionreview, revisionreview: { finalcomments: @revisionreview.finalcomments, gps_review: @revisionreview.gps_review, location_review: @revisionreview.location_review, name_review: @revisionreview.name_review, revision_id: @revisionreview.revision_id, season_review: @revisionreview.season_review, traildirection_review: @revisionreview.traildirection_review, trailtype_review: @revisionreview.trailtype_review, user_id: @revisionreview.user_id, photos_review: @revisionreview.photos_review }
     assert_redirected_to revisionreview_path(assigns(:revisionreview))
   end
 

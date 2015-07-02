@@ -1,7 +1,7 @@
 class Social < ActiveRecord::Base
   belongs_to :user
-  validates_format_of :facebook_link, with: /facebook.com\// on: :create
-  validates_format_of :linkedin_link, with: /linkedin.com\// on: :create
-  validates_format_of :youtube_link, with: /youtube.com\// on: :create
-  validates_format_of :instagram_link, with: /instagram.com\// on: :create
+  validates :facebook_link, format: { with: /facebook.com\//}
+  validates :linkedin_link, format: { with: /linkedin.com\//}
+  validates :youtube_link, format: { with: /youtube.com\//}
+  validates :instagram_link, format: { with: /instagram.com\//}
 end

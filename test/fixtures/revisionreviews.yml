@@ -9,6 +9,7 @@ one:
   traildirection_review: MyString
   finalcomments: MyText
   length_review: string
+  photos_review: string
   user_id: 1
   revision_id: 1
 
@@ -21,5 +22,6 @@ two:
   traildirection_review: MyString
   finalcomments: MyText
   length_review: string
+  photos_review: string
   user_id: 2
   revision_id: 2
