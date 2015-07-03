@@ -13,11 +13,15 @@ class Posttrail
         @trail.status="Accepted"
         @user.update_attribute(:points, @user.points+200)
       end
-      @trail.save
+      if !@trail.save
+        raise ActiveRecord::Rollback
+      end
       @trail.images.store unless @trail.images.nil?
       @rating.user_id=@trail.user_id 
       @rating.trail_id= @trail.id
-      @rating.save
+      if !@rating.save
+        raise ActiveRecord::Rollback
+      end
     end
   end
 end

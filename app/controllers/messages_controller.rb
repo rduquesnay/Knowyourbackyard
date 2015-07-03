@@ -13,14 +13,18 @@ class MessagesController < ApplicationController
     @message = Message.new(message_params)
     @chat = Chat.find(@message.chat_id)
     ActiveRecord::Base.transaction do
-      @message.save
+      if !@message.save
+        raise ActiveRecord::Rollback
+      end
       if @message.user_id == @chat.admin_id
         other_user = @chat.contact_id
       else
         other_user = @chat.admin_id
       end
       notice = Notice.new({type: "New Message", link_id: @message.chat_id, to_user: other_user})
-      notice.send
+      if !notice.send
+        raise ActiveRecord::Rollback
+      end
     end
     redirect_to @chat
   end

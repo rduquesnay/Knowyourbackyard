@@ -35,11 +35,17 @@ class RevisionreviewsController < ApplicationController
     @revision = Revision.find(revisionreview_params[:revision_id])
     @reviewuser = User.find(current_user)
     @revisionreview = Revisionreview.new(revisionreview_params)
-    self.class.transaction do
-      @revisionreview.save
-      @reviewuser.update_attribute(:points, @reviewuser.points+150)
+    ActiveRecord::Base.transaction do
+      if !@revisionreview.save
+        raise ActiveRecord::Rollback
+      end
+      if !@reviewuser.update_attribute(:points, @reviewuser.points+150)
+        raise ActiveRecord::Rollback
+      end
       noitce = Notice.new({type: "Revision Reviewed", link_id: @revisionreview.id, to_user: @revision.user_id})
-      notice.send
+      if !notice.send
+        raise ActiveRecord::Rollback
+      end
     end
     respond_with(@revisionreview)
   end

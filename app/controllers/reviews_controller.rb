@@ -33,17 +33,29 @@ class ReviewsController < ApplicationController
     ActiveRecord::Base.transaction do
       if check_params[:check_name] || check_params[:check_location] || check_params[:check_difficulty] || check_params[:check_duration] || check_params[:check_season] || check_params[:check_type] || check_params[:check_length] || check_params[:check_gps] || check_params[:check_directions] || check_params[:check_photos]
         @review = Review.new(review_params)
-        @trail.update_attribute(:status, "Under review")
-        @review.save
+        if !@trail.update_attribute(:status, "Under review")
+          raise ActiveRecord::Rollback
+        end
+        if !@review.save
+          raise ActiveRecord::Rollback
+        end
         @notice = Notice.new({type: "Trail Reviewed Needs Changes", link_id: @review.id, to_user: @trail.user_id, trail_id: @trail.id, trail_name: @trail.name})
       else
         @trailuser = User.find(@trail.user_id)
-        @trail.update_attribute(:status, "Accepted")
-        @trailuser.update_attribute(:points, @trailuser.points+200)
+        if !@trail.update_attribute(:status, "Accepted")
+          raise ActiveRecord::Rollback
+        end
+        if !@trailuser.update_attribute(:points, @trailuser.points+200)
+          raise ActiveRecord::Rollback
+        end
         @notice = Notice.new({type: "Trail Reviewed Accepted", link_id: @trail.id, to_user: @trail.user_id, trail_id: @trail.id, trail_name: @trail.name})
       end
-      @reviewuser.update_attribute(:points, @reviewuser.points+150)
-      @notice.send
+      if !@reviewuser.update_attribute(:points, @reviewuser.points+150)
+        raise ActiveRecord::Rollback
+      end
+      if !@notice.send
+        raise ActiveRecord::Rollback
+      end
     end
     respond_with(@trail)
   end

@@ -38,7 +38,7 @@ class TrailsController < ApplicationController
     if newtrail.post
       respond_with(@trail)
     else
-      render 'new'
+      render :new
     end
   end
 
@@ -80,7 +80,7 @@ class TrailsController < ApplicationController
         file.delete
       end
     end
-    @trail.destroy
+    @trail.delete
     @updates.each do |trailupdate|
       trailupdate.destroy
     end

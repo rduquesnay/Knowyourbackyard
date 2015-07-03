@@ -36,8 +36,10 @@ class ResolvedrevisiondisputesController < ApplicationController
     @revisionreview = Revisionreview.find(@resolvedrevisiondispute.review_id)
     @revision = Revision.find(@revisionreview.revision_id)
     @revisiondispute = Revisiondispute.find(dispute_params[:dispute_id])
-    self.class.transaction do
-      @resolvedrevisiondispute.save
+    ActiveRecord::Base.transaction do
+      if !@resolvedrevisiondispute.save
+        raise ActiveRecord::Rollback
+      end
       @revisiondispute.destroy
       if @resolvedrevisiondispute.dispute_action=="Accepted"
         @revisionreview.destroy
@@ -45,7 +47,9 @@ class ResolvedrevisiondisputesController < ApplicationController
       elsif @resolvedrevisiondispute.dispute_action=="Dismissed"
         @notice = Notice.new({type: "Dispute Dismissed", link_to: @resolvedrevisiondispute.id, to_user: @revision.user_id, dispute_type: "revision"})
       end
-      @notice.send
+      if !@notice.send
+        raise ActiveRecord::Rollback
+      end
     end
     redirect_to trailreviewindex_path
   end

@@ -22,9 +22,13 @@ class ChatsController < ApplicationController
     ActiveRecord::Base.transaction do
       @chat.save
       notice = Notice.new({type: "New Chat", link_id: @chat.id, to_user: @chat.contact_id})
-      notice.send
+      if !notice.send
+        raise ActiveRecord::Rollback
+      end
       @message = Message.new(content: @contact.message,chat_id: @chat.id,user_id: @chat.contact_id)
-      @message.save
+      if !@message.save
+        raise ActiveRecord::Rollback
+      end
     end
     redirect_to new_message_url(chat_id: @chat.id)
   end
