@@ -13,6 +13,9 @@ body {
   color: white;
 }
 form {
+  div.input-group > span > label{
+    color:black;
+  }
   label {
       color:white;
     };
