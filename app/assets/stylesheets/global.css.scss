@@ -16,9 +16,12 @@ form {
   label {
       color:white;
     };
-  div > span > label{
+  div > span > div > label{
     color:black;
   };
+  #rating > div > div.input-group > span > div > div.field_with_errors{
+    display: inline-block;
+  }
 }
 .well{
   color: black;

@@ -25,6 +25,7 @@ class TrailsController < ApplicationController
 
   def new
     @trail = Trail.new
+    @rating = Rating.new
     respond_with(@trail)
   end
 
