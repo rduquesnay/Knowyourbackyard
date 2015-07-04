@@ -19,13 +19,13 @@ class RevisionsController < ApplicationController
   def new
     @revision = Revision.new
     @trail = Trail.find(params[:trail_id])
-    @images = @trail.images.load
+    @images = @trail.images.load unless @trail.images.nil?
     respond_with(@revision)
   end
 
   def edit
     @trail = Trail.find(@revision.trail_id)
-    @images = @trail.images.load
+    @images = @trail.images.load unless @trail.images.nil?
   end
 
   def create

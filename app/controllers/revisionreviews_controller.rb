@@ -14,8 +14,8 @@ class RevisionreviewsController < ApplicationController
   def show
     @revision = Revision.find(@revisionreview.revision_id)
     @trail = Trail.find(@revision.trail_id)
-    @images = @trail.images.load
-    @rev_images = @revision.images.load
+    @images = @trail.images.load unless @trail.images.nil?
+    @rev_images = @revision.images.load unless @revision.images.nil?
     respond_with(@revisionreview)
   end
 
@@ -23,8 +23,8 @@ class RevisionreviewsController < ApplicationController
     @revisionreview = Revisionreview.new
     @revision = Revision.find(params[:revision_id])
     @trail = Trail.find(@revision.trail_id)
-    @images = @trail.images.load
-    @rev_images = @revision.images.load
+    @images = @trail.images.load unless @trail.images.nil?
+    @rev_images = @revision.images.load unless @revision.images.nil?
     respond_with(@revisionreview)
   end
 

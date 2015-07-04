@@ -14,7 +14,7 @@ class ReviewdisputesController < ApplicationController
   def show
     @review = @reviewdispute.review
     @trail = @review.trail
-    @images = @trail.images.load
+    @images = @trail.images.load unless @trail.images.nil?
     respond_with(@reviewdispute)
   end
 

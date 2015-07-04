@@ -1,4 +1,4 @@
-class notice
+class Notice
   def initialize(params)
     
     case params[:type]

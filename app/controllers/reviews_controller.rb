@@ -13,14 +13,14 @@ class ReviewsController < ApplicationController
 
   def show
     @trail = Trail.find(@review.trail_id)
-    @images = @trail.images.load
+    @images = @trail.images.load unless @trail.images.nil?
     respond_with(@review)
   end
 
   def new
     @review = Review.new
     @trail = Trail.find(params[:trail_id])
-    @images = @trail.images.load
+    @images = @trail.images.load unless @trail.images.nil?
     respond_with(@review)
   end
 
@@ -30,34 +30,14 @@ class ReviewsController < ApplicationController
   def create
     @trail = Trail.find(review_params[:trail_id])
     @reviewuser = User.find(current_user.id)
-    ActiveRecord::Base.transaction do
-      if check_params[:check_name] || check_params[:check_location] || check_params[:check_difficulty] || check_params[:check_duration] || check_params[:check_season] || check_params[:check_type] || check_params[:check_length] || check_params[:check_gps] || check_params[:check_directions] || check_params[:check_photos]
-        @review = Review.new(review_params)
-        if !@trail.update_attribute(:status, "Under review")
-          raise ActiveRecord::Rollback
-        end
-        if !@review.save
-          raise ActiveRecord::Rollback
-        end
-        @notice = Notice.new({type: "Trail Reviewed Needs Changes", link_id: @review.id, to_user: @trail.user_id, trail_id: @trail.id, trail_name: @trail.name})
-      else
-        @trailuser = User.find(@trail.user_id)
-        if !@trail.update_attribute(:status, "Accepted")
-          raise ActiveRecord::Rollback
-        end
-        if !@trailuser.update_attribute(:points, @trailuser.points+200)
-          raise ActiveRecord::Rollback
-        end
-        @notice = Notice.new({type: "Trail Reviewed Accepted", link_id: @trail.id, to_user: @trail.user_id, trail_id: @trail.id, trail_name: @trail.name})
-      end
-      if !@reviewuser.update_attribute(:points, @reviewuser.points+150)
-        raise ActiveRecord::Rollback
-      end
-      if !@notice.send
-        raise ActiveRecord::Rollback
-      end
+    @review = Review.new(review_params)
+    check = check_params[:check_name] || check_params[:check_location] || check_params[:check_difficulty] || check_params[:check_duration] || check_params[:check_season] || check_params[:check_type] || check_params[:check_length] || check_params[:check_gps] || check_params[:check_directions] || check_params[:check_photos]
+    newreview = Postreview.new({trail: @trail, review: @review, reviewuser: @reviewuser, check: check})
+    if newreview.post
+      respond_with(@trail)
+    else
+      render 'new'
     end
-    respond_with(@trail)
   end
 
   def update

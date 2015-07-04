@@ -3,6 +3,7 @@ class Posttrail
     @trail=params[:trail]
     @rating=params[:rating]
     @user=User.find(@trail.user_id)
+    @success=nil
   end
 
   def post
@@ -13,15 +14,18 @@ class Posttrail
         @trail.status="Accepted"
         @user.update_attribute(:points, @user.points+200)
       end
-      if !@trail.save
+      @success = @trail.save
+      unless @success
         raise ActiveRecord::Rollback
       end
       @trail.images.store unless @trail.images.nil?
       @rating.user_id=@trail.user_id 
       @rating.trail_id= @trail.id
-      if !@rating.save
+      @success =  @rating.save
+      unless @success
         raise ActiveRecord::Rollback
       end
     end
+    return @success
   end
 end

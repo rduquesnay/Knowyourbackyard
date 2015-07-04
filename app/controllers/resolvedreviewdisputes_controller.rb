@@ -13,14 +13,14 @@ class ResolvedreviewdisputesController < ApplicationController
 
   def show
     @trail=Trail.find(@resolvedreviewdispute.trail_id)
-    @images = @trail.images.load
+    @images = @trail.images.load unless @trail.images.nil?
     respond_with(@resolvedreviewdispute)
   end
 
   def new
     @resolvedreviewdispute = Resolvedreviewdispute.new
     @trail = Trail.find(params[:trail_id])
-    @images = @trail.images.load
+    @images = @trail.images.load unless @trail.images.nil?
     @review = Review.find(params[:review_id])
     @reviewdispute = Reviewdispute.find(params[:dispute_id])
     respond_with(@resolvedreviewdispute)

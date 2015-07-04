@@ -13,7 +13,7 @@ class ResolvedrevisiondisputesController < ApplicationController
 
   def show
     @trail=Trail.find(@resolvedrevisiondispute.trail_id)
-    @images = @resolvedrevisiondispute.revisied_photos.load
+    @images = @resolvedrevisiondispute.revisied_photos.load unless @resolvedrevisiondispute.revisied_photos.nil?
     respond_with(@resolvedrevisiondispute)
   end
 
@@ -23,8 +23,8 @@ class ResolvedrevisiondisputesController < ApplicationController
     @revision = Revision.find(params[:revision_id])
     @revisionreview = Revisionreview.find(params[:review_id])
     @revisiondispute = Revisiondispute.find(params[:dispute_id])
-    @images = @trail.images.load
-    @rev_images = @revision.images.load
+    @images = @trail.images.load unless @trail.images.nil?
+    @rev_images = @revision.images.load unless @revision.images.nil?
     respond_with(@resolvedrevisiondispute)
   end
 

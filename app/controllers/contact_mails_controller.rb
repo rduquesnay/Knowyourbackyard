@@ -13,7 +13,7 @@ class ContactMailsController < ApplicationController
     contact = Contact.find(mail_params[:contact])
     admin = User.find(mail_params[:from])
     message = Message.new(content: mail_params[:content])
-    Contactmailer.reply({message: message, to: contact, from: admin}).deliver_now
+    Contactmailer.reply({message: message, to: contact, from: admin.email}).deliver_now
     redirect_to contacts_path
   end
   
