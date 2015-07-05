@@ -110,14 +110,23 @@
         <%= link_to "Add Video", new_video_path({id: @trail.id}) %>
       <%end%>
       <%unless @video==nil %>
-        <%=  Videoparser.get_embed(@video.src).html_safe %>
+        <%=  @video.src.html_safe %>
       <%end%>
     </div>
+    <%if user_signed_in? && @video!=nil && current_user.admin? %>
+      <p>
+      <%= link_to "Edit Video", edit_video_path(@video) %>
+      </p>
+    <%end%>
     <% if user_signed_in? && current_user.videomaker? && @video==nil %>
+      <p>
       <%= link_to "Submit Video for Trail", new_video_submission_path({id: @trail.id}) %>
+      </p>
     <%end%>
     <% if user_signed_in? && !current_user.videomaker? %>
+      <p>
       <%= link_to "Become Video Maker", new_videomaker_submission_path %>
+      </p>
     <%end%>
     <% unless @images.nil? %>
       <h6>Trail Photos:</h6>

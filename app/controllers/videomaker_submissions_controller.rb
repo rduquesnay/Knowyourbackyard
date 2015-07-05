@@ -24,7 +24,7 @@ class VideomakerSubmissionsController < ApplicationController
   def create
     @videomaker_submission = VideomakerSubmission.new(videomaker_submission_params)
     if @videomaker_submission.save
-      respond_with(@videomaker_submission)
+      redirect_to root_path
     else
       render 'new'
     end

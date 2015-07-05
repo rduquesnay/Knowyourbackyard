@@ -14,15 +14,15 @@
       </p>
       <%if user_signed_in? && current_user.admin? %>
           <%unless user.admin?%>
-            <%= link_to "Promote to Admin", adminpromote_path, method: :patch, id: user.id, class: "btn btn-primary" %>
+            <%= link_to "Promote to Admin", controller: "actions", action: "promote_to_admin", id: user.id, method: :patch, class: "btn btn-primary" %>
           <%end%>
           <%if user.trailblazer?%>
-            <%= link_to "Demote from Trailblazer", trailblazerdemote_path, method: :patch, id: user.id, class: "btn btn-primary" %>
+            <%= link_to "Demote from Trailblazer", controller: "actions", action: "demote_from_admin", id: user.id, method: :patch, class: "btn btn-primary" %>
           <% else %>
-            <%= link_to "Promote to Trailblazer", trailblazerpromote_path, method: :patch, id: user.id, class: "btn btn-primary" %>
+            <%= link_to "Promote to Trailblazer", controller: "actions", action: "promote_to_trailblazer", id: user.id, class: "btn btn-primary" %>
           <%end%>
           <%if current_user.owner? && user.admin?%>
-            <%= link_to "Demote from Admin", admindemote_path, method: :patch, id: user.id, class: "btn btn-primary" %>
+            <%= link_to "Demote from Admin", controller: "actions", action: "demote_from_admin", id: user.id, class: "btn btn-primary" %>
           <%end%>
       <% end %>
     </div>

@@ -15,7 +15,7 @@ class ActionsController < ApplicationController
       end
     end
     if current_user.admin?
-      redirect_to users_path
+      redirect_to index_path
     else
       redirect_to root_path
     end
@@ -24,18 +24,18 @@ class ActionsController < ApplicationController
   def demote_from_trailblazer
     @user.update_attribute(:trailblazer, false)
     @user.update_attribute(:demoted, true)
-    redirect_to users_path
+    redirect_to index_path
   end
 
   def promote_to_admin
     @user.update_attribute(:admin, true)
     @user.update_attribute(:trailblazer, true)
-    redirect_to users_path
+    redirect_to index_path
   end
 
   def demote_from_admin
     @user.update_attribute(:admin, false)
-    redirect_to users_path
+    redirect_to index_path
   end
 
   def set_trail_to_revision
@@ -66,6 +66,13 @@ class ActionsController < ApplicationController
     end
   end
 
+  def set_video_maker
+    submission = VideomakerSubmission.find(params[:submission])
+    user = submission.user 
+    user.update_attribute(:videomaker, true)
+    submission.destroy
+    redirect_to videomaker_submissions_path
+  end
   private
     def set_user
       @user = User.find(params[:id])

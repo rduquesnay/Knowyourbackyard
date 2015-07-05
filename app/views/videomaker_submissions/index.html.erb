@@ -13,11 +13,12 @@
   <tbody>
     <% @videomaker_submissions.each do |videomaker_submission| %>
       <tr>
-        <td><%= videomaker_submission.user %></td>
+        <td><%= videomaker_submission.user.username %></td>
         <td><%= videomaker_submission.demo_link %></td>
         <td><%= videomaker_submission.about %></td>
         <td><%= link_to 'Show', videomaker_submission %></td>
         <td><%= link_to 'Destroy', videomaker_submission, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+        <td><%= link_to 'Accept', controller: "actions", action:"set_video_maker", method: :patch, submission: videomaker_submission.id, class: "" %></td>
       </tr>
     <% end %>
   </tbody>

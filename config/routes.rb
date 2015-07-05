@@ -23,16 +23,17 @@ Knowyourbackyard::Application.routes.draw do
   resources :reviews
   resources :revisions
   resources :notifications, only: :destroy
-  resources :videos, only: [:new, :create, :destroy]
+  resources :videos, only: [:new, :create, :edit, :update, :destroy]
   get "Trailreview", to: 'trailblazer_lists#trailsreview', as: 'trailreviewindex'
   get "Trailslist", to: 'trails#trailslist', as: 'trailsindex'
   get "GuestTrailslist", to: 'pages#guestviewtrail', as: 'guestindex'
-  patch "Promoteadmin", to: 'actions#promote_to_admin', as: 'adminpromote'
-  patch "PromoteTrailblazer", to: 'actions#promote_to_trailblazer', as: 'trailblazerpromote'
-  patch "DemoteTrailblazer", to: 'actions#demote_from_trailblazer', as: 'trailblazerdemote'
-  patch "Demoteadmin", to: 'actions#demote_from_admin', as: 'admindemote'
+  get "Promoteadmin", to: 'actions#promote_to_admin', as: 'adminpromote'
+  get "PromoteTrailblazer", to: 'actions#promote_to_trailblazer', as: 'trailblazerpromote'
+  get "DemoteTrailblazer", to: 'actions#demote_from_trailblazer', as: 'trailblazerdemote'
+  get "Demoteadmin", to: 'actions#demote_from_admin', as: 'admindemote'
   get "AccpetRevision", to: 'actions#set_trail_to_revision', as: 'setrevision'
-  patch "ToggleTrailGuestView", to: 'actions#toggle_trail_viewablebyguest', as: 'toggleview'
+  get "SetVideomaker", to: 'actions#set_video_maker', as: 'setvideomaker'
+  get "ToggleTrailGuestView", to: 'actions#toggle_trail_viewablebyguest', as: 'toggleview'
   devise_for :users
   root to: 'pages#home'
   

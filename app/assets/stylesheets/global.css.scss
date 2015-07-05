@@ -14,17 +14,20 @@ body {
 }
 form {
   div.input-group > span > label{
-    color:black;
-  }
+    color: black;
+  };
   label {
-      color:white;
-    };
+    color: white;
+  };
   div > span > div > label{
-    color:black;
+    color: black;
   };
   #rating > div > div.input-group > span > div > div.field_with_errors{
     display: inline-block;
-  }
+  };
+}
+#new_videomaker_submission > div > strong{
+  color: white;
 }
 .well{
   color: black;
