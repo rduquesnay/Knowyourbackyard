@@ -83,7 +83,9 @@
           <% end %>
           </p>
         <%end%>
-        <%= link_to "Edit Social Connections", edit_social_path(@links) %>
+        <% if user_signed_in? && current_user.id==@user.id %>
+          <%= link_to "Edit Social Connections", edit_social_path(@links) %>
+        <%end%>
       <% end %>
     </div>
     <div class="well">

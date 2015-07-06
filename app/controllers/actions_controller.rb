@@ -47,7 +47,7 @@ class ActionsController < ApplicationController
       trail.update({name: revision.name, location: revision.location, length: revision.length, season: revision.season, trailtype: revision.trailtype, latitude: revision.latitude, longitude: revision.longitude, traildirections: revision.traildirections, user_id: trail.user_id, status: "Accepted"})
       revisionuser.update_attribute(:points, revisionuser.points+150)
       user.update_attribute(:points, user.points+150)
-      revision.destroy
+      revision.delete
     end
     redirect_to trailreviewindex_path 
   end

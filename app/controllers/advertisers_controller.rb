@@ -19,6 +19,7 @@ class AdvertisersController < ApplicationController
   end
 
   def edit
+    respond_with(@advertiser)
   end
 
   def create

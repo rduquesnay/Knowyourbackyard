@@ -178,6 +178,6 @@
   <% elsif @trail.status=="To be reviewed" && current_user.trailblazer? %>
     <%= link_to "Write a Review on this trail", new_review_path({trail_id: @trail.id}) %><br>
   <% elsif @trail.status=="Under review" && @trail.user_id==current_user.id %>
-    <%= link_to "View review", controller: "reviews", action: "index",trail_id: @trail.id %><br>
+    <%= link_to "View review", {controller: "reviews", action: "index", trail_id: @trail.id} %><br>
   <% end %>
 <%end%>

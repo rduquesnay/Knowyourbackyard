@@ -12,7 +12,7 @@ class RevisionsController < ApplicationController
 
   def show
     @trail = Trail.find(@revision.trail_id)
-    @images = @trail.images.load
+    @images = @trail.images.load unless @trail.images.nil?
     respond_with(@revision)
   end
 
@@ -30,6 +30,9 @@ class RevisionsController < ApplicationController
 
   def create
     @revision = Revision.new(revision_params)
+    if @revision.images.nil?
+      @revision.images =""
+    end
     @trail = Trail.find(@revision.trail_id)
     @revision.save
     respond_with(@trail)

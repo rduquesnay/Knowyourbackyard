@@ -1,25 +1,38 @@
-<h1>Listing videomaker_submissions</h1>
-
-<table>
-  <thead>
-    <tr>
-      <th>User</th>
-      <th>Demo link</th>
-      <th>About</th>
-      <th colspan="3"></th>
-    </tr>
-  </thead>
-
-  <tbody>
-    <% @videomaker_submissions.each do |videomaker_submission| %>
-      <tr>
-        <td><%= videomaker_submission.user.username %></td>
-        <td><%= videomaker_submission.demo_link %></td>
-        <td><%= videomaker_submission.about %></td>
-        <td><%= link_to 'Show', videomaker_submission %></td>
-        <td><%= link_to 'Destroy', videomaker_submission, method: :delete, data: { confirm: 'Are you sure?' } %></td>
-        <td><%= link_to 'Accept', controller: "actions", action:"set_video_maker", method: :patch, submission: videomaker_submission.id, class: "" %></td>
-      </tr>
-    <% end %>
-  </tbody>
-</table>
+<h1>Listing videomaker submissions</h1>
+<div class="row">
+  <div class="col-md-2">
+    <strong>User</strong>
+  </div>
+  <div class="col-md-3">
+    <strong>Demo Link</strong>
+  </div>
+  <div class="col-md-4">
+    <strong>About</strong>
+  </div>
+</div>
+<% @videomaker_submissions.each do |videomaker_submission| %>
+  <div class="row">
+    <div class="col-md-2">
+      <%= link_to videomaker_submission.user do %>
+        <%= videomaker_submission.user.username %>
+      <% end %>
+    </div>
+    <div class="col-md-3">
+      <%= link_to extlink(videomaker_submission.demo_link) do %>
+        <%= videomaker_submission.demo_link %>
+      <% end %>
+    </div>
+    <div class="col-md-4">
+        <%= videomaker_submission.about %>
+    </div>
+    <div class="col-md-1">
+        <%= link_to 'Show', videomaker_submission %>
+    </div>
+    <div class="col-md-1">
+        <%= link_to 'Destroy', videomaker_submission, method: :delete, data: { confirm: 'Are you sure?' } %>
+    </div>
+    <div class="col-md-1">
+        <%= link_to 'Accept', {controller: "actions", action: "set_video_maker", submission: videomaker_submission.id}, method: :patch,  class: "btn btn-primary" %>
+    </div>
+  </div>
+<% end %>

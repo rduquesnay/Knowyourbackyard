@@ -1,4 +1,6 @@
 class VideoSubmissionsController < ApplicationController
+  before_action :ensure_admin!, only: [:index, :show, :destroy]
+  before_action :authenticate_user!, only: [:new, :create, :edit, :update]
   before_action :set_video_submission, only: [:show, :edit, :update, :destroy]
 
   respond_to :html
