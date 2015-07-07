@@ -128,20 +128,21 @@
       <%= link_to "Become Video Maker", new_videomaker_submission_path %>
       </p>
     <%end%>
-    <% unless @images.nil? %>
-      <h6>Trail Photos:</h6>
-      <div id="trail-photos" class= "well">
+    <h6>Trail Photos:</h6>
+    <div id="trail-photos" class= "well">
+      <% unless @images.nil? || @images=="" %>
         <div class="row">
-          <% @images.files.each do |image| %>
+          <% @images.each do |image| %>
             <div class="col-md-3">
-              <%= link_to image.cdn_url do %>
-                <%= image_tag image.cdn_url, width: 100 %>
+              <%= link_to image.url.cdn_url do %>
+                <%= image_tag image.url, width: 100 %>
               <%end%>
             </div>
           <%end%>
         </div>
-      </div>
-    <% end %>
+      <% end %>
+      <%= link_to "Submit a Image for this Trail", new_image_path({id: @trail.id}) %>
+    </div>
     <h6>Trail Conditions:</h6>
     <div id="trail-updates" class="well">
       <%if @updates.count==0 %>
@@ -163,10 +164,7 @@
         <%= link_to "Make a Update on the trail conditions", new_trailupdate_path({id: @trail.id}) %>
       <%end%>
     </div>
-    <h6>Google Map:</h6>
-    <div id="trail-map" class="well">
-      <%= render partial: "map", locals: {lat: @trail.latitude, long: @trail.longitude} %>
-    </div>
+    <%= render partial: "map", locals: {lat: @trail.latitude, long: @trail.longitude} %>
   </div>
 </div>
 <% if user_signed_in? %>

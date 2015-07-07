@@ -9,7 +9,6 @@ one:
   trailtype_review: MyText
   gps_review: MyText
   traildirections_review: MyText
-  photos_review: string
   finalcomments: MyText
   trail_id: 1
   user_id: 1
@@ -23,7 +22,6 @@ two:
   trailtype_review: MyText
   gps_review: MyText
   traildirections_review: MyText
-  photos_review: string
   finalcomments: MyText
   trail_id: 2 
   user_id: 2

@@ -1,4 +1,6 @@
 <% if APP_CONFIG['google_map_api_key'] != "place key here" && !lat.nil? && !long.nil? %>
+<h6>Google Map:</h6>
+<div id="trail-map" class="well">
   <iframe
   width="600"
   height="450"
@@ -8,4 +10,5 @@
   ¢er=<%= lat %>,<%= long %>"
   >
   </iframe>
+</div>
 <% end %>

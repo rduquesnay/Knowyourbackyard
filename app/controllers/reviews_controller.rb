@@ -13,14 +13,12 @@ class ReviewsController < ApplicationController
 
   def show
     @trail = Trail.find(@review.trail_id)
-    @images = @trail.images.load unless @trail.images.nil?
     respond_with(@review)
   end
 
   def new
     @review = Review.new
     @trail = Trail.find(params[:trail_id])
-    @images = @trail.images.load unless @trail.images.nil?
     respond_with(@review)
   end
 
@@ -56,9 +54,9 @@ class ReviewsController < ApplicationController
     end
 
     def review_params
-      params.require(:review).permit(:name_review, :location_review,:length_review, :rating_difficulty_review, :rating_duration_review, :season_review, :trailtype_review, :gps_review, :traildirections_review, :finalcomments, :trail_id, :user_id, :photos_review)
+      params.require(:review).permit(:name_review, :location_review,:length_review, :rating_difficulty_review, :rating_duration_review, :season_review, :trailtype_review, :gps_review, :traildirections_review, :finalcomments, :trail_id, :user_id)
     end
     def check_params
-      params.permit(:check_name, :check_location, :check_length, :check_difficulty, :check_duration, :check_season, :check_type, :check_length, :check_gps, :check_directions, :check_photos)
+      params.permit(:check_name, :check_location, :check_length, :check_difficulty, :check_duration, :check_season, :check_type, :check_length, :check_gps, :check_directions)
     end
 end

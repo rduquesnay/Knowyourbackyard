@@ -1,4 +1,5 @@
 Knowyourbackyard::Application.routes.draw do
+  resources :images
   resources :advertisers
   resources :socials, only: [:new, :create, :edit, :update, :destroy]
   resources :videomaker_submissions
@@ -33,6 +34,7 @@ Knowyourbackyard::Application.routes.draw do
   patch "Demoteadmin", to: 'actions#demote_from_admin', as: 'admindemote'
   patch "AccpetRevision", to: 'actions#set_trail_to_revision', as: 'setrevision'
   patch "SetVideomaker", to: 'actions#set_video_maker', as: 'setvideomaker'
+  patch "SetImage", to: 'actions#set_image', as: 'setimage'
   patch "ToggleTrailGuestView", to: 'actions#toggle_trail_viewablebyguest', as: 'toggleview'
   devise_for :users
   root to: 'pages#home'

@@ -23,7 +23,7 @@ class TrailsControllerTest < ActionController::TestCase
   test "should create trail" do
     sign_in(@user)
   #  assert_difference('Trail.count') do
-  #    post :create, trail: { avgdifficulty: @trail.avgdifficulty, avgduration: @trail.avgduration, latitude: @trail.latitude, location: @trail.location, longitude: @trail.longitude, name: @trail.name, season: @trail.season, traildirections: @trail.traildirections, trailtype: @trail.trailtype, length: @trail.length, images: @trail.images }
+  #    post :create, trail: { avgdifficulty: @trail.avgdifficulty, avgduration: @trail.avgduration, latitude: @trail.latitude, location: @trail.location, longitude: @trail.longitude, name: @trail.name, season: @trail.season, traildirections: @trail.traildirections, trailtype: @trail.trailtype, length: @trail.length }
   #  end
 
   #  assert_redirected_to trail_path(assigns(:trail))
@@ -42,7 +42,7 @@ class TrailsControllerTest < ActionController::TestCase
 
   test "should update trail" do
     sign_in(@user)
-  #  patch :update, id: @trail, trail: { avgdifficulty: @trail.avgdifficulty, avgduration: @trail.avgduration, latitude: @trail.latitude, location: @trail.location, longitude: @trail.longitude, name: @trail.name, season: @trail.season, traildirections: @trail.traildirections, trailtype: @trail.trailtype, length: @trail.length, images: @trail.images }
+  #  patch :update, id: @trail, trail: { avgdifficulty: @trail.avgdifficulty, avgduration: @trail.avgduration, latitude: @trail.latitude, location: @trail.location, longitude: @trail.longitude, name: @trail.name, season: @trail.season, traildirections: @trail.traildirections, trailtype: @trail.trailtype, length: @trail.length }
   #  assert_redirected_to trail_path(assigns(:trail))
   end
 

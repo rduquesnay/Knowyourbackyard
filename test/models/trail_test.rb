@@ -11,5 +11,5 @@ class TrailTest < ActiveSupport::TestCase
   should have_many(:video_submissions)
 
   should accept_nested_attributes_for(:ratings).allow_destroy(true)
-  
+  should have_many(:images)  
 end

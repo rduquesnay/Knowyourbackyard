@@ -18,7 +18,6 @@ class Posttrail
       unless @success
         raise ActiveRecord::Rollback
       end
-      @trail.images.store unless @trail.images.nil?
       @rating.user_id=@trail.user_id 
       @rating.trail_id= @trail.id
       @success =  @rating.save

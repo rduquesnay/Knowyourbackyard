@@ -23,8 +23,6 @@ one:
   dispute_comment: MyText
   dispute_action: MyString
   comment: MyText
-  photos_review: text
-  revisied_photos: string
 
 two:
   trail_id: 1
@@ -49,5 +47,3 @@ two:
   dispute_comment: MyText
   dispute_action: MyString
   comment: MyText
-  photos_review: text
-  revisied_photos: string

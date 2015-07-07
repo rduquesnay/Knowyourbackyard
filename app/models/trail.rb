@@ -8,7 +8,7 @@ class Trail < ActiveRecord::Base
   has_one :video
   has_many :video_submissions
   accepts_nested_attributes_for :ratings, allow_destroy: true
-  has_uploadcare_group :images
+  has_many :images
 
   scope :accepted, -> { where(status: "Accepted" )}
   scope :unreviewed, -> {where(status: "To be reviewed")}

@@ -155,31 +155,6 @@
     </div>
   </div>
   <div class="row">
-    <% if @review.photos_review=="" %>
-      <div class="col-md-4">
-    <%else%>
-      <div class="col-md-4 danger">
-    <%end%>
-      <p>
-      <strong>Photos: </strong>
-      <div class="row">
-        <% @images.files.each do |image| %>
-          <div class="col-md-3">
-            <%= link_to image.cdn_url do %>
-              <%= image_tag image.cdn_url, width: 100 %>
-            <%end%>
-          </div>
-        <%end%>
-      </div>
-      </p>
-    </div>
-    <div class="col-md-5">
-      <p>
-      <%= @review.photos_review %>
-      </p>
-    </div>
-  </div>
-  <div class="row">
     <% if @review.traildirections_review=="" %>
       <div class="col-md-4">
     <%else%>

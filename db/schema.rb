@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20150628004652) do
+ActiveRecord::Schema.define(version: 20150707132851) do
 
   create_table "advertisers", force: true do |t|
     t.string   "name"
@@ -52,6 +52,16 @@ ActiveRecord::Schema.define(version: 20150628004652) do
     t.datetime "updated_at"
     t.string   "username"
   end
+
+  create_table "images", force: true do |t|
+    t.string   "url",        default: ""
+    t.integer  "trail_id"
+    t.boolean  "accepted",   default: false
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  add_index "images", ["trail_id"], name: "index_images_on_trail_id"
 
   create_table "messages", force: true do |t|
     t.text     "content"
@@ -106,7 +116,6 @@ ActiveRecord::Schema.define(version: 20150628004652) do
     t.text     "comment"
     t.datetime "created_at"
     t.datetime "updated_at"
-    t.text     "photos_review"
   end
 
   add_index "resolvedreviewdisputes", ["trail_id"], name: "index_resolvedreviewdisputes_on_trail_id"
@@ -137,8 +146,6 @@ ActiveRecord::Schema.define(version: 20150628004652) do
     t.datetime "updated_at"
     t.text     "revisied_length"
     t.integer  "review_user_id"
-    t.text     "photos_review"
-    t.string   "revisied_photos"
   end
 
   add_index "resolvedrevisiondisputes", ["trail_id"], name: "index_resolvedrevisiondisputes_on_trail_id"
@@ -167,7 +174,6 @@ ActiveRecord::Schema.define(version: 20150628004652) do
     t.datetime "updated_at"
     t.integer  "user_id"
     t.text     "length_review"
-    t.text     "photos_review"
   end
 
   add_index "reviews", ["trail_id"], name: "index_reviews_on_trail_id"
@@ -195,7 +201,6 @@ ActiveRecord::Schema.define(version: 20150628004652) do
     t.datetime "created_at"
     t.datetime "updated_at"
     t.text     "length_review"
-    t.text     "photos_review"
   end
 
   add_index "revisionreviews", ["revision_id"], name: "index_revisionreviews_on_revision_id"
@@ -214,7 +219,6 @@ ActiveRecord::Schema.define(version: 20150628004652) do
     t.float    "longitude"
     t.text     "traildirections"
     t.float    "length"
-    t.string   "images"
   end
 
   add_index "revisions", ["trail_id"], name: "index_revisions_on_trail_id"
@@ -256,7 +260,6 @@ ActiveRecord::Schema.define(version: 20150628004652) do
     t.integer  "avgdifficulty"
     t.integer  "avgduration"
     t.boolean  "viewbyguest",     default: false
-    t.string   "images"
   end
 
   add_index "trails", ["user_id"], name: "index_trails_on_user_id"

@@ -1,0 +1,47 @@
+<h6>Trail Info:</h6>
+<div id="trail-info" class="well">
+  <p>
+  <strong>Trail Name: </strong>
+  <%= @image.trail.name %>
+  </p>
+  <p>
+  <strong>Location: </strong>
+  <%= @image.trail.location %>
+  </p>
+  <p>
+  <strong>Difficulty: </strong>
+  <%for i in 0..5 %>
+    <%if i==@image.trail.avgdifficulty%>
+      <%break%>
+    <%end%>
+    <span class="glyphicon glyphicon-star"> </span> 
+  <%end%>
+  </p>
+  <p>
+  <strong>Duration: </strong>
+  <%= @image.trail.avgduration %>
+  </p>
+  <p>
+  <strong>Season: </strong>
+  <%= @image.trail.season %>
+  </p>
+  <p>
+  <strong>Type: </strong>
+  <%= @image.trail.trailtype %>
+  </p>
+  <p>
+  <strong>Length: </strong>
+  <%= @image.trail.length %>
+  </p>
+  <p>
+  <p>
+  <strong>GPS: </strong>
+  lat: <%= @image.trail.latitude %>, long: <%= @image.trail.longitude %>
+  </p>
+</div>
+<p>
+  <%= image_tag(@image.url) %>
+</p>
+<%= link_to "Toggle Image to Show", {controller: "actions", action: "set_image", image_id: @image.id}, method: :patch, class: "btn btn-primary" %>
+<%= link_to 'Edit Image', edit_image_path(@image) %> |
+<%= link_to 'Back', images_path %>

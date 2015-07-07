@@ -14,8 +14,6 @@ class RevisionreviewsController < ApplicationController
   def show
     @revision = Revision.find(@revisionreview.revision_id)
     @trail = Trail.find(@revision.trail_id)
-    @images = @trail.images.load unless @trail.images.nil?
-    @rev_images = @revision.images.load unless @revision.images.nil?
     respond_with(@revisionreview)
   end
 
@@ -23,8 +21,6 @@ class RevisionreviewsController < ApplicationController
     @revisionreview = Revisionreview.new
     @revision = Revision.find(params[:revision_id])
     @trail = Trail.find(@revision.trail_id)
-    @images = @trail.images.load unless @trail.images.nil?
-    @rev_images = @revision.images.load unless @revision.images.nil?
     respond_with(@revisionreview)
   end
 
@@ -66,6 +62,6 @@ class RevisionreviewsController < ApplicationController
     end
 
     def revisionreview_params
-      params.require(:revisionreview).permit(:name_review, :location_review, :season_review, :length_review, :trailtype_review, :gps_review, :traildirection_review, :finalcomments, :user_id, :revision_id, :photos_review)
+      params.require(:revisionreview).permit(:name_review, :location_review, :season_review, :length_review, :trailtype_review, :gps_review, :traildirection_review, :finalcomments, :user_id, :revision_id)
     end
 end

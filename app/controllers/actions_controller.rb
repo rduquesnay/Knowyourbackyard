@@ -73,6 +73,16 @@ class ActionsController < ApplicationController
     submission.destroy
     redirect_to videomaker_submissions_path
   end
+  
+  def set_image
+    image = Image.find(params[:image_id])
+    if image.accepted?
+      image.update_attribute(:accepted, false)
+    else
+      image.update_attribute(:accepted, true)
+    end
+    redirect_to images_path
+  end
   private
     def set_user
       @user = User.find(params[:id])

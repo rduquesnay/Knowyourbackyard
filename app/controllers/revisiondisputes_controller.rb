@@ -15,8 +15,6 @@ class RevisiondisputesController < ApplicationController
     @revisionreview=@revisiondispute.revisionreview
     @revision = @revisionreview.revision
     @trail = @revision.trail
-    @images = @trail.images.load unless @trail.images.nil?
-    @rev_images = @revision.images.load unless @revision.images.nil?
     respond_with(@revisiondispute)
   end
 

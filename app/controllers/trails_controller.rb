@@ -18,7 +18,7 @@ class TrailsController < ApplicationController
     respond_with(@trails)
   end
   def show
-    @images = @trail.images.load unless @trail.images.nil?
+    @images = Image.where(trail_id: @trail.id).accepted 
     @video = Video.where(trail_id: @trail.id).first
     respond_with(@trail)
   end
@@ -44,22 +44,9 @@ class TrailsController < ApplicationController
   end
 
   def update
-    if @trail.images==trail_params[:images]
-      @trail.update(trail_params)
-      if @trail.status == "Under review" 
-        @trail.update_attribute(:status, "To be reviewed")
-      end
-    else
-      unless @trail.images.nil?
-        @trail.images.load.files.each do |file|
-          file.delete
-        end
-      end
-      @trail.update(trail_params)
-      @trail.images.store unless @trail.images.nil?
-      if @trail.status == "Under review" 
-        @trail.update_attribute(:status, "To be reviewed")
-      end
+    @trail.update(trail_params)
+    if @trail.status == "Under review" 
+      @trail.update_attribute(:status, "To be reviewed")
     end
     @rating.update(rate_params)
     respond_with(@trail)
@@ -76,11 +63,6 @@ class TrailsController < ApplicationController
     @comments = Comment.where(trail_id: @trail.id)
     @reviews = Review.where(trail_id: @trail.id)
     @revisions = Revision.where(trail_id: @trail.id)
-    unless @trail.images.nil?
-      @trail.images.load.files.each do |file|
-        file.delete
-      end
-    end
     @trail.delete
     @updates.each do |trailupdate|
       trailupdate.destroy
@@ -127,7 +109,7 @@ class TrailsController < ApplicationController
     end
 
     def trail_params
-      params.require(:trail).permit(:name, :location, :length, :season, :trailtype, :latitude, :longitude, :traildirections, :user_id, :images)
+      params.require(:trail).permit(:name, :location, :length, :season, :trailtype, :latitude, :longitude, :traildirections, :user_id)
     end
 
     def rate_params

@@ -12,27 +12,21 @@ class RevisionsController < ApplicationController
 
   def show
     @trail = Trail.find(@revision.trail_id)
-    @images = @trail.images.load unless @trail.images.nil?
     respond_with(@revision)
   end
 
   def new
     @revision = Revision.new
     @trail = Trail.find(params[:trail_id])
-    @images = @trail.images.load unless @trail.images.nil?
     respond_with(@revision)
   end
 
   def edit
     @trail = Trail.find(@revision.trail_id)
-    @images = @trail.images.load unless @trail.images.nil?
   end
 
   def create
     @revision = Revision.new(revision_params)
-    if @revision.images.nil?
-      @revision.images =""
-    end
     @trail = Trail.find(@revision.trail_id)
     @revision.save
     respond_with(@trail)
@@ -54,6 +48,6 @@ class RevisionsController < ApplicationController
     end
 
     def revision_params
-      params.require(:revision).permit(:name, :location, :season, :length, :trailtype, :latitude,:longitude, :traildirections, :trail_id, :user_id, :images)
+      params.require(:revision).permit(:name, :location, :season, :length, :trailtype, :latitude,:longitude, :traildirections, :trail_id, :user_id)
     end
 end
