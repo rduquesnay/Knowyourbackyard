@@ -25,6 +25,7 @@ class RevisionreviewsController < ApplicationController
   end
 
   def edit
+    @revision = Revision.find(@revisionreview.revision_id)
   end
 
   def create

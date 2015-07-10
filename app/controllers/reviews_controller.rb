@@ -23,6 +23,7 @@ class ReviewsController < ApplicationController
   end
 
   def edit
+    @trail = Trail.find(@review.trail_id)
   end
 
   def create

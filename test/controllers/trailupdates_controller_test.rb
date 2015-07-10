@@ -14,11 +14,11 @@ class TrailupdatesControllerTest < ActionController::TestCase
   end
 
   test "should get create" do
-  #  sign_in(@user)
-  #  assert_difference('Trailupdate.count') do
-  #    post :create, trailupdate: { message: @update.message}
-  #  end
-  #  assert_redirected_to trail_path
+    sign_in(@user)
+    assert_difference('Trailupdate.count') do
+      post :create, trailupdate: { message: @update.message, trail_id: 1}
+    end
+    assert_redirected_to trail_path(1)
   end
 
   test "should destory trailupdate" do
@@ -26,7 +26,7 @@ class TrailupdatesControllerTest < ActionController::TestCase
     assert_difference('Trailupdate.count', -1) do
       delete :destroy, id: @update
     end
-  #  assert_redirected_to trail_path
+    assert_redirected_to trail_path(1)
   end
 
 end

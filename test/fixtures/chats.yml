@@ -1,5 +1,11 @@
 # Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
-one: {}
+one:
+  subject: String
+  contact_id: 1
+  admin_id: 3
 
-two: {}
+two:
+  subject: String
+  contact_id: 2
+  admin_id: 3
 

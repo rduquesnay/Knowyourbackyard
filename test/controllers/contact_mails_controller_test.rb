@@ -7,14 +7,14 @@ class ContactMailsControllerTest < ActionController::TestCase
 
   test "should get new" do
     sign_in(@admin)
-  #  get :new
-  #  assert_response :success
+    get :new, contact_id: 1
+    assert_response :success
   end
 
   test "should create mail" do
     sign_in(@admin)
 
-  #  assert_redirected_to contacts_path
+    assert_response :success
   end
 
 end

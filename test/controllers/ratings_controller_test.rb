@@ -16,9 +16,9 @@ class RatingsControllerTest < ActionController::TestCase
   test "should get create" do
     sign_in(@user)
   #  assert_difference('Rating.count') do
-  #    post :create, rating: {difficulty: @rating.difficulty, durationinsec: @rating.durationinsec, favourite: @rating.favourite, user_id: @rating.user_id, trail_id: @rating.trail_id}
+  #    post :create, rating: {difficulty: 3, durationinsec: 134, favourite: true, user_id: 3, trail_id: 1}
   #  end
-  #  assert_redirected_to trail_path
+  #  assert_redirected_to trail_path(1)
   end
 
   test "should destory rating" do

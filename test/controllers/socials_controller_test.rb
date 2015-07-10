@@ -8,14 +8,14 @@ class SocialsControllerTest < ActionController::TestCase
 
   test "should get new" do
     sign_in(@user)
-  #  get :new
-  #  assert_response :success
+    get :new, id: 1
+    assert_response :success
   end
 
   test "should create social" do
     sign_in(@user)
   #  assert_difference('Social.count') do
-  #    post :create, social: { facebook_link: @social.facebook_link, instagram_link: @social.instagram_link, linkedin_link: @social.linkedin_link, user_id: @social.user_id, youtube_link: @social.youtube_link }
+  #    post :create, social: { facebook_link: "http://facebook.com/" , instagram_link: "http://instagram.com/", linkedin_link: "http://linkedin.com/", youtube_link: "http://yuotube/", user_id: @user.id }
   #  end
 
   #  assert_redirected_to user_path(@user)
@@ -29,7 +29,7 @@ class SocialsControllerTest < ActionController::TestCase
 
   test "should update social" do
     sign_in(@user)
-  #  patch :update, id: @social, social: { facebook_link: @social.facebook_link, instagram_link: @social.instagram_link, linkedin_link: @social.linkedin_link, user_id: @social.user_id, youtube_link: @social.youtube_link }
+    patch :update, id: @social, social: { facebook_link: "/facebook.com/", instagram_link: "/instagram.com/", linkedin_link: "/linkedin/", user_id: @user.id, youtube_link: "/youtube.com/" }
   #  assert_redirected_to user_path(@user)
   end
 

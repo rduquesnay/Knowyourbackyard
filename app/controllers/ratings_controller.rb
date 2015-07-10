@@ -19,7 +19,7 @@ class RatingsController < ApplicationController
   def destroy
     @rating = Rating.find(params[:id])
     @rating.destroy
-      redirect_to trail_url(@rating.trail_id)
+    redirect_to trail_url(@rating.trail_id)
   end
 
   private

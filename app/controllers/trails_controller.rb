@@ -3,7 +3,7 @@ class TrailsController < ApplicationController
   before_action :authenticate_user!, only: [:new, :edit, :update, :trailslist, :create]
   before_action :set_trail, only: [:show, :edit, :update, :destroy]
   before_action :check_for_guest, only: :show
-  before_action :set_user_rate, only: [:show,:edit,:update]
+  before_action :set_user_rate, only: [:show, :edit, :update]
   before_action :set_trail_updates, only: :show
   before_action :set_trail_comments, only: :show
 

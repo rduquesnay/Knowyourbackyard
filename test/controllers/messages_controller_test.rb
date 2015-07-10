@@ -26,6 +26,6 @@ class MessagesControllerTest < ActionController::TestCase
   #  assert_difference('Message.count', -1) do
   #    delete :destroy, id: @message
   #  end
-  #  assert_redirected_to chat_path
+  #  assert_redirected_to chat_path(1)
   end
 end

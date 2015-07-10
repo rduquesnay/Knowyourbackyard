@@ -22,11 +22,11 @@ class VideomakerSubmissionsControllerTest < ActionController::TestCase
 
   test "should create videomaker_submission" do
     sign_in(@user)
-  #  assert_difference('VideomakerSubmission.count') do
-  #    post :create, videomaker_submission: { about: @videomaker_submission.about, demo_link: @videomaker_submission.demo_link, user_id: @videomaker_submission.user_id }
-  #  end
+    assert_difference('VideomakerSubmission.count') do
+      post :create, videomaker_submission: { about: @videomaker_submission.about, demo_link: @videomaker_submission.demo_link, user_id: @videomaker_submission.user_id }
+    end
 
-  #  assert_redirected_to videomaker_submission_path(assigns(:videomaker_submission))
+    assert_redirected_to root_path
   end
 
   test "should show videomaker_submission" do
@@ -37,8 +37,8 @@ class VideomakerSubmissionsControllerTest < ActionController::TestCase
 
   test "should get edit" do
     sign_in(@user)
-  #  get :edit, id: @videomaker_submission
-  #  assert_response :success
+    get :edit, id: @videomaker_submission
+    assert_response :success
   end
 
   test "should update videomaker_submission" do

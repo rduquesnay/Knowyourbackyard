@@ -17,7 +17,7 @@ class ResolvedreviewdisputesControllerTest < ActionController::TestCase
 
   test "should get new" do
     sign_in(@tb)
-  #  get :new
+  #  get :new, trail_id: 1, review_id: 1, dispute_id: 1
   #  assert_response :success
   end
 

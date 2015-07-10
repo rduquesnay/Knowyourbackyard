@@ -17,7 +17,7 @@ class RevisionreviewsControllerTest < ActionController::TestCase
 
   test "should get new" do
     sign_in(@tb)
-  #  get :new
+  #  get :new, revision_id: 1
   #  assert_response :success
   end
 

@@ -15,7 +15,7 @@ class ChatsControllerTest < ActionController::TestCase
   end
 
   test "should get new" do
-  #  get :new
+  #  get :new, contact_id: Contact.all.first 
   #  assert_response :success
   end
 
@@ -30,7 +30,6 @@ class ChatsControllerTest < ActionController::TestCase
     assert_difference('Chat.count', -1) do
       delete :destroy, id: @chat
     end
-
     assert_redirected_to chats_path
   end
 end

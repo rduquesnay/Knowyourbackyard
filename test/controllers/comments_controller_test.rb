@@ -14,11 +14,11 @@ class CommentsControllerTest < ActionController::TestCase
   end
 
   test "should get create" do
-  #  sign_in(@user)
-  #  assert_difference('Comment.count') do
-  #    post :create, comment: { message: @comment.message}
-  #  end
-  #  assert_redirected_to trail_path
+    sign_in(@user)
+    assert_difference('Comment.count') do
+      post :create, comment: { message: @comment.message, trail_id: 1}
+    end
+    assert_redirected_to trail_path(1)
   end
 
   test "should destory comment" do
@@ -26,7 +26,7 @@ class CommentsControllerTest < ActionController::TestCase
     assert_difference('Comment.count', -1) do
       delete :destroy, id: @comment
     end
-  #  assert_redirected_to trail_path
+    assert_redirected_to comments_path
   end
 
 end

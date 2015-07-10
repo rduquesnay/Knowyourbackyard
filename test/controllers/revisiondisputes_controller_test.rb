@@ -44,8 +44,8 @@ class RevisiondisputesControllerTest < ActionController::TestCase
 
   test "should update revisiondispute" do
     sign_in(@user)
-  #  patch :update, id: @revisiondispute, revisiondipute: { comment: @revisiondispute.comment, revisionreview_id: @revisiondispute.revisionreview_id }
-  #  assert_redirected_to revisiondispute_path(assigns(:revisiondispute))
+    patch :update, id: @revisiondispute, revisiondispute: { comment: @revisiondispute.comment, revisionreview_id: @revisiondispute.revisionreview_id }
+    assert_redirected_to revisiondispute_path
   end
 
   test "should destroy revisiondispute" do
