@@ -131,17 +131,29 @@
     <h6>Trail Photos:</h6>
     <div id="trail-photos" class= "well">
       <% unless @images.nil? || @images=="" %>
-        <div class="row">
-          <% @images.each do |image| %>
-            <div class="col-md-3">
-              <%= link_to image.url.cdn_url do %>
-                <%= image_tag image.url, width: 100 %>
-              <%end%>
+        <div id="imageCarousel" class="carousel slide" data-ride="carousel">
+          <ol class="carousel-indicators">
+            <li data-target="#imageCarousel" data-slide-to="0" class="active"></li>
+            <% for i in 1..@images.count %>
+              <li data-target="#imageCarousel" data-slide-to="<%=i%>"></li>
+            <% end %>
+          </ol>
+          <div class="carousel-inner" role="listbox">
+            <div class="item active">
+              <div id="trail-image-links">
+                <%= link_to "Submit a Image for this Trail", new_image_path({id: @trail.id}) %>
+              </div>
             </div>
-          <%end%>
+            <% @images.each do |image| %>
+              <div class="item">
+                <%= image_tag image.url %>
+              </div>
+            <% end %>
+          </div>
+          <a class="left carousel-control" href="#imageCarousel" role="button" data-slide="prev"><span class="glyphicon glyphicon-chevron-left" aria-hidden="true"></span><span class="sr-only">Previous</span></a>
+          <a class="right carousel-control" href="#imageCarousel" role="button" data-slide="next"><span class="glyphicon glyphicon-chevron-right" aria-hidden="true"></span><span class="sr-only">Next</span></a>
         </div>
       <% end %>
-      <%= link_to "Submit a Image for this Trail", new_image_path({id: @trail.id}) %>
     </div>
     <h6>Trail Conditions:</h6>
     <div id="trail-updates" class="well">
