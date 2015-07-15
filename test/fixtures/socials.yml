@@ -1,6 +1,7 @@
 # Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
 
 one:
+  id: 1
   facebook_link: MyString
   linkedin_link: MyString
   youtube_link: MyString
@@ -8,6 +9,7 @@ one:
   user_id: 1 
 
 two:
+  id: 2
   facebook_link: MyString
   linkedin_link: MyString
   youtube_link: MyString

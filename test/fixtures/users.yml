@@ -1,5 +1,6 @@
 # Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
 one:
+  id: 1
   email: one@one.com
   username: user1
   firstname: u
@@ -10,6 +11,7 @@ one:
   about: about1
 
 two: 
+  id: 2
   email: two@two.com
   username: user2
   firstname: u
@@ -19,6 +21,7 @@ two:
   province: p2
   about: about2
 admin: 
+  id: 3
   email: admin@admin.com
   username: admin
   firstname: u
@@ -30,6 +33,7 @@ admin:
   admin: true
   encrypted_password: password
 tb: 
+  id: 4
   email: tb@tb.com
   username: tb
   firstname: u
@@ -41,6 +45,7 @@ tb:
   trailblazer: true
   encrypted_password: password
 owner: 
+  id: 5
   email: owner@owner.com
   username: owner
   firstname: u

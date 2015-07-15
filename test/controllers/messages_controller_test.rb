@@ -15,17 +15,17 @@ class MessagesControllerTest < ActionController::TestCase
 
   test "should get create" do
     sign_in(@user)
-  #  assert_difference('Message.count') do
-  #    post :create, message: {content: @message.content, user_id: @message.user_id, chat_id: @message.chat_id}
-  #  end
-  #  assert_redirected_to chat_path
+    assert_difference('Message.count') do
+      post :create, message: {content: @message.content, user_id: @message.user_id, chat_id: @message.chat_id}
+    end
+    assert_redirected_to chat_path(1)
   end
 
   test "should destory message" do
     sign_in(@admin)
-  #  assert_difference('Message.count', -1) do
-  #    delete :destroy, id: @message
-  #  end
-  #  assert_redirected_to chat_path(1)
+    assert_difference('Message.count', -1) do
+      delete :destroy, id: @message
+    end
+    assert_redirected_to chat_path(1)
   end
 end

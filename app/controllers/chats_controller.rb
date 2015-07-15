@@ -1,5 +1,5 @@
 class ChatsController < ApplicationController
-  before_action :ensure_admin!, only: [:index, :update, :destroy]
+  before_action :ensure_admin!, only: [:new, :create, :index, :update, :destroy]
   before_action :authenticate_user!, only: :show
   before_action :set_chat, only: [:show, :destroy]
   respond_to :html
@@ -18,7 +18,7 @@ class ChatsController < ApplicationController
 
   def new
     @contact = Contact.find(params[:contact_id])
-    @chat = Chat.new(subject: @contact.subject,contact_id: @contact.from_id, admin_id: current_user.id)
+    @chat = Chat.new(subject: @contact.subject, contact_id: @contact.from_id, admin_id: current_user.id)
     ActiveRecord::Base.transaction do
       @chat.save
       notice = Notice.new({type: "New Chat", link_id: @chat.id, to_user: @chat.contact_id})

@@ -30,15 +30,15 @@ class SocialsControllerTest < ActionController::TestCase
   test "should update social" do
     sign_in(@user)
     patch :update, id: @social, social: { facebook_link: "/facebook.com/", instagram_link: "/instagram.com/", linkedin_link: "/linkedin/", user_id: @user.id, youtube_link: "/youtube.com/" }
-  #  assert_redirected_to user_path(@user)
+    assert_redirected_to user_path(@user)
   end
 
   test "should destroy social" do
     sign_in(@user)
-  #  assert_difference('Social.count', -1) do
-  #    delete :destroy, id: @social
-  #  end
+    assert_difference('Social.count', -1) do
+      delete :destroy, id: @social
+    end
 
-  #  assert_redirected_to user_path(@user)
+    assert_redirected_to user_path(@user)
   end
 end

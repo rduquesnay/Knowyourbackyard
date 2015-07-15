@@ -25,9 +25,6 @@ class ResolvedrevisiondisputesController < ApplicationController
     respond_with(@resolvedrevisiondispute)
   end
 
-  def edit
-  end
-
   def create
     @resolvedrevisiondispute = Resolvedrevisiondispute.new(resolvedrevisiondispute_params)
     @revisionreview = Revisionreview.find(@resolvedrevisiondispute.review_id)
@@ -49,11 +46,6 @@ class ResolvedrevisiondisputesController < ApplicationController
       end
     end
     redirect_to trailreviewindex_path
-  end
-
-  def update
-    @resolvedrevisiondispute.update(resolvedrevisiondispute_params)
-    respond_with(@resolvedrevisiondispute)
   end
 
   def destroy

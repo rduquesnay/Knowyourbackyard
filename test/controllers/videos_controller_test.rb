@@ -15,19 +15,19 @@ class VideosControllerTest < ActionController::TestCase
 
   test "should create video" do
     sign_in(@admin)
-  #  assert_difference('Video.count') do
-  #    post :create, video: { src: "sourcelink", trail_id: 1 }
-  #  end
+    assert_difference('Video.count') do
+      post :create, video: { src: "sourcelink", trail_id: 1 }
+    end
 
-  #  assert_redirected_to trail_path(1)
+    assert_redirected_to trail_path(1)
   end
 
   test "should destroy video" do
     sign_in(@admin)
-  #  assert_difference('Video.count', -1) do
-  #    delete :destroy, id: @video
-  #  end
+    assert_difference('Video.count', -1) do
+      delete :destroy, id: @video
+    end
 
-  #  assert_redirected_to trail_path(1)
+    assert_redirected_to trail_path(1)
   end
 end

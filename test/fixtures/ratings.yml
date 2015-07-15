@@ -1,11 +1,13 @@
 # Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
 
 one:
+  id: 1
   difficulty: 1
   durationinsec: 1
   favourite: false
 
 two:
+  id: 2
   difficulty: 1
   durationinsec: 1
   favourite: false

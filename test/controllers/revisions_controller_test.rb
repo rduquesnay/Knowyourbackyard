@@ -17,29 +17,29 @@ class RevisionsControllerTest < ActionController::TestCase
 
   test "should get new" do
     sign_in(@user)
-  #  get :new, trail_id: 1
-  #  assert_response :success
+    get :new, trail_id: 1
+    assert_response :success
   end
 
   test "should create revision" do
     sign_in(@user)
-  #  assert_difference('Revision.count') do
-  #    post :create, revision: { length: @revision.length, latitude: @revision.latitude, longitude: @revision.longitude, location: @revision.location, name: @revision.name, user_id: @revision.user_id, season: @revision.season, trail_id: @revision.trail_id, traildirections: @revision.traildirections, trailtype: @revision.trailtype }
-  #  end
+    assert_difference('Revision.count') do
+      post :create, revision: { length: @revision.length, latitude: @revision.latitude, longitude: @revision.longitude, location: @revision.location, name: @revision.name, user_id: @revision.user_id, season: @revision.season, trail_id: @revision.trail_id, traildirections: @revision.traildirections, trailtype: @revision.trailtype }
+    end
 
-  #  assert_redirected_to revision_path(assigns(:revision))
+    assert_redirected_to trail_path(1)
   end
 
   test "should show revision" do
     sign_in(@tb)
-  #  get :show, id: @revision
-  #  assert_response :success
+    get :show, id: @revision
+    assert_response :success
   end
 
   test "should get edit" do
     sign_in(@user)
-  #  get :edit, id: @revision
-  #  assert_response :success
+    get :edit, id: @revision
+    assert_response :success
   end
 
   test "should update revision" do

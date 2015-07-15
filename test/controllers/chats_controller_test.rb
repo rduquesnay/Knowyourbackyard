@@ -15,14 +15,15 @@ class ChatsControllerTest < ActionController::TestCase
   end
 
   test "should get new" do
-  #  get :new, contact_id: Contact.all.first 
-  #  assert_response :success
+    sign_in(@admin)
+    get :new, contact_id: Contact.all.first 
+    assert_response 302
   end
 
   test "should show chat" do
     sign_in(@user)
-  #  get :show, id: @chat
-  #  assert_response :success
+    get :show, id: @chat
+    assert_response :success
   end
 
   test "should destroy chat" do

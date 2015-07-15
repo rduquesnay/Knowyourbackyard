@@ -32,8 +32,8 @@ class ReviewdisputesControllerTest < ActionController::TestCase
 
   test "should show reviewdispute" do
     sign_in(@tb)
-  #  get :show, id: @reviewdispute
-  #  assert_response :success
+    get :show, id: @reviewdispute
+    assert_response :success
   end
 
   test "should get edit" do

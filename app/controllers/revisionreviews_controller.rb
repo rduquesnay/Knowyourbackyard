@@ -26,6 +26,7 @@ class RevisionreviewsController < ApplicationController
 
   def edit
     @revision = Revision.find(@revisionreview.revision_id)
+    @trail = Trail.find(@revision.trail_id)
   end
 
   def create
@@ -39,7 +40,7 @@ class RevisionreviewsController < ApplicationController
       if !@reviewuser.update_attribute(:points, @reviewuser.points+150)
         raise ActiveRecord::Rollback
       end
-      noitce = Notice.new({type: "Revision Reviewed", link_id: @revisionreview.id, to_user: @revision.user_id})
+      notice = Notice.new({type: "Revision Reviewed", link_id: @revisionreview.id, to_user: @revision.user_id})
       if !notice.send
         raise ActiveRecord::Rollback
       end

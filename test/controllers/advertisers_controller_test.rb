@@ -3,12 +3,14 @@ require 'test_helper'
 class AdvertisersControllerTest < ActionController::TestCase
   setup do
     @advertiser = advertisers(:one)
+    @admin = users(:admin)
   end
 
   test "should get index" do
+    sign_in(@admin)
     get :index
-    assert_response 302 
-  #  assert_not_nil assigns(:advertisers)
+    assert_response :success 
+    assert_not_nil assigns(:advertisers)
   end
 
   test "should get new" do
@@ -25,8 +27,9 @@ class AdvertisersControllerTest < ActionController::TestCase
   end
 
   test "should show advertiser" do
+    sign_in(@admin)
     get :show, id: @advertiser
-    assert_response 302 
+    assert_response :success 
   end
 
   test "should get edit" do
@@ -40,9 +43,10 @@ class AdvertisersControllerTest < ActionController::TestCase
   end
 
   test "should destroy advertiser" do
-  #  assert_difference('Advertiser.count', -1) do
-  #    delete :destroy, id: @advertiser
-  #  end
-  #  assert_redirected_to advertisers_path
+    sign_in(@admin)
+    assert_difference('Advertiser.count', -1) do
+      delete :destroy, id: @advertiser
+    end
+    assert_redirected_to advertisers_path
   end
 end

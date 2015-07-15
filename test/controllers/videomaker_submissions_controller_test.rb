@@ -9,9 +9,9 @@ class VideomakerSubmissionsControllerTest < ActionController::TestCase
 
   test "should get index" do
     sign_in(@admin)
-  #  get :index
-  #  assert_response :success
-  #  assert_not_nil assigns(:videomaker_submissions)
+    get :index
+    assert_response :success
+    assert_not_nil assigns(:videomaker_submissions)
   end
 
   test "should get new" do

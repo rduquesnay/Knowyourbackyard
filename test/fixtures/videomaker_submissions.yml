@@ -1,11 +1,13 @@
 # Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
 
 one:
+  id: 1
   user_id: 1 
   demo_link: extlink1
   about: About1
 
 two:
+  id: 2
   user_id: 2
   demo_link: extlink2
   about: About2

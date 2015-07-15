@@ -1,9 +1,11 @@
 # Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
 
 one:
+  id: 1
   src: videosrc1
   trail_id: 1 
 
 two:
+  id: 2
   src: videosrc2
   trail_id: 2

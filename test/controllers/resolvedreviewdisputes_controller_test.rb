@@ -17,14 +17,14 @@ class ResolvedreviewdisputesControllerTest < ActionController::TestCase
 
   test "should get new" do
     sign_in(@tb)
-  #  get :new, trail_id: 1, review_id: 1, dispute_id: 1
-  #  assert_response :success
+    get :new, trail_id: 1, review_id: 1, dispute_id: 1
+    assert_response :success
   end
 
   test "should create resolvedreviewdispute" do
     sign_in(@tb)
   #  assert_difference('Resolvedreviewdispute.count') do
-  #    post :create, resolvedreviewdispute: { comment: @resolvedreviewdispute.comment, dispute_action: @resolvedreviewdispute.dispute_action, dispute_comment: @resolvedreviewdispute.dispute_comment, finalcomments: @resolvedreviewdispute.finalcomments, gps_review: @resolvedreviewdispute.gps_review, length_review: @resolvedreviewdispute.length_review, location_review: @resolvedreviewdispute.location_review, name_review: @resolvedreviewdispute.name_review, rating_difficulty_review: @resolvedreviewdispute.rating_difficulty_review, rating_duration_review: @resolvedreviewdispute.rating_duration_review, review_id: @resolvedreviewdispute.review_id, review_user_id: @resolvedreviewdispute.review_user_id, season_review: @resolvedreviewdispute.season_review, trail_id: @resolvedreviewdispute.trail_id, traildirections_review: @resolvedreviewdispute.traildirections_review, trailtype_review: @resolvedreviewdispute.trailtype_review }
+  #    post :create, resolvedreviewdispute: { comment: @resolvedreviewdispute.comment, dispute_action: @resolvedreviewdispute.dispute_action, dispute_comment: @resolvedreviewdispute.dispute_comment, finalcomments: @resolvedreviewdispute.finalcomments, gps_review: @resolvedreviewdispute.gps_review, length_review: @resolvedreviewdispute.length_review, location_review: @resolvedreviewdispute.location_review, name_review: @resolvedreviewdispute.name_review, rating_difficulty_review: @resolvedreviewdispute.rating_difficulty_review, rating_duration_review: @resolvedreviewdispute.rating_duration_review, review_id: @resolvedreviewdispute.review_id, review_user_id: @resolvedreviewdispute.review_user_id, season_review: @resolvedreviewdispute.season_review, trail_id: @resolvedreviewdispute.trail_id, traildirections_review: @resolvedreviewdispute.traildirections_review, trailtype_review: @resolvedreviewdispute.trailtype_review}, dispute_id: 1
   #  end
 
   #  assert_redirected_to resolvedreviewdispute_path(assigns(:resolvedreviewdispute))
@@ -32,21 +32,10 @@ class ResolvedreviewdisputesControllerTest < ActionController::TestCase
 
   test "should show resolvedreviewdispute" do
     sign_in(@user)
-  #  get :show, id: @resolvedreviewdispute
-  #  assert_response :success
+    get :show, id: @resolvedreviewdispute
+    assert_response :success
   end
 
-  test "should get edit" do
-    sign_in(@tb)
-  #  get :edit, id: @resolvedreviewdispute
-  #  assert_response :success
-  end
-
-  test "should update resolvedreviewdispute" do
-    sign_in(@tb)
-    patch :update, id: @resolvedreviewdispute, resolvedreviewdispute: { comment: @resolvedreviewdispute.comment, dispute_action: @resolvedreviewdispute.dispute_action, dispute_comment: @resolvedreviewdispute.dispute_comment, finalcomments: @resolvedreviewdispute.finalcomments, gps_review: @resolvedreviewdispute.gps_review, length_review: @resolvedreviewdispute.length_review, location_review: @resolvedreviewdispute.location_review, name_review: @resolvedreviewdispute.name_review, rating_difficulty_review: @resolvedreviewdispute.rating_difficulty_review, rating_duration_review: @resolvedreviewdispute.rating_duration_review, review_id: @resolvedreviewdispute.review_id, review_user_id: @resolvedreviewdispute.review_user_id, season_review: @resolvedreviewdispute.season_review, trail_id: @resolvedreviewdispute.trail_id, traildirections_review: @resolvedreviewdispute.traildirections_review, trailtype_review: @resolvedreviewdispute.trailtype_review }
-    assert_redirected_to resolvedreviewdispute_path(assigns(:resolvedreviewdispute))
-  end
 
   test "should destroy resolvedreviewdispute" do
     sign_in(@admin)
