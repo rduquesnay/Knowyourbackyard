@@ -11,6 +11,6 @@ class Contactmailer < ActionMailer::Base
     @admin = content[:from]
     @contact = content[:to]
     @message = content[:message]
-    mail {to: content[:to].email, subject: "RE: "+content[:to].subject}
+    mail to: content[:to].email, subject: "RE: "+content[:to].subject
   end
 end
