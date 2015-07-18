@@ -26,7 +26,7 @@ class TrailupdatesControllerTest < ActionController::TestCase
     assert_difference('Trailupdate.count', -1) do
       delete :destroy, id: @update
     end
-    assert_redirected_to trail_path(1)
+    assert_redirected_to trail_path(@update.trail_id)
   end
 
 end

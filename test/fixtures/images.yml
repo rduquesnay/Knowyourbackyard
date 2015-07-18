@@ -3,9 +3,9 @@
 one:
   id: 1
   url: MyString
-  trail_id: 
+  trail_id: 1 
 
 two:
   id: 2
   url: MyString
-  trail_id: 
+  trail_id: 2

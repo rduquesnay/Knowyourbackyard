@@ -15,30 +15,30 @@ class ImagesControllerTest < ActionController::TestCase
   end
 
   test "should get new" do
-  #  sign_in(@user)
-  #  get :new
-  #  assert_response :success
+    sign_in(@user)
+    get :new, id: 1
+    assert_response :success
   end
 
   test "should create image" do
-    sign_in(@user)
-   # assert_difference('Image.count') do
-   #   post :create, image: { trail_id: @image.trail_id, url: @image.url }
-   # end
+  #  sign_in(@user)
+  #  assert_difference('Image.count') do
+  #    post :create, image: { trail_id: @image.trail_id, url: @image.url }
+  #  end
 
-   # assert_redirected_to image_path(assigns(:image))
+  #  assert_redirected_to image_path(assigns(:image))
   end
 
   test "should show image" do
     sign_in(@tb)
-   # get :show, id: @image
-   # assert_response :success
+  #  get :show, id: @image
+  #  assert_response :success
   end
 
   test "should get edit" do
     sign_in(@tb)
-  #  get :edit, id: @image
-  #  assert_response :success
+    get :edit, id: @image
+    assert_response :success
   end
 
   test "should update image" do

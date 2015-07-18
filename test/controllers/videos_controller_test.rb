@@ -28,6 +28,6 @@ class VideosControllerTest < ActionController::TestCase
       delete :destroy, id: @video
     end
 
-    assert_redirected_to trail_path(1)
+    assert_redirected_to trail_path(@video.trail_id)
   end
 end

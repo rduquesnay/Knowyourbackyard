@@ -18,7 +18,7 @@ class MessagesControllerTest < ActionController::TestCase
     assert_difference('Message.count') do
       post :create, message: {content: @message.content, user_id: @message.user_id, chat_id: @message.chat_id}
     end
-    assert_redirected_to chat_path(1)
+    assert_redirected_to chat_path(@message.chat_id)
   end
 
   test "should destory message" do
@@ -26,6 +26,6 @@ class MessagesControllerTest < ActionController::TestCase
     assert_difference('Message.count', -1) do
       delete :destroy, id: @message
     end
-    assert_redirected_to chat_path(1)
+    assert_redirected_to chat_path(@message.chat_id)
   end
 end

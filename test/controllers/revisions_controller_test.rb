@@ -27,7 +27,7 @@ class RevisionsControllerTest < ActionController::TestCase
       post :create, revision: { length: @revision.length, latitude: @revision.latitude, longitude: @revision.longitude, location: @revision.location, name: @revision.name, user_id: @revision.user_id, season: @revision.season, trail_id: @revision.trail_id, traildirections: @revision.traildirections, trailtype: @revision.trailtype }
     end
 
-    assert_redirected_to trail_path(1)
+    assert_redirected_to trail_path(@revision.trail_id)
   end
 
   test "should show revision" do
