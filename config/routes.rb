@@ -1,4 +1,5 @@
 Knowyourbackyard::Application.routes.draw do
+  resources :logos, except: [:index, :show]
   resources :images
   resources :advertisers
   resources :socials, only: [:new, :create, :edit, :update, :destroy]

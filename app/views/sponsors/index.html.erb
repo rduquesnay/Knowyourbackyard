@@ -22,11 +22,21 @@
   <div class="row">
     <%= link_to extlink(sponsor.link) do %>
       <div class="col-md-2">
-        <!--logo here-->
+        <% if sponsor.logo.nil? %>
+          <% if user_signed_in? && current_user.owner? %>
+            <%= link_to "Set Logo", new_logo_path({id: sponsor.id}) %>
+          <%end%>
+        <% else %>
+          <%= image_tag sponsor.logo.url, width:200, height: 200 %> 
+          <% if user_signed_in? && current_user.owner? %>
+            <%= link_to "Edit Logo", edit_logo_path(sponsor.logo) %>
+          <%end%>
+        <% end %>
       </div>
       <div class="col-md-8 col-md-offset-1">
         <p>
         <strong><%= sponsor.companyname %>: </strong>
+        <br>
         <%= sponsor.about %>
         </p>
       </div>

@@ -36,6 +36,7 @@ class SponsorsController < ApplicationController
   end
 
   def destroy
+    @sponsor.logo.destroy
     @sponsor.destroy
     respond_with(@sponsor)
   end
@@ -46,6 +47,6 @@ class SponsorsController < ApplicationController
     end
 
     def sponsor_params
-      params.require(:sponsor).permit(:companyname, :about, :link)
+      params.require(:sponsor).permit(:companyname, :about, :link, :logo)
     end
 end

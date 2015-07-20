@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20150707132851) do
+ActiveRecord::Schema.define(version: 20150720213946) do
 
   create_table "advertisers", force: true do |t|
     t.string   "name"
@@ -62,6 +62,15 @@ ActiveRecord::Schema.define(version: 20150707132851) do
   end
 
   add_index "images", ["trail_id"], name: "index_images_on_trail_id"
+
+  create_table "logos", force: true do |t|
+    t.string   "url",        default: ""
+    t.integer  "sponsor_id"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  add_index "logos", ["sponsor_id"], name: "index_logos_on_sponsor_id"
 
   create_table "messages", force: true do |t|
     t.text     "content"
